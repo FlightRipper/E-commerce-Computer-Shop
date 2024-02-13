@@ -7,8 +7,8 @@ class ProductController {
 
     static async createProduct(req, res){
         try {
-            const { name, price, description, quantity } = req.body;
-            if (!name || !price || !description || !quantity) {
+            const { name, price, description, quantity, subcategoryId } = req.body;
+            if (!name || !price || !description || !quantity || !subcategoryId) {
               return res.status(400).json({ error: "All fields are required" });
             }
         
@@ -36,6 +36,29 @@ class ProductController {
             return res.status(200).json(products);
         } catch (error) {
             return res.status(500).json({ message: error.message });
+        }
+    }
+
+    //update product
+    static async updateProduct(req, res) {
+        try {
+        const oldProduct = await Product.findByPk(req.params.id);
+        console.log(req.body)
+
+        const [upatedProduct] = await Product.update(...req.body, {
+            where: {
+            id: req.params.id,
+            },
+        });
+
+        if (!upatedProduct) {
+            return res.status(404).json("please enter the fields you want to edit");
+        }
+
+        const newProduct = await Product.findByPk(req.params.id);
+        return res.status(200).json(newProduct);
+        } catch (error) {
+        return res.status(500).json({ message: error.message });
         }
     }
 }

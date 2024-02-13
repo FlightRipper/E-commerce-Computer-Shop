@@ -31,11 +31,16 @@ const Product = sequelize.define('Product', {
     featured:{
         type: DataTypes.BOOLEAN,
         defaultValue: false,
+    },
+    subcategoryId: {
+        type: DataTypes.INTEGER,
+        references: {
+            model: 'SubCategory',
+            key: 'id'
+        },
+        allowNull: false
     }
 });
-
-SubCategory.hasMany(Product);
-Product.belongsTo(SubCategory);
 
 Product.sync();
 
