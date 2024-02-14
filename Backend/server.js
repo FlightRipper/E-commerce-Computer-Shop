@@ -1,6 +1,7 @@
 // installed node packages express and boyd parser and mysql
 import express from 'express';
 import userRouter from './routes/userRoutes.js';
+import productRouter from './routes/productRoutes.js';
 import dotenv from 'dotenv';
 dotenv.config();
 import cors from 'cors';
@@ -23,6 +24,9 @@ app.use('/uploads', express.static('uploads'));
 
 // app usages
 app.use('/users', userRouter);
+
+// app usages
+app.use('/products', productRouter);
 
 //app connection
 app.listen(5000, () => {

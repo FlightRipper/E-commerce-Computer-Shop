@@ -20,9 +20,15 @@ const Product = sequelize.define('Product', {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    images:{
-        type: DataTypes.ARRAY(DataTypes.STRING),
+    images: {
+        type: DataTypes.JSON,
         allowNull: false,
+        get() {
+            return JSON.parse(this.getDataValue('images'));
+        },
+        set(val) {
+            this.setDataValue('images', JSON.stringify(val));
+        }
     },
     quantity:{
         type: DataTypes.INTEGER,
@@ -32,15 +38,9 @@ const Product = sequelize.define('Product', {
         type: DataTypes.BOOLEAN,
         defaultValue: false,
     },
-    subcategoryId: {
-        type: DataTypes.INTEGER,
-        references: {
-            model: 'SubCategory',
-            key: 'id'
-        },
-        allowNull: false
-    }
 });
+
+Product.belongsTo(SubCategory, { foreignKey: 'subcategoryId' });
 
 Product.sync();
 

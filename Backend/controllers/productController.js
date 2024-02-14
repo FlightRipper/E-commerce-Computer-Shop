@@ -1,5 +1,5 @@
-import Product from "../models/productmodel" ;
-import SubCategory from "../models/subcategorymodel";
+import Product from "../models/productmodel.js" ;
+import SubCategory from "../models/subcategorymodel.js";
 import fs from 'fs';
 import path from 'path';
 
