@@ -1,5 +1,6 @@
 import User from '../models/usermodel.js';
 import validator from 'validator';
+import bcrypt from 'bcrypt';
 import jwt from 'jsonwebtoken';
 import fs from 'fs';
 
@@ -69,6 +70,40 @@ class userController {
         }
     }
 
+    //login user
+    static async loginUser(req, res) {
+        try {
+        const { username, password } = req.body;
+
+        const errors = [];
+        let user;
+        let match;
+
+        if (!username || !password) {
+            errors.push("Please Fill all required fields");
+        } else {
+            user = await User.findOne({ where: { username } });
+            if (!user) {
+            errors.push("user not found");
+            } else {
+            match = await bcrypt.compare(password, user.password);
+            if (!match) {
+                errors.push("incorrect password");
+            }
+            }
+        }
+
+        if (errors.length > 0) {
+            return res.status(400).json({ errors });
+        }
+
+        const token = createToken(user.id);
+        return res.status(200).json({ username, userType:user.userType, token, balance:user.balance });
+        } catch (error) {
+        return res.status(500).json({ message: error.message });
+        }
+    }
+
     //get all users
     static async getAllUsers(req, res) {
         try {
@@ -104,6 +139,7 @@ class userController {
     static async deleteUser(req, res) {
         try {
         const deleteduser = await User.findByPk(req.params.id)
+
         if (!deleteduser) {
         return res.status(404).json('the user was not found');
         }
@@ -114,7 +150,6 @@ class userController {
             },
         })
 
-        fs.unlinkSync(deleteduser.image);
         return res.status(200).json({ deleteduser });
         } catch (error) {
         return res.status(500).json({ message: error.message });
@@ -134,33 +169,26 @@ class userController {
         }
     }
 
-    static async findUserById(req, res) {
-        try {
-        const user = await User.findByPk(req.params.id);
-        if (!user) {
-            return res.status(404).json('user not found');
-        }
-        return res.status(200).json(user);
-        } catch (error) {
-        return res.status(500).json({ message: error.message });
-        }
-    }
-
     static async UpdateUserProfile(req, res) {
         try {
             const user = await User.findByPk(req.params.id);
+            console.log(user.image);
             if (!user) {
-                return res.status(404).json('user not found');
+                return res.status(404).json({ message: 'user not found' });
             }
-            const image = req.file.filename;
-            fs.unlinkSync(user.image);
+            if (fs.existsSync(user.image)) {
+                fs.unlinkSync(user.image);
+            }
             user.image = req.file.filename;
-            await product.save();
-            res.status(200).json({ message: 'Image Replaced successfully' });
+            console.log(req.file.filename);
+            await user.save();
+            res.status(200).json({ message: 'Image replaced successfully' });
         } catch (error) {
+            console.error(error);
             res.status(500).json({ message: 'Server error' });
         }
     }
+    
 }
 
 export default userController;
