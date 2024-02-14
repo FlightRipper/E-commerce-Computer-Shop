@@ -39,6 +39,24 @@ class ProductController {
         }
     }
 
+    static async getProduct(req, res) {
+        try{
+            const product = await Product.findByPk(req.params.id);
+            if(!product) return res.status(404).json("product not found")
+            return res.status(200).json(product)
+        }
+        catch(error){return res.status(500).json({ message: error.message });}
+    }
+
+    static async deleteProduct(req, res){
+        try{
+            const product = await Product.findByPk(req.params.id);
+            if(!product) return res.status(404).json("product not found")
+            await Product.destroy({where:{id:req.params.id,}})
+            return res.status(200).json({product})
+        }catch(error){return res.status(500).json({message: error.message})}
+    }
+
     //update product
     static async updateProduct(req, res) {
         try {
@@ -61,4 +79,48 @@ class ProductController {
         return res.status(500).json({ message: error.message });
         }
     }
+
+    static async deleteProductImage(req, res) {
+        try {
+            const { id, index } = req.params;
+            console.log(index);
+            const product = await Product.findByPk(id);
+            if (!product) {
+                return res.status(404).json({ message: 'Product not found' });
+            }
+            const imageIndex = Number(index);
+            product.Image.splice(imageIndex, 1);
+            await product.save();
+            res.status(200).json({ message: 'Image deleted successfully' });
+        } catch (error) {res.status(500).json({ message: 'Server error' });}
+    }
+
+    static async addProductImage(req, res) {
+        try {
+
+            const { id } = req.params;
+            const images = req.files
+            const product = await Product.findByPk(id);
+        
+            if (!product) {
+              return res.status(404).json({ message: 'Product not found' });
+            }
+        
+            if (!images || images.length === 0) {
+              return res.status(400).json({ error: 'At least one image is required' });
+            }
+        
+            const imagePaths = images.map((image) => image.path);
+            
+            product.Image.push(...imagePaths);
+        
+            await product.save();
+            res.status(200).json({ message: 'Image added successfully' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: 'Server error' });
+        }
+    }
 }
+
+export default ProductController
