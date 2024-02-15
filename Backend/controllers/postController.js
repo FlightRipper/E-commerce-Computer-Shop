@@ -3,15 +3,17 @@ import Post from "../models/postmodel.js";
 export default class PostController{
     static async createPost(req, res){
         try {
-            const {description, image, UserId} = req.body;
+            const image = req.file.filename
+            const {description, UserId} = req.body;
+            console.log(description, image, UserId)
             if (!description || !image || !UserId) {
                 return res.status(400).json({ error: "All fields are required" });
             }
-            const post = await Post.create({ ...req.body });
+            const post = await Post.create({ ...req.body, image:image });
             await post.save();
             res.status(200).json(post);
         } catch (error) {
-            res.status(400).json({ error: error });
+            res.status(500).json({ message: error.message });
         }
     }
 
