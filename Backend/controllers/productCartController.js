@@ -23,4 +23,20 @@ export default class CartController {
             return res.status(200).json({cart})
         }catch(error){return res.status(500).json({message: error.message});}
     }
+
+    static async getCart(req, res){
+        try{
+            const cart = await Cart.findByPk(req.params.id)
+            if(!cart) return res.status(404).json({message: "CartProduct not found"})
+            return res.status(200).json(cart)
+        }catch(error){return res.status(500).json({message: error.message});}
+    }
+
+    static async getAllCarts(req, res){
+        try{
+            const carts = await Cart.findAll({where:{OrderId: req.params.id}})
+            if(carts.length === 0) return res.status(404).json({message: "CartProduct not found"})
+            return res.status(200).json(carts)
+        } catch(error){return res.status(500).json({message: error.message});}
+    }
 }
