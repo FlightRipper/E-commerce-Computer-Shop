@@ -24,4 +24,7 @@ productRouter.delete('/:id', ProductController.deleteProduct);
 //update product image
 productRouter.patch('/image/:id', upload.single('image'), ProductController.UpdateProductImage);
 
+//update product quantity
+productRouter.patch("/quantity/:id", ProductController.updateProductquantity);
+
 export default productRouter;

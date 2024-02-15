@@ -73,6 +73,21 @@ class ProductController {
         }
     }
 
+    static async updateProductquantity(req, res) {
+        try {
+            const product = await Product.findByPk(req.params.id);
+            if (!product) {
+                return res.status(404).json({ message: 'product not found' });
+            }
+            product.quantity = req.body.quantity - product.quantity;
+            await product.save();
+            res.status(200).json({ message: 'quantity updated successfully' });
+        } catch (error) {
+            console.error(error);
+            res.status(500).json({ message: error.message });
+        }
+    }
+
     static async UpdateProductImage(req, res) {
         try {
             const product = await Product.findByPk(req.params.id);

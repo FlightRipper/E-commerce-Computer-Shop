@@ -15,15 +15,14 @@ const Cart = sequelize.define('Cart', {
     },
     totalprice:{
         type: DataTypes.INTEGER,
-        allowNull: false,
     }
 });
 
 Product.hasMany(Cart);
-Cart.belongsTo(Product);
+Cart.belongsTo(Product, {foreignKey: 'ProductId'});
 
 Order.hasMany(Cart);
-Cart.belongsTo(Order);
+Cart.belongsTo(Order, {foreignKey: 'OrderId'});
 
 Cart.sync();
 

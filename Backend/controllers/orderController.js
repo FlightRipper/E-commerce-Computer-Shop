@@ -1,6 +1,8 @@
 import Order from "../models/ordermodel.js";
 import User from "../models/usermodel.js";
+
 class OrderController{
+
     static async createOrder(req, res){
         try{
             const { message, UserId } = req.body;
@@ -10,7 +12,7 @@ class OrderController{
                 },
             })
             if(!foundOrder) return res.status(404).json({error: "user not found"});
-            console.log(message, UserId, );
+            console.log(message, UserId);
             const order = await Order.create({ message: message, UserId: UserId });
             await order.save();
             res.status(200).json(order);

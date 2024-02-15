@@ -7,6 +7,7 @@ import subcategoryRouter from './routes/subcategoryRoute.js';
 import orderRouter from './routes/orderRoutes.js';
 import contactUsRouter from './routes/contactUsRoutes.js';
 import postRouter from './routes/postRoutes.js';
+import cartProductRouter from './routes/cartProductRoutes.js';
 import dotenv from 'dotenv';
 dotenv.config();
 import cors from 'cors';
@@ -33,6 +34,7 @@ app.use('/contactus', contactUsRouter);
 app.use('/subcategories', subcategoryRouter);
 app.use('/orders', orderRouter);
 app.use('/posts', postRouter);
+app.use('/cartproducts', cartProductRouter);
 
 //app connection
 app.listen(5000, () => {

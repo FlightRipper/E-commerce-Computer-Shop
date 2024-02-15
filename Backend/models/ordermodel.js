@@ -13,13 +13,13 @@ const Order = sequelize.define('Order', {
         allowNull: false,
     },
     status:{
-        type: DataTypes.ENUM('pending', 'approved', 'done', 'canceled'),
-        defaultValue: 'pending',
+        type: DataTypes.ENUM('pending', 'approved', 'done', 'canceled', 'active'),
+        defaultValue: 'active',
     }
 });
 
 User.hasMany(Order);
-Order.belongsTo(User);
+Order.belongsTo(User, {foreignKey: 'UserId'});
 
 Order.sync();
 
