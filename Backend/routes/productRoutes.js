@@ -7,13 +7,13 @@ import upload from '../middlewares/multer.js';
 const productRouter = express.Router();
 
 // Create a new product
-productRouter.post('/add', upload.array('image'), ProductController.createProduct);
+productRouter.post('/add', upload.single('image'), ProductController.createProduct);
 
 // Get all products
 productRouter.get('/', ProductController.getAllProducts);
 
 //get a product by ID
-productRouter.get('/:id', ProductController.getProduct);
+productRouter.get('/single/:id', ProductController.getProduct);
 
 //update product
 productRouter.patch('/:id', ProductController.updateProduct);
@@ -21,10 +21,7 @@ productRouter.patch('/:id', ProductController.updateProduct);
 //delete a product
 productRouter.delete('/:id', ProductController.deleteProduct);
 
-//delete a product image
-productRouter.delete('/:id/:index', ProductController.deleteProductImage);
-
-//delete a product image
-productRouter.post('/:id', upload.array("image"), ProductController.addProductImage);
+//update product image
+productRouter.patch('/image/:id', upload.single('image'), ProductController.UpdateProductImage);
 
 export default productRouter;

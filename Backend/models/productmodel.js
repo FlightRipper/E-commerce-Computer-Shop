@@ -20,15 +20,9 @@ const Product = sequelize.define('Product', {
         type: DataTypes.STRING,
         allowNull: false,
     },
-    images: {
-        type: DataTypes.JSON,
+    image: {
+        type: DataTypes.STRING,
         allowNull: false,
-        get() {
-            return JSON.parse(this.getDataValue('images'));
-        },
-        set(val) {
-            this.setDataValue('images', JSON.stringify(val));
-        }
     },
     quantity:{
         type: DataTypes.INTEGER,

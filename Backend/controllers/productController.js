@@ -7,19 +7,12 @@ class ProductController {
 
     static async createProduct(req, res){
         try {
+            const image = req.file.filename;
             const { name, price, description, quantity, subcategoryId } = req.body;
-            if (!name || !price || !description || !quantity || !subcategoryId) {
+            if (!name || !price || !description || !quantity || !subcategoryId || !image) {
               return res.status(400).json({ error: "All fields are required" });
             }
-        
-            const images = req.files
-            if (!images || images.length === 0) {
-              return res.status(400).json({ error: "At least one image is required" });
-            }
-        
-            const imagePaths = images.map((image) => image.path);
-            const product = await Product.create({ ...req.body, image: imagePaths });
-        
+            const product = await Product.create({ ...req.body, image: image });
             await product.save();
             res.status(200).json(product);
         } catch (error) {
@@ -80,45 +73,22 @@ class ProductController {
         }
     }
 
-    static async deleteProductImage(req, res) {
+    static async UpdateProductImage(req, res) {
         try {
-            const { id, index } = req.params;
-            console.log(index);
-            const product = await Product.findByPk(id);
+            const product = await Product.findByPk(req.params.id);
             if (!product) {
-                return res.status(404).json({ message: 'Product not found' });
+                return res.status(404).json({ message: 'product not found' });
             }
-            const imageIndex = Number(index);
-            product.Image.splice(imageIndex, 1);
+            if (fs.existsSync(product.image)) {
+                fs.unlinkSync(product.image);
+            }
+            product.image = req.file.filename;
+            console.log(req.file.filename);
             await product.save();
-            res.status(200).json({ message: 'Image deleted successfully' });
-        } catch (error) {res.status(500).json({ message: 'Server error' });}
-    }
-
-    static async addProductImage(req, res) {
-        try {
-
-            const { id } = req.params;
-            const images = req.files
-            const product = await Product.findByPk(id);
-        
-            if (!product) {
-              return res.status(404).json({ message: 'Product not found' });
-            }
-        
-            if (!images || images.length === 0) {
-              return res.status(400).json({ error: 'At least one image is required' });
-            }
-        
-            const imagePaths = images.map((image) => image.path);
-            
-            product.Image.push(...imagePaths);
-        
-            await product.save();
-            res.status(200).json({ message: 'Image added successfully' });
+            res.status(200).json({ message: 'Image replaced successfully' });
         } catch (error) {
             console.error(error);
-            res.status(500).json({ message: 'Server error' });
+            res.status(500).json({ message: error.message });
         }
     }
 }

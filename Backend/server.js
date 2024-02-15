@@ -3,6 +3,7 @@ import express from 'express';
 import userRouter from './routes/userRoutes.js';
 import productRouter from './routes/productRoutes.js';
 import categoryRouter from './routes/categoryRoutes.js';
+import subcategoryRouter from './routes/subcategoryRoute.js';
 import dotenv from 'dotenv';
 dotenv.config();
 import cors from 'cors';
@@ -30,6 +31,8 @@ app.use('/users', userRouter);
 app.use('/products', productRouter);
 
 app.use('/categories', categoryRouter);
+
+app.use('/subcategories', subcategoryRouter);
 
 //app connection
 app.listen(5000, () => {
