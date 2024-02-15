@@ -6,6 +6,7 @@ import categoryRouter from './routes/categoryRoutes.js';
 import subcategoryRouter from './routes/subcategoryRoute.js';
 import orderRouter from './routes/orderRoutes.js';
 import contactUsRouter from './routes/contactUsRoutes.js';
+import postRouter from './routes/postRoutes.js';
 import dotenv from 'dotenv';
 dotenv.config();
 import cors from 'cors';
@@ -25,19 +26,13 @@ app.use(express.json());
 
 //middleware for sending static images
 app.use('/uploads', express.static('uploads'));
-
-// app usages
 app.use('/users', userRouter);
-
-// app usages
 app.use('/products', productRouter);
-
 app.use('/categories', categoryRouter);
 app.use('/contactus', contactUsRouter);
-
 app.use('/subcategories', subcategoryRouter);
-
 app.use('/orders', orderRouter);
+app.use('/posts', postRouter);
 
 //app connection
 app.listen(5000, () => {
