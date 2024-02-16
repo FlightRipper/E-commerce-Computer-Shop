@@ -9,6 +9,7 @@ import {
 } from 'react-router-dom';
 
 import SignInPage from './pages/loginpage/signin.jsx';
+import RegisterPage from './pages/registerpage/register.jsx';
 import { useAuthContext } from './hooks/useAuthContext.jsx';
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
       <BrowserRouter>
       <Routes>
         <Route path="/" element={<SignInPage />}/>
+        <Route path="/register" element={<RegisterPage />}/>
         {/* <Route
           path="/admin"
           element={isAdmin ? <AdminPage /> : <Navigate to={'/'} />}

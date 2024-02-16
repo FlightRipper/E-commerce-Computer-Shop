@@ -3,8 +3,8 @@
 :root {
   --bs-light-rgb: 243, 243, 243;
   --bs-bg-opacity: 1;
-  --bs-color:#38bfc5;
-  --bs-hover-color:#1d8d92;
+  --bs-color:#f50000;
+  --bs-hover-color:#ff0000;
  }
 .custom-image-class {
   min-width: 25vh !important;
@@ -45,12 +45,12 @@
   height: 100%;
 }
 
-// .custom-h1-style{
-//   font-family: "Signika" !important;
-//   font-weight: bold !important;
-//   font-size: 3rem !important;
-//   color: #2b3030 !important;
-// }
+.custom-h1-style{
+  font-family: "Signika" !important;
+  font-weight: bold !important;
+  font-size: 3rem !important;
+  color: #2b3030 !important;
+}
 
 .btn-primary:hover {
   background-color: var(--bs-hover-color) !important;
@@ -58,10 +58,12 @@
 .dropdown-item {
   color: var(--bs-color) !important;
 }
+
 .form-control{
-  border-radius: 1px solid #38bfc5 !important;
-  
+  border-radius: 3px solid #fd0000 !important;
 }
+
+.form-control
 .custom-h1-style{
   font-family: "Signika" !important;
   font-weight: bold !important;
@@ -102,7 +104,7 @@ body {
 
 .custom-label-headers-for-inputs{
   font-family: "Asap";
-  color: #3f4146;
+  color: #463f3f;
   font-size: 15px;
 }
 
@@ -114,14 +116,16 @@ body {
 .password-input{
   width: 100% !important;
 }
+
 .form-control:focus::placeholder{
   color: transparent !important;
 }
 
- .custom-form-select-register{
+.custom-form-select-register{
   color: var(--bs-hover-color) !important;
- }
- .howitworks-campaign-cards{
+}
+
+.howitworks-campaign-cards{
   background-color: #8CE5E3 !important;
   border-radius: 30px !important;
 }
@@ -1190,4 +1194,71 @@ margin-left: auto;
       gap: 0 4.2%;
       border-radius: 12px;
   }
+}
+
+@keyframes fadeIn {
+  0% {
+   opacity:  0;
+ }
+  100% {
+   opacity:  1;
+ }
+}
+
+.signin-form-background {
+  animation: fadeIn  1s ease-in-out;
+}
+
+.signin-form-background {
+  opacity:  0;
+  animation: fadeIn  2s ease-in-out forwards;
+}
+
+
+@keyframes colorfulShadow {
+  0% {
+    box-shadow: 0 0 10px rgb(109, 2, 2), 0 0 20px rgb(109, 2, 2), 0 0 30px rgb(109, 2, 2), 0 0 40px rgb(109, 2, 2);
+  }
+  25% {
+    box-shadow: 0 0 10px blue, 0 0 20px blue, 0 0 30px blue, 0 0 40px blue;
+  }
+  50% {
+    box-shadow: 0 0 10px green, 0 0 20px green, 0 0 30px green, 0 0 40px green;
+  }
+  75% {
+    box-shadow: 0 0 10px rgb(236, 236, 9), 0 0 20px rgb(236, 236, 9), 0 0 30px rgb(236, 236, 9), 0 0 40px rgb(236, 236, 9);
+  }
+  100% {
+    box-shadow: 0 0 10px purple, 0 0 20px purple, 0 0 30px purple, 0 0 40px purple;
+  }
+}
+
+@keyframes colorfulBorder {
+  0% {
+    box-shadow: inset 0 0 5px rgb(109, 2, 2);
+  }
+  25% {
+    box-shadow: inset 0 0 5px blue;
+  }
+  50% {
+    box-shadow: inset 0 0 5px green;
+  }
+  75% {
+    box-shadow: inset 0 0 5px rgb(236, 236, 9);
+  }
+  100% {
+    box-shadow: inset 0 0 5px purple;
+  }
+}
+
+.Registration {
+  animation: colorfulShadow 10s infinite;
+}
+
+.farshe5{
+  gap: 35%;
+}
+
+.gap3laiha{
+  gap: 40%;
 }

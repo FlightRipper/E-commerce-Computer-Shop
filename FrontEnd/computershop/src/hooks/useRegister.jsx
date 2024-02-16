@@ -1,38 +1,51 @@
 import { useState } from 'react';
 import { useAuthContext } from './useAuthContext';
 import { useNavigate } from 'react-router-dom';
+import axios from 'axios';
 
 export const useRegister = () => {
   const [error, setError] = useState(null);
   const { dispatch } = useAuthContext();
-  const navigate = useNavigate()
+  const navigate = useNavigate();
 
-  const register = async (username, password, userType) => {
+  const register = async (username, password, confirmPassword) => {
     setError(null);
-    console.log(username, password, userType)
+    console.log(username, password, confirmPassword);
 
-    const response = await fetch('http://localhost:5000/users/register', {
-      method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
-      body: JSON.stringify({ username, password, userType }),
-    });
-    const json = await response.json();
-    
-    if(!response.ok){
-      setError('Registration failed UserName might exist');
+    if (password !== confirmPassword) {
+      setError('Passwords do not match');
+      return;
     }
-    if(response.ok){
 
-        //save the user to the local storage
-        localStorage.setItem('user', JSON.stringify(json))
+    const formData = new FormData();
+    formData.append('username', username);
+    formData.append('password', password);
 
-        //update the context
-        dispatch({type: 'LOGIN',payload: json})
+    try {
+      const response = await axios.post('http://localhost:5000/users/register', formData, {
+        headers: {
+          'Content-Type': 'multipart/form-data',
+        },
+      });
 
-        setError('Registration successful')
+      if (response.status === 200) {
+        // Save the user to the local storage
+        localStorage.setItem('user', JSON.stringify(response.data));
 
-        navigate('/')
+        // Update the context
+        dispatch({ type: 'LOGIN', payload: response.data });
+
+        setError('Registration successful');
+
+        navigate('/');
+      }
+    } catch (error) {
+      if (error.response) {
+        setError('Registration failed: ' + error.response.data.message);
+      } else {
+        setError('Registration failed: ' + error.message);
+      }
     }
   };
-  return {register, error}
+  return { register, error };
 };

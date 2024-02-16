@@ -38,7 +38,7 @@ const SignInPage = () => {
       <div className="bg-dark vh-100 vw-100 d-flex justify-content-center">
         <div className="container d-flex flex-column align-items-center justify-content-center">
           <form
-            className="p-5 rounded-5 shadow-lg needs-validation w-70 h-70 rounded mt-2 mb-3 signin-form-background"
+            className="p-5 rounded-5 needs-validation w-70 h-70 rounded mt-2 mb-3 Registration"
             onSubmit={handleSubmit}
           >
             <div className="d-flex justify-content-center align-items-center">
@@ -102,7 +102,7 @@ const SignInPage = () => {
             <div className="d-flex justify-content-center mt-5">
               <button
                 type="submit"
-                className="btn btn-primary w-50 animate-button"
+                className="btn btn-danger w-50 animate-button"
               >
                 Submit
               </button>
