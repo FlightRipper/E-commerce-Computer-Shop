@@ -10,8 +10,28 @@
 
 .Navbar-heading{
     margin-left: 1%;
-    font-size: larger;
+    font-size: x-large;
     font-family: Signika;
     font-weight: bold;
     color: white;
+}
+
+.Navbar-UserImage{
+    width: 60px !important;
+    height: 60px !important;
+}
+
+.Navbar-UserNameandImageButton{
+    border: none
+}
+
+.Navbar-UserName{
+    font-family: signika;
+    font-weight: bold;
+    font-size: 25px;
+    color: white;
+}
+
+.Navbar-NavbarRed{
+    background-color: #440808;
 }
