@@ -14,8 +14,8 @@ class userController {
         try{
             const image = req.file.filename;
             const { username, password, email, phonenumber, address } = req.body;
+            console.log(username, password, email, phonenumber, address, image);
             const errors = [];
-    
             if (!password) {
                 errors.push("Password is required");
             } else if (!validator.isStrongPassword(password)) {
@@ -47,7 +47,7 @@ class userController {
                 username: username,
             },
             });
-
+            console.log(existingUser, "hon")
             if (existingUser) {
             errors.push("Username already exists");
             return res.status(400).json({errors});
@@ -56,7 +56,7 @@ class userController {
             const newUser = await User.create({
                 ...req.body, image: image
             });
-
+            console.log(newUser)
             if (!newUser) {
             errors.push("Error creating user");
             return  res.status(500).json({ errors });

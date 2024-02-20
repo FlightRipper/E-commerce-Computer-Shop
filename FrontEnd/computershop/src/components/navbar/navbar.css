@@ -1,0 +1,17 @@
+.Navbar-main{
+    z-index: 1;
+}
+
+.Navbar-logo{
+    width: 60px !important;
+    height: 60px !important;
+    margin-left: 4%;
+}
+
+.Navbar-heading{
+    margin-left: 1%;
+    font-size: larger;
+    font-family: Signika;
+    font-weight: bold;
+    color: white;
+}

@@ -10,6 +10,7 @@ import {
 
 import SignInPage from './pages/loginpage/signin.jsx';
 import RegisterPage from './pages/registerpage/register.jsx';
+import Homepage from './pages/homepage/homepage.jsx';
 import { useAuthContext } from './hooks/useAuthContext.jsx';
 
 function App() {
@@ -21,13 +22,14 @@ function App() {
       <Routes>
         <Route path="/" element={<SignInPage />}/>
         <Route path="/register" element={<RegisterPage />}/>
+        <Route path="/homepage" element={<Homepage />}/>
         {/* <Route
           path="/admin"
           element={isAdmin ? <AdminPage /> : <Navigate to={'/'} />}
         />
         <Route path="/displayAll"  element={<AllMemes />}/>
         <Route path="/register" element={<RegisterPage />}/>
-        <Route path="/test" element={<PushNotificationSend />}/> */}
+         */}
       </Routes>
     </BrowserRouter>
     </>
