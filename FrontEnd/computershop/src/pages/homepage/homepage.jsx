@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import axios from 'axios';
+import redpc from '../../assets/redpc.jpg';
 import './homepage.css';
 import Navbar from '../../components/navbar/navbar';
 const HomePage = () => {
@@ -21,9 +22,11 @@ const HomePage = () => {
         <>
             <Navbar />
             <div className='HomePageMain'>
-                HomePage
+                <img src={redpc} alt="" className='RedPC' />
+                <p className='HomePageHeading'>Feautured Products</p>
             </div>
         </>
+        
     )
 }
 

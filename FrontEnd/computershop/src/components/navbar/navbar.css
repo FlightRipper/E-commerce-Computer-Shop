@@ -4,15 +4,15 @@
 }
 
 .Navbar-logo{
-    width: 60px !important;
+    width: 67px !important;
     height: 60px !important;
     margin-left: 4%;
 }
 
 .Navbar-heading{
-    margin-left: 1%;
+    margin-left: 4%;
     margin-top: 1%;
-    font-size: x-large;
+    font-size: xx-large;
     font-family: Signika;
     font-weight: bold;
     color: white;

@@ -1,5 +1,45 @@
 .HomePageMain{
-    min-width: 100vw;
+    width: 100vw;
     min-height: 100vh;
     background-color: black;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10vh;
+}
+
+@keyframes colorfulShadowPC {
+    0% {
+      box-shadow: 0 0 20px #ff0000, 0 0 30px #ff0000, 0 0 40px #ff0000, 0 0 50px #ff0000;
+    }
+    25% {
+      box-shadow: 0 0 20px #ff6666, 0 0 30px #ff6666, 0 0 40px #ff6666, 0 0 50px #ff6666;
+    }
+    50% {
+      box-shadow: 0 0 20px #ff3333, 0 0 30px #ff3333, 0 0 40px #ff3333, 0 0 50px #ff3333;
+    }
+    75% {
+      box-shadow: 0 0 20px #ff9999, 0 0 30px #ff9999, 0 0 40px #ff9999, 0 0 50px #ff9999;
+    }
+    100% {
+      box-shadow: 0 0 20px #ff3333, 0 0 30px #ff3333, 0 0 40px #ff3333, 0 0 50px #ff3333;
+    }
+}
+
+.RedPC{
+    margin-top: 11.5%;
+    height: 28vw;
+    width: 55vw;
+    border-radius: 16px;
+    background-color: red;
+    animation: colorfulShadowPC 10s infinite;
+}
+
+.HomePageHeading{
+    font-size: 3vh;
+    color: white;
+    font-family: signika;
+    font-weight: bold;
+    border-bottom: 4px solid white;
 }

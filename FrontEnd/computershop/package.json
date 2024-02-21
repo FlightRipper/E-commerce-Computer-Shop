@@ -1,5 +1,5 @@
 {
-  "name": "fintech-project",
+  "name": "Final-project",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -29,6 +29,7 @@
     "push.js": "^1.0.12",
     "react": "^18.2.0",
     "react-bootstrap": "^2.9.2",
+    "react-custom-scrollbars": "^4.2.1",
     "react-dom": "^18.2.0",
     "react-drag-drop-files": "^2.3.10",
     "react-icons": "^5.0.1",

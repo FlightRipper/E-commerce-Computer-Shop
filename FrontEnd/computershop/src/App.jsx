@@ -19,19 +19,20 @@ function App() {
   return (
     <>
       <BrowserRouter>
-      <Routes>
-        <Route path="/" element={<SignInPage />}/>
-        <Route path="/register" element={<RegisterPage />}/>
-        <Route path="/homepage" element={<Homepage />}/>
-        {/* <Route
-          path="/admin"
-          element={isAdmin ? <AdminPage /> : <Navigate to={'/'} />}
-        />
-        <Route path="/displayAll"  element={<AllMemes />}/>
-        <Route path="/register" element={<RegisterPage />}/>
-         */}
-      </Routes>
-    </BrowserRouter>
+        <Routes>
+          <Route path="/" element={<SignInPage />}/>
+          <Route path="/register" element={<RegisterPage />}/>
+          <Route path="/homepage" element={<Homepage />}/>
+          {/* <Route
+            path="/admin"
+            element={isAdmin ? <AdminPage /> : <Navigate to={'/'} />}
+          />
+          <Route path="/displayAll"  element={<AllMemes />}/>
+          <Route path="/register" element={<RegisterPage />}/>
+          */}
+        </Routes>
+      </BrowserRouter>
+
     </>
   )
 }
