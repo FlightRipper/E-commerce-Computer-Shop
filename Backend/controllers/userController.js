@@ -50,7 +50,7 @@ class userController {
             console.log(existingUser, "hon")
             if (existingUser) {
             errors.push("Username already exists");
-            return res.status(400).json({errors});
+            return res.status(400).json({message: "Username already exists"});
             }
 
             const newUser = await User.create({
