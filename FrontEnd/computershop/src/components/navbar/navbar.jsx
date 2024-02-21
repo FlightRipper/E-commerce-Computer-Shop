@@ -85,6 +85,7 @@ const Navbar = () => {
                 <button className='Navbar-NavbarButton' onClick={() => navigate('/homepage')}>Home</button>
                 <button className='Navbar-NavbarButton' onClick={() => navigate('/about')}>About Us</button>
                 <button className='Navbar-NavbarButton' onClick={() => navigate('/shop')}>Shop</button>
+                <button className='Navbar-NavbarButton' onClick={() => navigate('/community')}>Community</button>
                 <button className='Navbar-NavbarButton' onClick={() => navigate('/contact')}>Contact Us</button>
                 <button className='Navbar-NavbarButton' onClick={() => (user !== "Sign In") ? navigate('/cart') : navigate('/')}>
                     <span>Cart</span>

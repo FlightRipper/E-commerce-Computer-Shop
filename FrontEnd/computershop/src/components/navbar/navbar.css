@@ -40,7 +40,7 @@
 .Navbar-NavbarRed{
     background-color: #440808;
     height: 55px;
-    gap: 10%;
+    gap: 7%;
     padding-right: 3%;
 }
 
@@ -65,7 +65,7 @@
 }
 
 .Navbar-Search:focus::placeholder{
-    color: white;
+    opacity: 0;
 }
 
 .productImageNavBar{
