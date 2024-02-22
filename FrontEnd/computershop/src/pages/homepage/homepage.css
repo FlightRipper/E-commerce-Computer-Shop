@@ -29,19 +29,31 @@
 
 .RedPC{
   margin-top: 11.5%;
+  border-radius: 16px;
+  height: 28vw;
+  width: 55vw;
+  animation: colorfulShadowPC 10s infinite;
+
+}
+
+.carousel-item{
+  border-radius: 16px;
+  animation: colorfulShadowPC 10s infinite;
+}
+
+.carousel-image{
   height: 28vw;
   width: 55vw;
   border-radius: 16px;
-  background-color: red;
   animation: colorfulShadowPC 10s infinite;
 }
 
 .HomePageHeading{
-    font-size: 3vh;
-    color: white;
-    font-family: signika;
-    font-weight: bold;
-    border-bottom: 4px solid white;
+  font-size: 3vh;
+  color: white;
+  font-family: signika;
+  font-weight: bold;
+  border-bottom: 4px solid white;
 }
 
 .HomePageFeauturedProducts{
@@ -77,18 +89,4 @@
   .RedPC{
     margin-top: 35%;
   }
-}
-
-.HomePageFooter{
-  background-color: red;
-  width: 99.2vw;
-  height: 20vh;
-  display: flex;
-  flex-direction: column;
-  border-top-left-radius: 25px;
-  border-top-right-radius: 25px;
-  align-items: center;
-  justify-content: center;
-  font-family: signika;
-  font-weight: bold;
 }
