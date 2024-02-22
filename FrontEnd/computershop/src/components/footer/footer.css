@@ -198,3 +198,14 @@
 .card4:hover .discord {
     fill: white;
 }
+
+@media screen and (max-width: 900px) {
+    .HomePageFooter{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        width: 50.2vw;
+        min-height: 120.9vh;
+    }
+}

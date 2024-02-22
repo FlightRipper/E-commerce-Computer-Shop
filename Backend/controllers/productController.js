@@ -120,6 +120,8 @@ class ProductController {
     static async getSubcategoryProducts(req, res){
         try{
             console.log(req.params.id);
+            const subcategory = await SubCategory.findByPk(req.params.id);
+            if(!subcategory) return res.status(404).json({message: "subcategory not found"});
             const products = await Product.findAll({where: {subcategoryId: req.params.id}});
             if(products.length === 0) return res.status(404).json({error: "there are no products in this subcategory"});
             return res.status(200).json(products);

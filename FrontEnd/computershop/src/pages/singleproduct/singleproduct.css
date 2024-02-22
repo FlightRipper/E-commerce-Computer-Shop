@@ -1,53 +1,133 @@
 .singleproduct__image{
-    height: 50vh;
-    width: 30vw;
-    border-radius: 16px;
-    animation: colorfulextraShadowPC 10s infinite;
+  height: 50vh;
+  width: 30vw;
+  border-radius: 16px;
+  animation: colorfulextraShadowPC 10s infinite;
 }
 
 @keyframes colorfulextraShadowPC {
-    0% {
-      box-shadow: 0 0 40px #ff0000, 0 0 60px #ff0000, 0 0 80px #ff0000, 0 0 90px #ff0000;
-    }
-    25% {
-      box-shadow: 0 0 40px #ff6666, 0 0 60px #ff6666, 0 0 80px #ff6666, 0 0 90px #ff6666;
-    }
-    50% {
-      box-shadow: 0 0 40px #ff3333, 0 0 60px #ff3333, 0 0 80px #ff3333, 0 0 90px #ff3333;
-    }
-    75% {
-      box-shadow: 0 0 40px #ff9999, 0 0 60px #ff9999, 0 0 80px #ff9999, 0 0 90px #ff9999;
-    }
-    100% {
-      box-shadow: 0 0 40px #ff3333, 0 0 60px #ff3333, 0 0 80px #ff3333, 0 0 90px #ff3333;
-    }
+  0% {
+    box-shadow: 0 0 40px #ff0000, 0 0 60px #ff0000, 0 0 80px #ff0000, 0 0 90px #ff0000;
+  }
+  25% {
+    box-shadow: 0 0 40px #ff6666, 0 0 60px #ff6666, 0 0 80px #ff6666, 0 0 90px #ff6666;
+  }
+  50% {
+    box-shadow: 0 0 40px #ff3333, 0 0 60px #ff3333, 0 0 80px #ff3333, 0 0 90px #ff3333;
+  }
+  75% {
+    box-shadow: 0 0 40px #ff9999, 0 0 60px #ff9999, 0 0 80px #ff9999, 0 0 90px #ff9999;
+  }
+  100% {
+    box-shadow: 0 0 40px #ff3333, 0 0 60px #ff3333, 0 0 80px #ff3333, 0 0 90px #ff3333;
+  }
 }
 
 .singleproductInfo{
-    margin-top: 30vh;
-    margin-bottom: 20vh;
-    gap: 50vh;
-    margin-right: 10vh;
-    justify-content: center;
+  margin-top: 30vh;
+  margin-bottom: 20vh;
+  gap: 50vh;
+  margin-right: 10vh;
+  justify-content: center;
 }
 
 .singleproduct__info{
-    display: flex;
-    flex-direction: column;
-    gap: 5vh;
+  display: flex;
+  flex-direction: column;
+  gap: 3.5vh;
 }
 
 .singleproduct__name{
-    font-family: signika;
-    font-weight: bold;
-    font-size: 50px;
-    color: white;
-    text-decoration: underline;
+  font-family: signika;
+  font-weight: bold;
+  font-size: 50px;
+  color: white;
+  text-decoration: underline;
 }
 
 .singleproduct__price{
-    font-family: signika;
-    font-weight: bold;
-    font-size: 30px;
-    color: white;
+  font-family: signika;
+  font-weight: bold;
+  font-size: 30px;
+  color: white;
+}
+
+.input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.singleproduct__description{
+  font-family: sans-serif;
+  font-weight: bold;
+  color: antiquewhite;
+  font-size: 14px;
+  max-width: 80vw;
+  max-height: 30vh;
+  overflow: auto;
+}
+
+.codepen-button {
+  display: block;
+  cursor: pointer;
+  color: white;
+  margin: 0 auto;
+  position: relative;
+  text-decoration: none;
+  font-weight: 600;
+  border-radius: 6px;
+  overflow: hidden;
+  padding: 3px;
+  isolation: isolate;
+  border: none;
+}
+
+.codepen-button::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 400%;
+  height: 100%;
+  background: linear-gradient(115deg,#4fcf70,#fad648,#a767e5,#12bcfe,#44ce7b);
+  background-size: 25% 100%;
+  animation: an-at-keyframe-css-at-rule-that-translates-via-the-transform-property-the-background-by-negative-25-percent-of-its-width-so-that-it-gives-a-nice-border-animation_-We-use-the-translate-property-to-have-a-nice-transition-so-it_s-not-a-jerk-of-a-start-or-stop .75s linear infinite;
+  transition: translate 0.25s ease-out;
+  animation-play-state: running;
+  transition-duration: 0.75s;
+}
+
+@keyframes an-at-keyframe-css-at-rule-that-translates-via-the-transform-property-the-background-by-negative-25-percent-of-its-width-so-that-it-gives-a-nice-border-animation_-We-use-the-translate-property-to-have-a-nice-transition-so-it_s-not-a-jerk-of-a-start-or-stop {
+  to {
+    transform: translateX(-25%);
+  }
+}
+
+.codepen-button span {
+  position: relative;
+  display: block;
+  padding: 1rem 1.5rem;
+  font-size: 1.1rem;
+  background: #000;
+  border-radius: 3px;
+  height: 100%;
+}
+
+@keyframes scaleAnimation {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+
+
+/* Apply the animation on button click */
+.codepen-button:active {
+  animation-name: scaleAnimation;
+  animation-duration: 0.8s;
 }
