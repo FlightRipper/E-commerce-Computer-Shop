@@ -19,18 +19,21 @@ const Footer = () => {
                         allowFullScreen=""
                         loading="lazy"
                     ></iframe>
+                    <div className='FooterText d-flex m-5'>
+                        <p className='HomePageFooterText'>©  2023 TechTrove || All rights reserved |</p>
+                        <p className='HomePageFooterText'> | Powered by TechTrove</p>
+                    </div>
                 </div>
 
-                <div className='quicklinksFooter d-flex flex-column'>
-                    <p>QuickLinks :</p>
+                <div className='quicklinksFooter'>
                     <button className='footer-quicklinks' onClick={() => navigate('/homepage')}>Home</button>
                     <button className='footer-quicklinks' onClick={() => navigate('/about')}>About Us</button>
                     <button className='footer-quicklinks' onClick={() => navigate('/shop')}>Shop</button>
-                    <button className='footer-quicklinks' onClick={() => navigate('/community')}>Community</button>
                     <button className='footer-quicklinks' onClick={() => navigate('/contact')}>Contact Us</button>
                 </div>
 
                 <div className="main">
+                    <p className='SocialLinksText'>Our Social Links : </p>
                     <div className="up">
                         <button className="card1">
                             <svg xmlns="http://www.w3.org/2000/svg" xmlnsXlink="http://www.w3.org/1999/xlink" viewBox="0,0,256,256" width="30px" height="30px" fillRule="nonzero" className="instagram">
@@ -61,10 +64,6 @@ const Footer = () => {
                     </div>
                 </div>
             </div>
-            {/* <div className='FooterText d-flex m-5'>
-                <p className='HomePageFooterText'>©  2023 TechTrove. All rights reserved.</p>
-                <p className='HomePageFooterText'>Powered by TechTrove</p>
-            </div> */}
         </>
     )
 }

@@ -116,6 +116,18 @@ class ProductController {
             return res.status(500).json({ message: error.message });
         }
     }
+
+    static async getSubcategoryProducts(req, res){
+        try{
+            console.log(req.params.id);
+            const products = await Product.findAll({where: {subcategoryId: req.params.id}});
+            if(products.length === 0) return res.status(404).json({error: "there are no products in this subcategory"});
+            return res.status(200).json(products);
+        }catch(error){
+            return res.status(500).json({ message: error.message });
+        }
+    }
+
 }
 
 export default ProductController

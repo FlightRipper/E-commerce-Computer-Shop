@@ -30,4 +30,6 @@ productRouter.patch("/quantity/:id", ProductController.updateProductquantity); /
 
 productRouter.get('/featured', ProductController.getFeauturedProducts);
 
+productRouter.get('/subcategory/:id', ProductController.getSubcategoryProducts);
+
 export default productRouter;

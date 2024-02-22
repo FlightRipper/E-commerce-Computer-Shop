@@ -8,6 +8,8 @@ import FeaturedCard from '../../components/feauturedCard/featuredCard';
 import Carousel from "react-bootstrap/Carousel";
 import { useNavigate } from 'react-router-dom';
 import Footer from '../../components/footer/footer';
+import { Link } from 'react-router-dom';
+
 
 const HomePage = () => {
 
@@ -51,6 +53,7 @@ const HomePage = () => {
                 <p className='HomePageHeading'>Featured Products</p>
                 <div className='HomePageFeauturedProducts'>
                     {featuredProducts.map((product) => (
+                    <Link to={`/single/${product.id}`}>
                         <button style={{border: 'none', outline: 'none', background: 'none'}}>
                             <FeaturedCard
                                 image={product.image}
@@ -59,10 +62,10 @@ const HomePage = () => {
                                 description={product.description}
                             />
                         </button>
+                    </Link>
                     ))}
                 </div>
                 <Footer/>
-
             </div>
         </>
     )
