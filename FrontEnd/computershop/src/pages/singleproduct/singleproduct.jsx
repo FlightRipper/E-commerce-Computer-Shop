@@ -11,9 +11,11 @@ import TextField from '@mui/material/TextField';
 import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import Carousel from "react-bootstrap/Carousel";
+import { useAuthContext } from '../../hooks/useAuthContext';
 
 const SingleProduct = () => {
     const navigate = useNavigate();
+    const { user } = useAuthContext();
     const [products, setProduct] = useState({});
     const [subCategoryProducts, setSubCategoryProducts] = useState([]);
     const {productid} = useParams();
@@ -38,6 +40,16 @@ const SingleProduct = () => {
         }
     }
     
+    const handleAddToCart = async () => {
+        try {
+            const response = await axios.post(`http://localhost:5000/cartproducts/add`, {ProductId: productid, quantity: quantity, UserId: user.id });
+            if (response.status === 200) {
+                alert("Product added to cart");
+            }
+        } catch (error) {
+            console.error("Error adding product to cart:", error);
+        }
+    };
 
     useEffect(() => {
         fetchProduct();
@@ -59,7 +71,8 @@ const SingleProduct = () => {
                             defaultValue="1"
                             className='input__quantity'
                             value={quantity}
-                            onChange={(e) => setQuantity(products.quantity > e.target.value ? e.target.value : products.quantity)}
+                            onChange={(e) => {setQuantity(products.quantity > e.target.value ? e.target.value : products.quantity); const newQuantity = e.target.value;
+                                (newQuantity > 0 && newQuantity <= products.quantity) ? setQuantity(newQuantity) : setQuantity(1)}}
                             InputLabelProps={{
                                 shrink: true,
                                 style: { color: 'red' },
@@ -95,7 +108,7 @@ const SingleProduct = () => {
                                 style: { color: 'white' },
                             }}
                         />
-                        <button className="codepen-button"><span>Add to Cart</span></button>
+                        <button className="codepen-button" onClick={handleAddToCart}><span>Add to Cart</span></button>
                     </div>
                 </div>
                 <Footer/>

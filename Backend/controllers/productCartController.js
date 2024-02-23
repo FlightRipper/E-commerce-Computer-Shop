@@ -1,18 +1,29 @@
 import Cart from "../models/cartmodel.js";
 import Product from "../models/productmodel.js";
+import Order from "../models/ordermodel.js";
 
 export default class CartController {
-    static async CreateCart(req, res){
-        try{
-            const {ProductId, quantity, OrderId} = req.body
-            const product = await Product.findByPk(ProductId)
-            if(!product) return res.status(404).json({message: "Product not found"})
-            const ProductPrice = product.price
-            const totalPrice = ProductPrice * quantity
-            const cart = await Cart.create({quantity: quantity, totalprice: totalPrice, ProductId: ProductId, OrderId: OrderId})
+
+    static CreateCart = async (req, res) => {
+
+        try {
+            console.log(req.body);
+            const { ProductId, quantity, UserId } = req.body;
+            let activeOrder = await Order.findOne({ where: { status: 'active' } });
+            if (!activeOrder) {
+                activeOrder = await Order.create({ status: 'active', UserId: UserId });
+            }
+            const product = await Product.findByPk(ProductId);
+            if (!product) return res.status(404).json({ message: "Product not found" });
+            const ProductPrice = product.price;
+            const totalPrice = ProductPrice * quantity;
+            const cart = await Cart.create({ quantity: quantity, totalprice: totalPrice, ProductId: ProductId, OrderId: activeOrder.id });
             
-            return res.status(200).json(cart)
-        }catch(error){return res.status(500).json({message: error.message});}
+            return res.status(200).json(cart);
+        } catch (error) {
+            return res.status(500).json({ message: error.message });
+        }
+
     }
 
     static async deleteCart(req, res){
