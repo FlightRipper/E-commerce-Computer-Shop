@@ -1,7 +1,7 @@
 .HomePageFooter{
     background-color: #440808;
     width: 99.2vw;
-    height: 40.9vh;
+    height: 42vh;
     display: flex;
     border-top-left-radius: 25px;
     border-top-right-radius: 25px;
@@ -11,6 +11,7 @@
     font-weight: bold;
     color: white;
     gap: 23vw;
+    margin-top: 10vh;
 }
 
 .quicklinksFooter{
@@ -19,10 +20,6 @@
     align-items: center;
     gap: 45px;
 
-}
-
-.map{
-    border-radius: 150px;
 }
 
 .SocialLinksText{

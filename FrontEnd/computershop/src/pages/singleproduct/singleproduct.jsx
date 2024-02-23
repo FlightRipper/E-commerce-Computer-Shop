@@ -12,6 +12,7 @@ import AddIcon from '@mui/icons-material/Add';
 import RemoveIcon from '@mui/icons-material/Remove';
 import Carousel from "react-bootstrap/Carousel";
 import { useAuthContext } from '../../hooks/useAuthContext';
+import Swal from 'sweetalert2';
 
 const SingleProduct = () => {
     const navigate = useNavigate();
@@ -44,7 +45,11 @@ const SingleProduct = () => {
         try {
             const response = await axios.post(`http://localhost:5000/cartproducts/add`, {ProductId: productid, quantity: quantity, UserId: user.id });
             if (response.status === 200) {
-                alert("Product added to cart");
+                Swal.fire({
+                    title: "Success",
+                    text: "Product added to your cart successfully",
+                    icon: "success"
+                });
             }
         } catch (error) {
             console.error("Error adding product to cart:", error);
