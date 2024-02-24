@@ -1,6 +1,7 @@
 .AboutUs-logo{
     animation: colorfulShadowPC 10s infinite;
     border-radius: 20px;
+    width: 70vh; height: 70vh;
 }
 
 .aboutUs-info{
