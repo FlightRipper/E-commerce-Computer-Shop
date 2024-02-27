@@ -23,4 +23,6 @@ orderRouter.patch('/cancel/:id', OrderController.cancelOrder); //protect
 
 orderRouter.delete('/:id', OrderController.deleteOrder); //admin
 
+orderRouter.get('/getactive/:id', OrderController.getActiveOrders); //protect
+
 export default orderRouter;

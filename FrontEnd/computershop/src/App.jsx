@@ -16,9 +16,11 @@ import SingleProduct from './pages/singleproduct/singleproduct.jsx';
 import ScrollToTop from './pages/ScrollToTop.jsx';
 import AboutUs from './pages/aboutus/aboutus.jsx';
 import ContactUs from './pages/contactus/contactus.jsx';
+import CartPage from './pages/cart/cart.jsx';
 function App() {
+
   const [count, setCount] = useState(0)
-  
+  const {user} = useAuthContext();
   return (
     <>
       <BrowserRouter>
@@ -29,6 +31,8 @@ function App() {
           <Route path="/single/:productid" element={<><ScrollToTop/><SingleProduct /></>}/>
           <Route path="/about" element={<><ScrollToTop/><AboutUs /></>}/>
           <Route path="/contact" element={<><ScrollToTop/><ContactUs /></>}/>
+          <Route path="/cart" element={ user ? <><ScrollToTop/><CartPage /></> : <Navigate to={'/'} />}/>
+
           {/* <Route
             path="/admin"
             element={isAdmin ? <AdminPage /> : <Navigate to={'/'} />}

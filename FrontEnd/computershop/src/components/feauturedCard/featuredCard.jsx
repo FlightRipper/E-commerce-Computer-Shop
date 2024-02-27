@@ -1,12 +1,12 @@
 import './feauturedCar.css'
 const FeaturedCard = ({image, price, title, description}) => {
    return (
-    <div class="feauturedcard">
-        <img src={`http://localhost:5000/uploads/${image}`} alt="" classname="feauturedcard__image"/>
-        <div class="feauturedcard__content" >
-            <p class="feauturedcard__title">{title}</p>
-            <p class="feauturedcard__price">Price : {price}$</p>
-            <p class="feauturedcard__description">{description}</p>
+    <div className="feauturedcard">
+        <img src={`http://localhost:5000/uploads/${image}`} alt="" className="feauturedcard__image"/>
+        <div className="feauturedcard__content" >
+            <p className="feauturedcard__title">{title}</p>
+            <p className="feauturedcard__price">Price : {price}$</p>
+            <p className="feauturedcard__description">{description}</p>
         </div>
     </div>
    )

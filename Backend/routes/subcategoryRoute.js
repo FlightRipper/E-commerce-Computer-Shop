@@ -7,11 +7,9 @@ const subcategoryRouter = express.Router();
 
 // Create a new product
 subcategoryRouter.post('/add/:id', SubCategoryController.createSubCategory); //admin only
-
 // Get all products
 subcategoryRouter.get('/:id', SubCategoryController.getAllSubCategories);
 
 //get a product by ID
 subcategoryRouter.get('/single/:id', SubCategoryController.getSubCategory);
-
 export default subcategoryRouter;

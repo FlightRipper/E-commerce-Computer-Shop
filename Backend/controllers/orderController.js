@@ -1,6 +1,7 @@
 import Order from "../models/ordermodel.js";
 import User from "../models/usermodel.js";
-
+import Cart from "../models/cartmodel.js";
+import Product from "../models/productmodel.js";
 class OrderController{
 
     static async createOrder(req, res){
@@ -97,6 +98,23 @@ class OrderController{
             await Order.destroy({where: {id: req.params.id}});
             return res.status(200).json({order});
         }catch(error){
+            return res.status(500).json({ message: error.message });
+        }
+    }
+
+    static getActiveOrders = async (req, res) => {
+        try {
+            const orders = await Order.findOne({ where: { status: "active", UserId: req.params.id } });
+            if (!orders) return res.status(404).json({ error: "there are no active orders" });
+            const cartproducts = await Cart.findAll({ where: { OrderId: orders.id } });
+            const products = await Promise.all(cartproducts.map(async (cartProduct) => {
+                const product = await Product.findByPk(cartProduct.ProductId);
+                const productPlainObject = product.toJSON();
+                productPlainObject.cartID = cartProduct.id;
+                return productPlainObject;
+            }));
+            return res.status(200).json(products);
+        } catch (error) {
             return res.status(500).json({ message: error.message });
         }
     }
