@@ -99,4 +99,9 @@
     100% {
       box-shadow: 0 0 20px #ff3333, 0 0 30px #ff3333, 0 0 40px #ff3333, 0 0 50px #ff3333;
     }
-  }
+}
+
+.highlighted {
+    background-color: #e1d3d3;  
+    color: #000;
+}

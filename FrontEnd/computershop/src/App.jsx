@@ -15,6 +15,7 @@ import { useAuthContext } from './hooks/useAuthContext.jsx';
 import SingleProduct from './pages/singleproduct/singleproduct.jsx';
 import ScrollToTop from './pages/ScrollToTop.jsx';
 import AboutUs from './pages/aboutus/aboutus.jsx';
+import ContactUs from './pages/contactus/contactus.jsx';
 function App() {
   const [count, setCount] = useState(0)
   
@@ -27,6 +28,7 @@ function App() {
           <Route path="/homepage" element={<><ScrollToTop/><Homepage /></>}/>
           <Route path="/single/:productid" element={<><ScrollToTop/><SingleProduct /></>}/>
           <Route path="/about" element={<><ScrollToTop/><AboutUs /></>}/>
+          <Route path="/contact" element={<><ScrollToTop/><ContactUs /></>}/>
           {/* <Route
             path="/admin"
             element={isAdmin ? <AdminPage /> : <Navigate to={'/'} />}
