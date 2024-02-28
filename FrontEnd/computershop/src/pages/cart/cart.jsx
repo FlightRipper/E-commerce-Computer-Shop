@@ -14,10 +14,11 @@ const ShoppingCart = () => {
     const [cartItems, setCartItems] = useState([]);
 
     const TotalPrice = cartItems.reduce((accumulator, item) => {
-        return accumulator + (parseInt(item.price,  10) * item.quantity);
+        return accumulator + (parseInt(item.price,  10) * item.cartQuantity);
     },  0);
     const fetchCartItems = async () => {
         const response = await axios.get(`http://localhost:5000/orders/getactive/${user.id}`);
+        console.log(response)
         if (response.status === 200) {
           setCartItems(response.data);
           console.log(response.data);
@@ -71,7 +72,7 @@ const ShoppingCart = () => {
         }
     }
 
-  const totalPrice = cartItems.reduce((total, item) => total + item.price * item.quantity,  0);
+  const totalPrice = cartItems.reduce((total, item) => total + item.price * item.cartQuantity,  0);
 
   return (
     <>
@@ -109,9 +110,9 @@ const ShoppingCart = () => {
                         </td>
                         <td className="text-right font-weight-semibold align-middle p-4">${item.price}</td>
                         <td className="align-middle p-4">
-                        {item.quantity}
+                        {item.cartQuantity}
                         </td>
-                    <td className="text-right font-weight-semibold align-middle p-4">${(parseInt(item.price,  10) * item.quantity)}</td>
+                    <td className="text-right font-weight-semibold align-middle p-4">${(parseInt(item.price,  10) * item.cartQuantity)}</td>
                         <td className="text-center align-middle px-0">
                         <a href="#" className="shop-tooltip close float-none text-danger" title="" onClick={() => removeItem(item.cartID)}>×</a>
                         </td> 

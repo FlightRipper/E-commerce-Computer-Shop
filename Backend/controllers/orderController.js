@@ -111,8 +111,10 @@ class OrderController{
                 const productPlainObject = product.toJSON();
                 productPlainObject.cartID = cartProduct.id;
                 productPlainObject.orderID = orders.id;
+                productPlainObject.cartQuantity = cartProduct.quantity;
                 return productPlainObject;
             }));
+            console.log(products)
             return res.status(200).json(products);
         } catch (error) {
             return res.status(500).json({ message: error.message });
