@@ -4,7 +4,7 @@ import axios from "axios";
 import Navbar from "../../components/navbar/navbar";
 import Footer from "../../components/footer/footer";
 import FeaturedCard from "../../components/feauturedCard/featuredCard";
-
+import { Link } from "react-router-dom";
 const ViewAll = () => {
 
     const [products, setProducts] = useState([]);
@@ -12,7 +12,7 @@ const ViewAll = () => {
     const [subCategories, setSubCategories] = useState([]);
     const [selectedCategory, setSelectedCategory] = useState('');
     const [selectedSubcategory, setSelectedSubcategory] = useState('');
-    
+
     const handleCategoryChange = (categoryId) => {
         setSelectedCategory(categoryId);
     };
@@ -77,7 +77,7 @@ const ViewAll = () => {
             <div className="bg-black w-100 min-vh-100 d-flex flex-column justify-content-center align-content-center">
                 <div className="viewallproductsmain d-flex flex-column align-items-center justify-content-center">
                     <p className="viewallproductstitle">Shop</p>
-                    <div className="dropdowns">
+                    <div className="select-container">
                         <select onChange={(e) => handleCategoryChange(e.target.value)}>
                           <option value="">Select a category</option>
                           {categories.map((category) => (
@@ -97,13 +97,16 @@ const ViewAll = () => {
                     </div>
                     <div className="viewallproducts">
                         {filteredProducts.map((product) => (
-                            <FeaturedCard
-                                key={product._id}
-                                image={product.image}
-                                price={product.price}
-                                title={product.name}
-                                description={product.description}
-                            />
+                            <Link to={`/single/${product.id}`}>
+                            <button style={{border: 'none', outline: 'none', background: 'none'}}>
+                                <FeaturedCard
+                                    image={product.image}
+                                    price={product.price}
+                                    title={product.name}
+                                    description={product.description}
+                                />
+                            </button>
+                        </Link>
                         ))}
                     </div>
                 </div>
