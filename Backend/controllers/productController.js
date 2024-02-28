@@ -1,5 +1,6 @@
 import Product from "../models/productmodel.js" ;
 import SubCategory from "../models/subcategorymodel.js";
+import Category from "../models/categorymodel.js";
 import fs from 'fs';
 import path from 'path';
 
@@ -20,11 +21,18 @@ class ProductController {
         }
     }
 
-    static async getAllProducts(req, res) {
+    static getAllProducts = async (req, res) => {
         try {
             const products = await Product.findAll();
             if (products.length === 0) {
                 return res.status(404).json('there are no available memes');
+            }
+            for (let i = 0; i < products.length; i++) {
+                const subCategory = await SubCategory.findByPk(products[i].subcategoryId);
+                const category = await Category.findByPk(subCategory.CategoryId);
+                const productPlainObject = products[i].toJSON();
+                productPlainObject.categoryId = category.id;
+                products[i] = productPlainObject;
             }
             return res.status(200).json(products);
         } catch (error) {

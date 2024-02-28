@@ -1,0 +1,22 @@
+.viewallproductsmain{
+    margin-top: 22vh;
+}
+
+.viewallproductstitle{
+    font-family: signika;
+    font-weight: bold;
+    font-size: 40px;
+    color: white;
+    text-decoration: underline;
+}
+
+.viewallproducts {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 3vh;
+    margin-top: 5vh;
+    margin-left: 10vh;
+    max-height: 100vh;
+    min-width: 100vh;
+    overflow: auto;
+}

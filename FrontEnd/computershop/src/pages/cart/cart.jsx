@@ -5,6 +5,8 @@ import { useAuthContext } from '../../hooks/useAuthContext';
 import Navbar from '../../components/navbar/navbar';
 import Footer from '../../components/footer/footer';
 import { useNavigate } from 'react-router-dom';
+import Swal from 'sweetalert2';
+
 
 const ShoppingCart = () => {
     const navigate = useNavigate();
@@ -19,6 +21,40 @@ const ShoppingCart = () => {
         if (response.status === 200) {
           setCartItems(response.data);
           console.log(response.data);
+        }
+    }
+
+    const updateStatus = async () => {
+        const result = await Swal.fire({
+          title: "Are you sure?",
+          text: "Confirm Sending order",
+          icon: "question",
+          showCancelButton: true,
+          confirmButtonColor: "#3085d6",
+          cancelButtonColor: "#d33",
+          confirmButtonText: "Yes, confirm it!"
+        });
+      
+        if (result.isConfirmed) {
+            try {
+                console.log(cartItems);
+                const response = await axios.patch(`http://localhost:5000/orders/status/${cartItems[0].orderID}`, { status: 'pending' });
+                if (response.status === 200) {
+                fetchCartItems();
+                Swal.fire({
+                    title: "Success!",
+                    text: "Your order has been placed.",
+                    icon: "success"
+                });
+                navigate('/homepage');
+                }
+            } catch (error) {
+                Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Something went wrong!",
+                });
+            }
         }
     }
 
@@ -64,7 +100,7 @@ const ShoppingCart = () => {
                         <div className="media align-items-center d-flex">
                             <img src={`http://localhost:5000/uploads/${item.image}`} className=" imagecartclass d-block ui-w-40 ui-bordered mr-4" alt="" />
                             <div className="media-body">
-                            <a href="#" className="d-block text-dark" onClick={() => navigate(`/singleproduct/${item.id}`)}>{item.name}</a>
+                            <a href="#" className="d-block text-dark" onClick={() => navigate(`/single/${item.id}`)}>{item.name}</a>
                             <small>
                                 <span className="text-muted">{item.description} </span>
                             </small>
@@ -94,7 +130,7 @@ const ShoppingCart = () => {
             </div>
             <div className="float-right buttonsCart">
                 <button type="button" className="btn btn-lg btn-success md-btn-flat mt-2 mr-3" onClick={() => navigate('/homepage')}>Back to shopping</button>
-                <button type="button" className="btn btn-lg btn-primary mt-2">Checkout</button>
+                <button type="button" className="btn btn-lg btn-primary mt-2" onClick={updateStatus}>Checkout</button>
             </div>
             </div>
         </div>

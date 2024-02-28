@@ -35,7 +35,6 @@ class OrderController{
             if(!foundOrder) return res.status(404).json({error: "order not found"});
             foundOrder.status = status;
             foundOrder.save();
-            // console.log(updatedOrder);
             return res.status(200).json(foundOrder);
         }catch(error){
             return res.status(500).json({ message: error.message });
@@ -111,6 +110,7 @@ class OrderController{
                 const product = await Product.findByPk(cartProduct.ProductId);
                 const productPlainObject = product.toJSON();
                 productPlainObject.cartID = cartProduct.id;
+                productPlainObject.orderID = orders.id;
                 return productPlainObject;
             }));
             return res.status(200).json(products);

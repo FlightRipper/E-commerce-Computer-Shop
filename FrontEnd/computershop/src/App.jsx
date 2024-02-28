@@ -17,9 +17,9 @@ import ScrollToTop from './pages/ScrollToTop.jsx';
 import AboutUs from './pages/aboutus/aboutus.jsx';
 import ContactUs from './pages/contactus/contactus.jsx';
 import CartPage from './pages/cart/cart.jsx';
+import ViewAll from './pages/viewall/viewall.jsx';
 function App() {
-
-  const [count, setCount] = useState(0)
+  
   const {user} = useAuthContext();
   return (
     <>
@@ -32,7 +32,8 @@ function App() {
           <Route path="/about" element={<><ScrollToTop/><AboutUs /></>}/>
           <Route path="/contact" element={<><ScrollToTop/><ContactUs /></>}/>
           <Route path="/cart" element={ user ? <><ScrollToTop/><CartPage /></> : <Navigate to={'/'} />}/>
-
+          <Route path="/shop" element={<><ScrollToTop/><ViewAll /></>}/>
+          
           {/* <Route
             path="/admin"
             element={isAdmin ? <AdminPage /> : <Navigate to={'/'} />}

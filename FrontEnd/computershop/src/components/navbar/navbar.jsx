@@ -64,23 +64,23 @@ const Navbar = () => {
                     onBlur={() => setIsSearchFocused(false)}
                 />
                 {isSearchFocused && (
-                    <div style={{ position: 'absolute', top: '100%', maxHeight: '25vh', overflow: 'scroll', left: 100, backgroundColor: '#fff', border: '1px solid #ccc', borderRadius: '4px' }}>
-                        <ul style={{ listStyleType: 'none', padding: 0, display: 'flex', flexDirection: 'column' }}>
-                            {filteredProducts.map(product => (
-                                <button className='ProductButtonNavbar'>
-                                    <li
-                                        key={product.id}
-                                        style={{ padding: '8px 16px', gap: '10px', display: 'flex', alignItems: 'center', borderRadius: '7px' }}
-                                        onMouseEnter={(e) => { e.target.style.backgroundColor = 'black'; e.target.style.color = 'white'; }}
-                                        onMouseLeave={(e) => { e.target.style.backgroundColor = 'transparent'; e.target.style.color = 'black'; }}
-                                    >
-                                        <img className='productImageNavBar' src={`http://localhost:5000/uploads/${product.image}`} />
-                                        {product.name}
-                                    </li>
-                                </button>
-                            ))}
-                        </ul>
-                    </div>
+                <div style={{ position: 'absolute', top: '100%', maxHeight: '25vh', overflow: 'scroll', left: 100, backgroundColor: '#fff', border: '1px solid #ccc', borderRadius: '4px' }}>
+                    <ul style={{ listStyleType: 'none', padding: 0, display: 'flex', flexDirection: 'column' }}>
+                    {filteredProducts.map(product => (
+                        <button key={product.id} onClick={() => navigate(`/single/${product.id}`)}>
+                        <li
+                            key={product.id}
+                            style={{ padding: '8px 16px', gap: '10px', display: 'flex', alignItems: 'center', borderRadius: '7px' }}
+                            onMouseEnter={(e) => { e.target.style.backgroundColor = 'black'; e.target.style.color = 'white'; }}
+                            onMouseLeave={(e) => { e.target.style.backgroundColor = 'transparent'; e.target.style.color = 'black'; }}
+                        >
+                            <img className='productImageNavBar' src={`http://localhost:5000/uploads/${product.image}`} />
+                            {product.name}
+                        </li>
+                        </button>
+                    ))}
+                    </ul>
+                </div>
                 )}
                 <button className='Navbar-NavbarButton' onClick={() => navigate('/homepage')}>Home</button>
                 <button className='Navbar-NavbarButton' onClick={() => navigate('/about')}>About Us</button>
