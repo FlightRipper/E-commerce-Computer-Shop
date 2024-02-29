@@ -1,9 +1,11 @@
 import Post from "../models/postmodel.js";
+import User from "../models/usermodel.js";
 
 export default class PostController{
     static async createPost(req, res){
         try {
             const image = req.file.filename
+            console.log(image, req.body);
             const {description, UserId} = req.body;
             console.log(description, image, UserId)
             if (!description || !image || !UserId) {
@@ -29,14 +31,19 @@ export default class PostController{
         }
     }
 
-    static async getallposts(req, res){
-        try{
-            const posts = await Post.findAll();
+    static getallposts = async (req, res) => {
+        try {
+            const posts = await Post.findAll({
+                include: [{
+                    model: User,
+                    attributes: ['username', 'image']
+                }]
+            });
             if (posts.length === 0) {
                 return res.status(404).json('there are no available posts');
             }
             return res.status(200).json(posts);
-        } catch(error){
+        } catch (error) {
             return res.status(500).json({ message: error.message });
         }
     }

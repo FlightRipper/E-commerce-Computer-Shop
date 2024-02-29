@@ -11,7 +11,7 @@ postRouter.get('/', PostController.getallposts);
 postRouter.get('/single/:id', PostController.getPost);
 
 postRouter.patch('/image/:id', upload.single("image"), PostController.updatePostimage); //protect
-
+    
 postRouter.get('/user/:id', PostController.getuserPosts); //protect
 
 postRouter.patch('/:id', PostController.updatePost); //protect

@@ -19,8 +19,9 @@ import ContactUs from './pages/contactus/contactus.jsx';
 import CartPage from './pages/cart/cart.jsx';
 import ViewAll from './pages/viewall/viewall.jsx';
 import Navbar from './components/navbar/navbar.jsx';
+import Community from './pages/community/community.jsx';
+
 function App() {
-  
   const {user} = useAuthContext();
   return (
     <>
@@ -31,12 +32,13 @@ function App() {
           <Route path="/" element={<SignInPage />}/>
           <Route path="/register" element={<RegisterPage />}/>
           <Route path="/homepage" element={<><ScrollToTop/><Homepage /></>}/>
+          <Route path="/community" element={<><ScrollToTop/><Community /></>}/>
           <Route path="/single/:productid" element={<><ScrollToTop/><SingleProduct /></>}/>
           <Route path="/about" element={<><ScrollToTop/><AboutUs /></>}/>
           <Route path="/contact" element={<><ScrollToTop/><ContactUs /></>}/>
           <Route path="/cart" element={ user ? <><ScrollToTop/><CartPage /></> : <Navigate to={'/'} />}/>
           <Route path="/shop" element={<><ScrollToTop/><ViewAll /></>}/>
-          
+
           {/* <Route
             path="/admin"
             element={isAdmin ? <AdminPage /> : <Navigate to={'/'} />}
