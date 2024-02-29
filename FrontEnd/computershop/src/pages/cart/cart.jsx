@@ -9,28 +9,69 @@ import Swal from 'sweetalert2';
 
 
 const ShoppingCart = () => {
+
+    const API_KEY = "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";
     const navigate = useNavigate();
     const { user } = useAuthContext();
     const [cartItems, setCartItems] = useState([]);
     const [cartItemNames, setCartItemNames] = useState("");
+    const [sentiment, setSentiment] = useState("");
 
-    const handleask = async (e) => {
+    async function handleask() {
+        console.log("Calling the Eden AI API");
+        console.log(cartItemNames);
+    
+        const options = {
+            method: 'POST',
+            headers: {
+                accept: 'application/json',
+                'content-type': 'application/json',
+                authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNTBlOGQ5YWUtMmExNC00YTA1LTgzZWMtMWY0ZThhMDczMDIwIiwidHlwZSI6ImFwaV90b2tlbiJ9.DoMaXPi7Sd7I-LpzwNQ4bd7Sd7r_4rtT1aGziC03uSs'
+            },
+            body: JSON.stringify({
+                response_as_dict: true,
+                attributes_as_list: false,
+                show_original_response: false,
+                temperature: 0,
+                max_tokens: 1000,
+                providers: 'google',
+                text: cartItemNames, // You might want to replace this static text with dynamic content
+                chatbot_global_action: 'You are a helpful assistant'
+            })
+        };
+    
         try {
-            const prompt = cartItemNames
-            if (cartItems.length === 0) {
-                return Swal.fire({
-                    icon: "error",
-                    title: "Oops...",
-                    text: "Something went wrong!",
-                    footer: 'Cart is empty'
-                  });;
-            }
-            const response = await axios.post(`http://localhost:5000/openai`, { prompt });
-            Swal.fireEvent(response.data);
+            const response = await fetch('https://api.edenai.run/v2/text/chat', options);
+            const data = await response.json();
+            console.log(data.google.generated_text);
+            const result = await Swal.fire({
+                title: "Are they compatible?",
+                text: data.google.generated_text,
+                icon: "question",
+              });
+            // Assuming you want to set the sentiment or some other state based on the response
+            // Swal.fireEvent(data.google.generated_text); // This line might need adjustment based on the actual response structure
         } catch (error) {
             console.error(error);
         }
     }
+    // const handleask = async (e) => {
+    //     try {
+    //         const prompt = cartItemNames
+    //         if (cartItems.length === 0) {
+    //             return Swal.fire({
+    //                 icon: "error",
+    //                 title: "Oops...",
+    //                 text: "Something went wrong!",
+    //                 footer: 'Cart is empty'
+    //               });;
+    //         }
+    //         const response = await axios.post(`http://localhost:5000/openai`, { prompt });
+    //         Swal.fireEvent(response.data);
+    //     } catch (error) {
+    //         console.error(error);
+    //     }
+    // }
 
 
     const TotalPrice = cartItems.reduce((accumulator, item) => {

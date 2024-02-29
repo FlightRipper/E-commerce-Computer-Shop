@@ -12,7 +12,7 @@ import dotenv from 'dotenv';
 dotenv.config();
 import cors from 'cors';
 import bodyParser from 'body-parser';
-import  {Configuration, OpenAIApi}  from 'openai';
+import OpenAI from "openai";
 
 
 
@@ -25,17 +25,25 @@ app.use(bodyParser.json());
 
 //This middleware is responsible for parsing the JSON data in the request body and making it available in req.body.
 app.use(express.json());
-//corse middleware is responsible for to handle cors policy between the front and the back
+// corse middleware is responsible for to handle cors policy between the front and the back
 
-// const configuration = new Configuration({
-//   apiKey: "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"
-// })
-
-// const openai = new OpenAIApi(configuration);
+// const openai = new OpenAI({
+//   apiKey: "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",
+// });
+// const response = await openai.chat.completions.create({
+//   model: "gpt-3.5-turbo",
+//   messages: [
+//     {
+//       "role": "system",
+//       "content": "You are TechTrove, a chatbot that reluctantly answers questions with technical responses."
+//     },
+//     { role: "user", content: "Who won the world series in 2020?" },
+//   ]
+// });
 
 // app.post('/openai', async (req, res) => {
 //   const prompt = req.body.prompt;
-//   console.log(prompt)
+//   console.log(req.body)
 //   const completion = await openai.createCompletion({
 //     model: "text-davinci-003",
 //     prompt: `${prompt}`,

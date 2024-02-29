@@ -15,9 +15,9 @@ export const useSignIn = () => {
       headers: { 'Content-Type': 'application/json' },
       body: JSON.stringify({ username, password }),
     });
+  
     const json = await response.json();
 
-    
     if(!response.ok){
         setError('Incorrect credentials (Check your username and password)');
     }
