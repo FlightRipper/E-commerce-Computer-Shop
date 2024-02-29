@@ -12,6 +12,8 @@ import dotenv from 'dotenv';
 dotenv.config();
 import cors from 'cors';
 import bodyParser from 'body-parser';
+import  {Configuration, OpenAIApi}  from 'openai';
+
 
 
 const app = express();
@@ -25,6 +27,24 @@ app.use(bodyParser.json());
 app.use(express.json());
 //corse middleware is responsible for to handle cors policy between the front and the back
 
+// const configuration = new Configuration({
+//   apiKey: "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"
+// })
+
+// const openai = new OpenAIApi(configuration);
+
+// app.post('/openai', async (req, res) => {
+//   const prompt = req.body.prompt;
+//   console.log(prompt)
+//   const completion = await openai.createCompletion({
+//     model: "text-davinci-003",
+//     prompt: `${prompt}`,
+//     max_tokens: 3900,
+//     temperature: 0.7,
+
+//   })
+//   res.status(200).send(completion.data.choices[0].text)
+// })
 //middleware for sending static images
 app.use('/uploads', express.static('uploads'));
 app.use('/users', userRouter);

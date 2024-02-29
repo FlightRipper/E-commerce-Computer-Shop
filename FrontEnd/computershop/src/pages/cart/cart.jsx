@@ -12,6 +12,26 @@ const ShoppingCart = () => {
     const navigate = useNavigate();
     const { user } = useAuthContext();
     const [cartItems, setCartItems] = useState([]);
+    const [cartItemNames, setCartItemNames] = useState("");
+
+    const handleask = async (e) => {
+        try {
+            const prompt = cartItemNames
+            if (cartItems.length === 0) {
+                return Swal.fire({
+                    icon: "error",
+                    title: "Oops...",
+                    text: "Something went wrong!",
+                    footer: 'Cart is empty'
+                  });;
+            }
+            const response = await axios.post(`http://localhost:5000/openai`, { prompt });
+            Swal.fireEvent(response.data);
+        } catch (error) {
+            console.error(error);
+        }
+    }
+
 
     const TotalPrice = cartItems.reduce((accumulator, item) => {
         return accumulator + (parseInt(item.price,  10) * item.cartQuantity);
@@ -61,6 +81,7 @@ const ShoppingCart = () => {
 
     useEffect(() => {
         fetchCartItems();
+        setCartItemNames(cartItems.map(item => item.name).join(", ") + " are they compatible");
     }, []);
 
     const removeItem = async (id) => {
@@ -131,6 +152,7 @@ const ShoppingCart = () => {
             </div>
             <div className="float-right buttonsCart">
                 <button type="button" className="btn btn-lg btn-success md-btn-flat mt-2 mr-3" onClick={() => navigate('/homepage')}>Back to shopping</button>
+                <button type="button" className="btn btn-lg btn-success md-btn-flat mt-2 mr-3" onClick={handleask}>Check Compatiblity</button>
                 <button type="button" className="btn btn-lg btn-primary mt-2" onClick={updateStatus}>Checkout</button>
             </div>
             </div>

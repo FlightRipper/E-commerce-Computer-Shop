@@ -25,13 +25,14 @@ const Footer = () => {
                     </div>
                 </div>
 
-                <div className='quicklinksFooter'>
-                    <button className='footer-quicklinks' onClick={() => navigate('/homepage')}>Home</button>
-                    <button className='footer-quicklinks' onClick={() => navigate('/about')}>About Us</button>
-                    <button className='footer-quicklinks' onClick={() => navigate('/shop')}>Shop</button>
-                    <button className='footer-quicklinks' onClick={() => navigate('/contact')}>Contact Us</button>
+                <div className='d-flex flex-column align-items-center justify-content-center QuickLinks'> Quick links
+                    <div className='quicklinksFooter'>
+                        <button className='footer-quicklinks' onClick={() => navigate('/homepage')}>Home</button>
+                        <button className='footer-quicklinks' onClick={() => navigate('/about')}>About Us</button>
+                        <button className='footer-quicklinks' onClick={() => navigate('/shop')}>Shop</button>
+                        <button className='footer-quicklinks' onClick={() => navigate('/contact')}>Contact-Us</button>
+                    </div>
                 </div>
-
                 <div className="main">
                     <p className='SocialLinksText'>Our Social Links : </p>
                     <div className="up">

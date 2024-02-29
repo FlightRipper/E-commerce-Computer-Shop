@@ -5,6 +5,7 @@ import './navbar.css';
 import { useAuthContext } from '../../hooks/useAuthContext';
 import { useNavigate } from 'react-router-dom';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const Navbar = () => {
@@ -66,19 +67,20 @@ const Navbar = () => {
                 {isSearchFocused && (
                 <div style={{ position: 'absolute', top: '100%', maxHeight: '25vh', overflow: 'scroll', left: 100, backgroundColor: '#fff', border: '1px solid #ccc', borderRadius: '4px' }}>
                     <ul style={{ listStyleType: 'none', padding: 0, display: 'flex', flexDirection: 'column' }}>
-                    {filteredProducts.map(product => (
-                        <button key={product.id} onClick={() => navigate(`/single/${product.id}`)}>
-                        <li
-                            key={product.id}
-                            style={{ padding: '8px 16px', gap: '10px', display: 'flex', alignItems: 'center', borderRadius: '7px' }}
-                            onMouseEnter={(e) => { e.target.style.backgroundColor = 'black'; e.target.style.color = 'white'; }}
-                            onMouseLeave={(e) => { e.target.style.backgroundColor = 'transparent'; e.target.style.color = 'black'; }}
-                        >
-                            <img className='productImageNavBar' src={`http://localhost:5000/uploads/${product.image}`} />
-                            {product.name}
-                        </li>
-                        </button>
-                    ))}
+                        {filteredProducts.map(product => (
+                            <Link href={`/single/${product.id}`} key={product.id}>
+                                <button onClick={() => console.log("first")}>
+                                    <li
+                                        style={{ padding: '8px 16px', gap: '10px', display: 'flex', alignItems: 'center', borderRadius: '7px' }}
+                                        onMouseEnter={(e) => { e.target.style.backgroundColor = 'black'; e.target.style.color = 'white'; }}
+                                        onMouseLeave={(e) => { e.target.style.backgroundColor = 'transparent'; e.target.style.color = 'black'; }}
+                                    >
+                                        <img className='productImageNavBar' src={`http://localhost:5000/uploads/${product.image}`} />
+                                        {product.name}
+                                    </li>
+                                </button>
+                            </Link>
+                        ))}
                     </ul>
                 </div>
                 )}

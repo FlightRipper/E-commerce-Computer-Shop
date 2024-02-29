@@ -53,7 +53,7 @@ const HomePage = () => {
                 <p className='HomePageHeading'>Featured Products</p>
                 <div className='HomePageFeauturedProducts'>
                     {featuredProducts.map((product) => (
-                    <Link to={`/single/${product.id}`}>
+                    <Link to={`/single/${product.id}` } key={product.id}>
                         <button style={{border: 'none', outline: 'none', background: 'none'}}>
                             <FeaturedCard
                                 image={product.image}

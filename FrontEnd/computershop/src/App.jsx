@@ -18,6 +18,7 @@ import AboutUs from './pages/aboutus/aboutus.jsx';
 import ContactUs from './pages/contactus/contactus.jsx';
 import CartPage from './pages/cart/cart.jsx';
 import ViewAll from './pages/viewall/viewall.jsx';
+import Navbar from './components/navbar/navbar.jsx';
 function App() {
   
   const {user} = useAuthContext();
@@ -25,6 +26,8 @@ function App() {
     <>
       <BrowserRouter>
         <Routes>
+          <Route path="/navbar" element={<Navbar />}/>
+
           <Route path="/" element={<SignInPage />}/>
           <Route path="/register" element={<RegisterPage />}/>
           <Route path="/homepage" element={<><ScrollToTop/><Homepage /></>}/>
