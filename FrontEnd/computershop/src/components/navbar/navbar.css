@@ -48,6 +48,18 @@
     font-family: signika;
     font-weight: bold;
     font-size: 1.3vw;
+    margin-top: 1vh;
+    color: white;
+    border: none;
+    background: none;
+    text-decoration: none;
+}
+
+.Navbar-NavbarButtonactive{
+    font-family: signika;
+    font-weight: bold;
+    font-size: 1.3vw;
+    margin-top: 1vh;
     color: white;
     border: none;
     background: none;
@@ -76,11 +88,6 @@
 .ProductButtonNavbar{
     outline: none;
     background: none;
-}
-
-.Navbar-NavbarButton:hover{
-    animation: colorfulShadowPC 10s infinite;
-    border-radius: 34px;
 }
 
 @keyframes colorfulShadowPC {

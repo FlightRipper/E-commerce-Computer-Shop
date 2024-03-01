@@ -1,14 +1,16 @@
 .feauturedcard {
     position: relative;
-    width: 350px;
-    height: 450px;
+width: 100%;
+height: 100%;
+margin: auto;
+margin-top: 25px;
     background-color: #f2f2f2;
     border-radius: 10px;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    justify-content: center;
+
     overflow: hidden;
     perspective: 1000px;
     box-shadow: 0 0 0 5px #ffffff80;
@@ -68,4 +70,8 @@
 
 .feauturedcard:hover {
     animation: colorfulShadowPC 10s infinite;
+}
+
+.feauturedcard__image{
+    width: 100%;
 }

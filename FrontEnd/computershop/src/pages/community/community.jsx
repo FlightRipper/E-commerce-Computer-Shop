@@ -5,13 +5,14 @@ import axios from "axios";
 import './community.css';
 import PostCard from "../../components/postsCard/postsCard";
 import { useAuthContext } from '../../hooks/useAuthContext';
-
+import { useNavigate } from "react-router-dom";
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Dropdown from 'react-bootstrap/Dropdown';
 
 const Community = () => {
+    const navigate = useNavigate();
     const {user} = useAuthContext();
     const [posts, setPosts] = useState([]);
     const [description, setDescription] = useState("");
@@ -50,7 +51,7 @@ const Community = () => {
                     <div className="community-fo2 d-flex align-items-center justify-content-center">
                         <p className="communitytitle">Community</p>
                         <button className="communitybuttonCreate">
-                            <span className="text" onClick={() => setShow(!show)}>Create Post</span>
+                            <span className="text" onClick={() => {setShow(!show); if (!user) navigate('/')}}>Create Post</span>
                         </button>
                     </div>
                     <div className="communitycards">

@@ -33,7 +33,6 @@
   height: 28vw;
   width: 55vw;
   animation: colorfulShadowPC 10s infinite;
-
 }
 
 .carousel-item{
@@ -44,6 +43,7 @@
 .carousel-image{
   height: 28vw;
   width: 55vw;
+  width: 100%;
   border-radius: 16px;
   animation: colorfulShadowPC 10s infinite;
 }
@@ -89,4 +89,23 @@
   .RedPC{
     margin-top: 35%;
   }
+}
+
+@media screen and (max-width: 400px) {
+  .HomePageFeauturedProducts{
+    grid-template-columns: repeat(1, 1fr);
+  }
+  .RedPC{
+    margin-top: 45%;
+    width: 80%;
+  }
+  .carousel-item{
+    width: 100%;
+    max-height: 100%;
+  }
+  .carousel-image{
+    width: 100%;
+    max-height: 100%;
+  }
+
 }

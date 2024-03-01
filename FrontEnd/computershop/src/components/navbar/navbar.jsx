@@ -3,7 +3,7 @@ import logo from '../../assets/techtrove.png';
 import redpc from '../../assets/redpc.jpg';
 import './navbar.css';
 import { useAuthContext } from '../../hooks/useAuthContext';
-import { useNavigate } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import { AiOutlineShoppingCart } from 'react-icons/ai';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
@@ -24,7 +24,6 @@ const Navbar = () => {
         console.log(response.data);
     };
 
-    const navigate = useNavigate();
 
     useEffect(() => {
         if (user) {
@@ -64,35 +63,71 @@ const Navbar = () => {
                     onFocus={() => setIsSearchFocused(true)}
                     onBlur={() => setIsSearchFocused(false)}
                 />
+                
                 {isSearchFocused && (
-                <div style={{ position: 'absolute', top: '100%', maxHeight: '25vh', overflow: 'scroll', left: 100, backgroundColor: '#fff', border: '1px solid #ccc', borderRadius: '4px' }}>
-                    <ul style={{ listStyleType: 'none', padding: 0, display: 'flex', flexDirection: 'column' }}>
-                        {filteredProducts.map(product => (
-                            <Link href={`/single/${product.id}`} key={product.id}>
-                                <button onClick={() => console.log("first")}>
-                                    <li
-                                        style={{ padding: '8px 16px', gap: '10px', display: 'flex', alignItems: 'center', borderRadius: '7px' }}
-                                        onMouseEnter={(e) => { e.target.style.backgroundColor = 'black'; e.target.style.color = 'white'; }}
-                                        onMouseLeave={(e) => { e.target.style.backgroundColor = 'transparent'; e.target.style.color = 'black'; }}
-                                    >
+                    <div style={{ position: 'absolute', top: '100%', maxHeight: '25vh', overflow: 'scroll', left: 100, backgroundColor: '#fff', border: '1px solid #ccc', borderRadius: '4px', zIndex: 1 }}>
+                        <div style={{ listStyleType: 'none', padding: 0, display: 'flex', flexDirection: 'column' }}>
+                            {filteredProducts.map(product => (
+                                <button 
+                                    onClick={() => console.log("object")}
+                                    key={product.id}
+                                    style={{ padding: '8px 16px', gap: '10px', display: 'flex', alignItems: 'center', borderRadius: '7px' }}
+                                    onMouseEnter={(e) => { e.target.style.backgroundColor = 'black'; e.target.style.color = 'white'; }}
+                                    onMouseLeave={(e) => { e.target.style.backgroundColor = 'transparent'; e.target.style.color = 'black'; }}
+                                >
+                                    <Link to={`/single/${product.id}`} style={{ textDecoration: 'none', display: 'contents' }}>
                                         <img className='productImageNavBar' src={`http://localhost:5000/uploads/${product.image}`} />
                                         {product.name}
-                                    </li>
+                                    </Link>
                                 </button>
-                            </Link>
-                        ))}
-                    </ul>
-                </div>
+                            ))}
+                        </div>
+                    </div>
                 )}
-                <button className='Navbar-NavbarButton' onClick={() => navigate('/homepage')}>Home</button>
-                <button className='Navbar-NavbarButton' onClick={() => navigate('/about')}>About Us</button>
-                <button className='Navbar-NavbarButton' onClick={() => navigate('/shop')}>Shop</button>
-                <button className='Navbar-NavbarButton' onClick={() => navigate('/community')}>Community</button>
-                <button className='Navbar-NavbarButton' onClick={() => navigate('/contact')}>Contact Us</button>
-                <button className='Navbar-NavbarButton' onClick={() => (user !== "Sign In") ? navigate('/cart') : navigate('/')}>
-                    <span>Cart</span>
+
+                <NavLink
+                    className={({ isActive }) => isActive ? 'Navbar-NavbarButtonactive' : 'Navbar-NavbarButton'}
+                    activeClassName="Navbar-NavbarButtonactive"
+                    to="/homepage"
+                >
+                    Home
+                </NavLink>
+                <NavLink
+                    className={({ isActive }) => isActive ? 'Navbar-NavbarButtonactive' : 'Navbar-NavbarButton'}
+                    activeClassName="Navbar-NavbarButtonactive"
+                    to="/about"
+                >
+                    About Us
+                </NavLink>
+                <NavLink
+                   className={({ isActive }) => isActive ? 'Navbar-NavbarButtonactive' : 'Navbar-NavbarButton'}
+                   activeClassName="Navbar-NavbarButtonactive"
+                    to="/shop"
+                >
+                    Shop
+                </NavLink>
+                <NavLink
+                    className={({ isActive }) => isActive ? 'Navbar-NavbarButtonactive' : 'Navbar-NavbarButton'}
+                    activeClassName="Navbar-NavbarButtonactive"
+                    to="/community"
+                >
+                    Community
+                </NavLink>
+                <NavLink
+                    className={({ isActive }) => isActive ? 'Navbar-NavbarButtonactive' : 'Navbar-NavbarButton'}
+                    activeClassName="Navbar-NavbarButtonactive"
+                    to="/contact"
+                >
+                    Contact Us
+                </NavLink>
+                <NavLink
+                    className={({ isActive }) => isActive ? 'Navbar-NavbarButtonactive' : 'Navbar-NavbarButton'}
+                    activeClassName="Navbar-NavbarButton active"
+                    to={"/cart"}
+                >
+                    Cart
                     <AiOutlineShoppingCart style={{ marginLeft: '5px', verticalAlign: 'middle' }} />
-                </button>
+                </NavLink>
             </div>
         </div>
     );
