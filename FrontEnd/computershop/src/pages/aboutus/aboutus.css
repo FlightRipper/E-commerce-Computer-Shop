@@ -5,11 +5,11 @@
 }
 
 .aboutUs-info{
-    margin-top: 23vh;
-    gap: 50vh;
+  margin-top: 23vh;
+  gap: 50vh;
 }
 .AboutUs-Info{
-    gap: 3vh;
+  gap: 3vh;
 }
 
 .AboutUs-Description{
@@ -44,4 +44,17 @@
     100% {
       box-shadow: 0 0 20px #ff3333, 0 0 30px #ff3333, 0 0 40px #ff3333, 0 0 50px #ff3333;
     }
-  }
+}
+
+@media screen and (max-width: 1200px) {
+    .aboutUs-info{
+      flex-direction: column;
+      gap: 20vh;
+      align-items: center;
+      text-align: center;
+    }
+    .AboutUs-logo{
+        width: 50vh; height: 50vh;
+    }
+  
+}

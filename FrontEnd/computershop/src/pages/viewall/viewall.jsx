@@ -98,7 +98,7 @@ const ViewAll = () => {
                     <div className="viewallproducts">
                         {filteredProducts.map((product) => (
                             <Link to={`/single/${product.id}`}>
-                            <button style={{border: 'none', outline: 'none', background: 'none'}}>
+                            <button style={{border: 'none', outline: 'none', background: 'none', marginRight: '5vh'}}>
                                 <FeaturedCard
                                     image={product.image}
                                     price={product.price}

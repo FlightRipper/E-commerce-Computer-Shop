@@ -1,6 +1,6 @@
 .singleproduct__image{
-  height: 50vh;
-  width: 30vw;
+  height: 60%;
+  width: 60%;
   border-radius: 16px;
   animation: colorfulextraShadowPC 10s infinite;
 }
@@ -130,4 +130,15 @@ input::-webkit-inner-spin-button {
 .codepen-button:active {
   animation-name: scaleAnimation;
   animation-duration: 0.8s;
+}
+
+@media screen and (max-width: 1200px) {
+  .singleproductInfo{
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    gap: 20vh;
+
+  }
 }

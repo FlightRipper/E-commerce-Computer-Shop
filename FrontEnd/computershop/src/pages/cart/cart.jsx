@@ -149,7 +149,7 @@ const ShoppingCart = () => {
                 <table className="table table-bordered m-0">
                 <thead>
                     <tr>
-                    <th className="text-center py-3 px-4" style={{ width: '200px' }}>Product Name &amp; Details</th>
+                    <th className="text-center py-3 px-4" style={{ width: '50px' }}>Product Name &amp; Details</th>
                     <th className="text-right py-3 px-4" style={{ width: '100px' }}>Price</th>
                     <th className="text-center py-3 px-4" style={{ width: '120px' }}>Quantity</th>
                     <th className="text-right py-3 px-4" style={{ width: '100px' }}>Total</th>
@@ -161,7 +161,7 @@ const ShoppingCart = () => {
                     <tr key={item.cartID}>
                         <td className="p-4">
                         <div className="media align-items-center d-flex">
-                            <img src={`http://localhost:5000/uploads/${item.image}`} className=" imagecartclass d-block ui-w-40 ui-bordered mr-4" alt="" />
+                            <img src={`http://localhost:5000/uploads/${item.image}`} className=" imagecartclass d-block ui-w-20 ui-bordered mr-4" alt="" />
                             <div className="media-body">
                             <a href="#" className="d-block text-dark" onClick={() => navigate(`/single/${item.id}`)}>{item.name}</a>
                             <small>

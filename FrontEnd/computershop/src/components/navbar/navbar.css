@@ -6,6 +6,11 @@
 .Navbar-logo{
     width: 67px !important;
     height: 60px !important;
+    /* margin-left: 4%; */
+}
+
+.Navbar-LogoButton{
+    border: none;
     margin-left: 4%;
 }
 
@@ -40,14 +45,14 @@
 .Navbar-NavbarRed{
     background-color: #440808;
     height: 55px;
-    gap: 7%;
+    gap: 10vh;
     padding-right: 3%;
 }
 
 .Navbar-NavbarButton{
     font-family: signika;
     font-weight: bold;
-    font-size: 1.3vw;
+    font-size: 25px;
     margin-top: 1vh;
     color: white;
     border: none;
@@ -58,7 +63,7 @@
 .Navbar-NavbarButtonactive{
     font-family: signika;
     font-weight: bold;
-    font-size: 1.3vw;
+    font-size: 25px;
     margin-top: 1vh;
     color: white;
     border: none;
@@ -67,6 +72,7 @@
 
 .Navbar-Search {
     height: 75%;
+    width: 10vw;
     margin: auto;
     border-radius: 25px;
     border: none;
@@ -111,4 +117,16 @@
 .highlighted {
     background-color: #e1d3d3;  
     color: #000;
+}
+
+@media only screen and (max-width: 1200px) {
+    .Navbar-NavbarButton{
+        font-size: 15px;
+    }
+    .Navbar-NavbarRed{
+        gap: 5vh;
+    }
+    .Navbar-NavbarButtonactive{
+        font-size: 18px;
+    }
 }

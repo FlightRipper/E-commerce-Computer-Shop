@@ -108,10 +108,11 @@ const SignInPage = () => {
                 Submit
               </button>
             </div>
-            <div className="d-flex justify-content-center mt-5 w-100 SignUp-Gap ">
+            <div className="d-flex flex-column align-items-center justify-content-center mt-5 w-100 SignUp-Gap ">
               <h6>
                   Don't have an account?<Link to={'/register'}> Sign Up</Link>
               </h6>
+              <h6 >Just a visitor?<Link to={'/homepage'}> Homepage</Link></h6>
             </div>
           </form>
         </div>
