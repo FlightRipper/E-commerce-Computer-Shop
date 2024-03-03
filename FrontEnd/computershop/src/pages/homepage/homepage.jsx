@@ -9,17 +9,22 @@ import Carousel from "react-bootstrap/Carousel";
 import { useNavigate } from 'react-router-dom';
 import Footer from '../../components/footer/footer';
 import { Link } from 'react-router-dom';
+import Loader from '../../components/loader/loader';
 
 
 const HomePage = () => {
 
     const [featuredProducts, setFeaturedProducts] = useState([]);
     const navigate = useNavigate();
+    const [loading, setLoading] = useState(false);
 
     const getFeaturedProducts = async () => {
+        setLoading(true);
+
         const response = await axios.get('http://localhost:5000/products/featured');
 
         if (response.status ===  200) {
+            setLoading(false);
             setFeaturedProducts(response.data);
         }
         console.log(response.data)
@@ -31,42 +36,45 @@ const HomePage = () => {
 
     return (
         <>
-            <Navbar />
-            <div className='HomePageMain'>
-                <div className='RedPC'>
-                    <Carousel
-                        controls={false}
-                        indicators={false}
-                        interval={2000}
-                    >
-                        {[redpc, secondpc].map((image, index) => (
-                            <Carousel.Item key={index} className='carousel-item'>
-                                <img
-                                    src={image}
-                                    alt={`Slide ${index +  1}`}
-                                    className='carousel-image'
+            {loading ? (<Loader />) : (
+                <>
+                <Navbar />
+                <div className='HomePageMain'>
+                    <div className='RedPC'>
+                        <Carousel
+                            controls={false}
+                            indicators={false}
+                            interval={2000}
+                        >
+                            {[redpc, secondpc].map((image, index) => (
+                                <Carousel.Item key={index} className='carousel-item'>
+                                    <img
+                                        src={image}
+                                        alt={`Slide ${index +  1}`}
+                                        className='carousel-image'
+                                    />
+                                </Carousel.Item>
+                            ))}
+                        </Carousel>
+                    </div>
+                    <p className='HomePageHeading'>Featured Products</p>
+                    <div className='HomePageFeauturedProducts'>
+                        {featuredProducts.map((product) => (
+                        <Link to={`/single/${product.id}` } key={product.id}>
+                            <button style={{border: 'none', outline: 'none', background: 'none'}}>
+                                <FeaturedCard
+                                    image={product.image}
+                                    price={product.price}
+                                    title={product.name}
+                                    description={product.description}
                                 />
-                            </Carousel.Item>
+                            </button>
+                        </Link>
                         ))}
-                    </Carousel>
+                    </div>
+                    <Footer/>
                 </div>
-                <p className='HomePageHeading'>Featured Products</p>
-                <div className='HomePageFeauturedProducts'>
-                    {featuredProducts.map((product) => (
-                    <Link to={`/single/${product.id}` } key={product.id}>
-                        <button style={{border: 'none', outline: 'none', background: 'none'}}>
-                            <FeaturedCard
-                                image={product.image}
-                                price={product.price}
-                                title={product.name}
-                                description={product.description}
-                            />
-                        </button>
-                    </Link>
-                    ))}
-                </div>
-                <Footer/>
-            </div>
+            </> )}
         </>
     )
 }

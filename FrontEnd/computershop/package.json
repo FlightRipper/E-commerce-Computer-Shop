@@ -44,6 +44,7 @@
     "react-router-dom": "^6.20.0",
     "react-slick": "^0.29.0",
     "react-sweetalert2": "^0.6.0",
+    "react-typed": "^2.0.12",
     "slick-carousel": "^1.8.1",
     "socket.io-client": "^4.7.2",
     "styled-components": "^6.1.8",

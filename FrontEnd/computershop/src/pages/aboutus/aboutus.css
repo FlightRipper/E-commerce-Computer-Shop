@@ -28,6 +28,14 @@
     text-decoration: underline;
 }
 
+.AboutUs-heading-AboutUs{
+  font-family: signika;
+  font-weight: bold;
+  font-size: 60px;
+  color: white;
+  text-decoration: underline;
+}
+
 @keyframes colorfulShadowPC {
     0% {
       box-shadow: 0 0 20px #ff0000, 0 0 30px #ff0000, 0 0 40px #ff0000, 0 0 50px #ff0000;

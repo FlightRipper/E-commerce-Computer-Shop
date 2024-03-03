@@ -5,6 +5,7 @@ import styled from "styled-components";
 import { useNavigate } from 'react-router-dom';
 import { FileUploader } from "react-drag-drop-files";
 import { useAuthContext } from '../../hooks/useAuthContext';
+import { Link } from 'react-router-dom';
 import axios from 'axios';
 
 const Upload = styled.div`
@@ -218,6 +219,9 @@ const RegisterPage = () => {
                   <span>{error}</span>
                 </div>
               )}
+              <div className="d-flex justify-content-center align-items-center">
+                <h6 >Just a visitor?<Link to={'/homepage'}> Homepage</Link></h6>
+              </div>
               <div className="d-flex justify-content-center mt-5">
                 <button
                   type="submit"

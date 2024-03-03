@@ -10,6 +10,7 @@ import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Dropdown from 'react-bootstrap/Dropdown';
+import Loader from "../../components/loader/loader";
 
 const Community = () => {
     const navigate = useNavigate();
@@ -18,6 +19,7 @@ const Community = () => {
     const [description, setDescription] = useState("");
     const [image, setImage] = useState(null);
     const [show, setShow] = useState(false);
+    const [loading, setLoading] = useState(false);
     const handleSubmit = async (event) => {
         console.log(image);
         event.preventDefault();
@@ -33,9 +35,11 @@ const Community = () => {
         }
     }
     useEffect(() => {
+        setLoading(true);
         axios
             .get("http://localhost:5000/posts/")
             .then((response) => {
+                setLoading(false);
                 setPosts(response.data);
                 console.log(response.data);
             })
@@ -45,60 +49,64 @@ const Community = () => {
     }, []);
     return (
         <>
-            <Navbar/>
-            <div className="communitymain bg-black min-vh-100 w-100 d-flex flex-column align-items-center justify-content-center">
-                <div className="communitycontainer d-flex flex-column justify-content-around align-items-center">
-                    <div className="community-fo2 d-flex align-items-center justify-content-center">
-                        <p className="communitytitle">Community</p>
-                        <button className="communitybuttonCreate">
-                            <span className="text" onClick={() => {setShow(!show); if (!user) navigate('/')}}>Create Post</span>
-                        </button>
+            {(loading) ? <Loader/> :
+            <>
+                <Navbar/>
+                <div className="communitymain bg-black min-vh-100 w-100 d-flex flex-column align-items-center justify-content-center">
+                    <div className="communitycontainer d-flex flex-column justify-content-around align-items-center">
+                        <div className="community-fo2 d-flex align-items-center justify-content-center">
+                            <p className="communitytitle">Community</p>
+                            <button className="communitybuttonCreate">
+                                <span className="text" onClick={() => {setShow(!show); if (!user) navigate('/')}}>Create Post</span>
+                            </button>
+                        </div>
+                        <div className="communitycards">
+                            {posts.map((post) => (
+                                <PostCard key={post.id}
+                                    image={post.image}
+                                    description={post.description}
+                                    username={post.User.username}
+                                    userImage={post.User.image}
+                                />))}
+                        </div>
                     </div>
-                    <div className="communitycards">
-                        {posts.map((post) => (
-                            <PostCard key={post.id}
-                                image={post.image}
-                                description={post.description}
-                                username={post.User.username}
-                                userImage={post.User.image}
-                            />))}
-                    </div>
+                    <Footer/>
                 </div>
-                <Footer/>
-            </div>
 
-            <Modal show={show} onHide={() => setShow(false)}>
-                <Modal.Header closeButton onClick={()=>{setCategoryButtonName("Category")}}>
-                    <Modal.Title>Create Product</Modal.Title>
-                </Modal.Header>
-                <Modal.Body>
-                <Form >
-                    <Form.Group controlId="formDescription">
-                        <Form.Label>Description</Form.Label>
-                        <Form.Control
-                        type="text"
-                        placeholder="Enter description"
-                        required = {true}
-                        onChange={(event) => setDescription(event.target.value)}
-                        />
-                    </Form.Group>
-                    <Form.Group controlId="formImage">
-                    <Form.Label>Images</Form.Label>
-                        <Form.Control
-                            type="file"
-                            placeholder="Enter image"
-                            required= {true}
-                            multiple={false}
-                            onChange={(event) => setImage(event.target.files[0])}
-                        />
-                    </Form.Group>
-                    <Button variant=" mt-3" className="SubmitButton bg-warning" type="submit" onClick={handleSubmit} >
-                        Submit
-                    </Button>
-                </Form>
-                </Modal.Body>
-            </Modal>
-        </>
+                <Modal show={show} onHide={() => setShow(false)}>
+                    <Modal.Header closeButton onClick={()=>{setCategoryButtonName("Category")}}>
+                        <Modal.Title>Create Product</Modal.Title>
+                    </Modal.Header>
+                    <Modal.Body>
+                    <Form >
+                        <Form.Group controlId="formDescription">
+                            <Form.Label>Description</Form.Label>
+                            <Form.Control
+                            type="text"
+                            placeholder="Enter description"
+                            required = {true}
+                            onChange={(event) => setDescription(event.target.value)}
+                            />
+                        </Form.Group>
+                        <Form.Group controlId="formImage">
+                        <Form.Label>Images</Form.Label>
+                            <Form.Control
+                                type="file"
+                                placeholder="Enter image"
+                                required= {true}
+                                multiple={false}
+                                onChange={(event) => setImage(event.target.files[0])}
+                            />
+                        </Form.Group>
+                        <Button variant=" mt-3" className="SubmitButton bg-warning" type="submit" onClick={handleSubmit} >
+                            Submit
+                        </Button>
+                    </Form>
+                    </Modal.Body>
+                </Modal>
+            </>
+        }
+    </>
     )
 }
 

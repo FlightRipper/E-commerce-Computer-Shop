@@ -10,6 +10,7 @@ const AboutUs = () => {
                     <div className='aboutUs-info d-flex'>
                         <img src={logo} alt="logo" className='AboutUs-logo'/>
                         <div className='AboutUs-Info d-flex flex-column'>
+                            <p className='AboutUs-heading-AboutUs'>About Us</p>
                             <p className='AboutUs-heading'>Our Mission </p>
                             <p className='AboutUs-Description'>We are a team of passionate individuals who are passionate about technology.</p>
                             <p className='AboutUs-heading'>Our Services </p>

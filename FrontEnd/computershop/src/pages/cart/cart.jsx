@@ -6,6 +6,7 @@ import Navbar from '../../components/navbar/navbar';
 import Footer from '../../components/footer/footer';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
+import Loader from '../../components/loader/loader';
 
 
 const ShoppingCart = () => {
@@ -16,11 +17,10 @@ const ShoppingCart = () => {
     const [cartItems, setCartItems] = useState([]);
     const [cartItemNames, setCartItemNames] = useState("");
     const [sentiment, setSentiment] = useState("");
+    const [loading, setLoading] = useState(false);
 
     async function handleask() {
-        console.log("Calling the Eden AI API");
-        console.log(cartItemNames);
-    
+        
         const options = {
             method: 'POST',
             headers: {
@@ -41,8 +41,10 @@ const ShoppingCart = () => {
         };
     
         try {
+            setLoading(true);
             const response = await fetch('https://api.edenai.run/v2/text/chat', options);
             const data = await response.json();
+            setLoading(false);
             console.log(data.google.generated_text);
             const result = await Swal.fire({
                 title: "Are they compatible?",
@@ -78,9 +80,11 @@ const ShoppingCart = () => {
         return accumulator + (parseInt(item.price,  10) * item.cartQuantity);
     },  0);
     const fetchCartItems = async () => {
+        setLoading(true);
         const response = await axios.get(`http://localhost:5000/orders/getactive/${user.id}`);
         console.log(response)
         if (response.status === 200) {
+          setLoading(false);
           setCartItems(response.data);
           console.log(response.data);
         }
@@ -100,8 +104,10 @@ const ShoppingCart = () => {
         if (result.isConfirmed) {
             try {
                 console.log(cartItems);
+                setLoading(true);
                 const response = await axios.patch(`http://localhost:5000/orders/status/${cartItems[0].orderID}`, { status: 'pending' });
                 if (response.status === 200) {
+                setLoading(false);
                 fetchCartItems();
                 Swal.fire({
                     title: "Success!",
@@ -138,6 +144,8 @@ const ShoppingCart = () => {
 
   return (
     <>
+    {loading ? (<Loader />) : (
+        <>
         <Navbar/>
         <div className="containerCart min-vh-100 w-100 d-flex align-items-center justify-content-center flex-column bg-black">
         <div className="card">
@@ -200,6 +208,8 @@ const ShoppingCart = () => {
         </div>
         <Footer />
         </div>
+        </>
+    )}
     </>
   );
 };
