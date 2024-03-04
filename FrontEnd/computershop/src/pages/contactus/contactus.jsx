@@ -1,10 +1,12 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import './contactus.css'
 import Navbar from '../../components/navbar/navbar';
 import Footer from '../../components/footer/footer';
 import logo from '../../assets/techtroveaboutus.png';
 import Swal from 'sweetalert2';
 import axios from 'axios';
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const ContactUs = () => {
     const [message, setMessage] = useState("")
@@ -24,14 +26,19 @@ const ContactUs = () => {
         setName("")
         setEmail("")
     }
+
+    useEffect(() => {
+        AOS.init({ duration: 1000 });
+    }, []);
+
     return (
         <><Navbar/>
         <div className="ContactUsMain bg-black min-vh-100 w-100 d-flex flex-column align-items-center justify-content-center">
             <div className="ContactUs-info d-flex">
-                <img src={logo} alt="logo" className='AboutUs-logo'/>
+                <img src={logo} alt="logo" className='AboutUs-logo' data-aos="fade-up"/>
                 <form className='contactus-info d-flex flex-column' onSubmit={onSubmit}>
-                    <p className='AboutUs-heading'>Contact Us</p>
-                    <div className="Contactusinput-group">
+                    <p className='AboutUs-heading' data-aos="fade-left">Contact Us</p>
+                    <div className="Contactusinput-group" data-aos="fade-down">
                         <input
                         required={true}
                         type="text"
@@ -43,7 +50,7 @@ const ContactUs = () => {
                         />
                         <label className="Contactususer-label">Name</label>
                     </div>
-                    <div className="Contactusinput-group">
+                    <div className="Contactusinput-group" data-aos="fade-up">
                         <input
                         required={true}
                         type="text"
@@ -55,7 +62,7 @@ const ContactUs = () => {
                         />
                         <label className="Contactususer-label">Email</label>
                     </div>
-                    <div className="Contactusinput-group">
+                    <div className="Contactusinput-group" data-aos="fade-down">
                         <textarea
                         required={true}
                         type="text"
@@ -73,7 +80,7 @@ const ContactUs = () => {
                         />
                         <label className="Contactususer-label">Message</label>
                     </div>
-                    <button type="submit" className="codepen-button"><span>Submit</span></button>
+                    <button type="submit" className="codepen-button" ><span>Submit</span></button>
                 </form>
             </div>
             <Footer/>

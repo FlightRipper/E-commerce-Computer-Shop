@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useRef } from "react";
 import './viewall.css'
 import axios from "axios";
 import Navbar from "../../components/navbar/navbar";
@@ -8,6 +8,8 @@ import { Link } from "react-router-dom";
 import { useNavigate } from 'react-router-dom';
 import Loader from "../../components/loader/loader";
 import Swal from 'sweetalert2';
+import AOS from "aos";
+import "aos/dist/aos.css";
 const ViewAll = () => {
     const navigate = useNavigate();
     const [products, setProducts] = useState([]);
@@ -17,10 +19,26 @@ const ViewAll = () => {
     const [selectedSubcategory, setSelectedSubcategory] = useState('');
     const [loading, setLoading] = useState(false);
     const [question, setQuestion] = useState('');
+    const [searchValue, setSearchValue] = useState('');
+    const [isSearchFocused, setIsSearchFocused] = useState(false);
+    const searchRef = useRef(null);
+
 
     const handleCategoryChange = (categoryId) => {
         setSelectedCategory(categoryId);
     };
+
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (searchRef.current && !searchRef.current.contains(event.target)) {
+                setIsSearchFocused(false);
+            }
+        };
+        document.addEventListener("mousedown", handleClickOutside);
+        return () => {
+            document.removeEventListener("mousedown", handleClickOutside);
+        };
+    }, [searchRef]);
 
     async function handleask() {
         const options = {
@@ -37,7 +55,7 @@ const ViewAll = () => {
                 temperature: 0,
                 max_tokens: 1000,
                 providers: 'google',
-                text: question,
+                text: question + "don't say the prices just give me the name of the products",
                 chatbot_global_action: 'You are a helpful assistant'
             })
         };
@@ -107,6 +125,18 @@ const ViewAll = () => {
         fetchSubCategories();
     }, []);
 
+    const filteredProduct = products.filter(product => product.name.toLowerCase().includes(searchValue.toLowerCase()));
+
+    const handleSearch = (e) => {
+        setSearchValue(e.target.value);
+        setIsSearchFocused(true);
+
+    };
+
+    useEffect(() => {
+        AOS.init({ duration: 1000 });
+    }, []);
+
     const filteredProducts = products.filter(product => {
         if (selectedCategory && selectedSubcategory) {
             return product.categoryId == selectedCategory && product.subcategoryId == selectedSubcategory;
@@ -125,8 +155,13 @@ const ViewAll = () => {
             <Navbar/>
             <div className="bg-black w-100 min-vh-100 d-flex flex-column justify-content-center align-content-center">
                 <div className="viewallproductsmain d-flex flex-column align-items-center justify-content-center">
-                    <p className="viewallproductstitle">Shop</p>
-                    <div className="select-container">
+                    <p className="viewallproductstitle" data-aos="fade-left">Shop</p>
+                    <form className="Contactusinput-group d-flex gap-5" style={{marginBottom: "40px"}} onSubmit={handleask} data-aos="fade-left">
+                        <input required type="text" className="inputCOntactus" onChange={handleSearch} value={searchValue} onFocus={() => setIsSearchFocused(true)}/>
+                        <label className="Contactususer-label">Search 🔍</label>
+                    </form>
+                    
+                    <div className="select-container" data-aos="fade-right">
                         <select onChange={(e) => handleCategoryChange(e.target.value)}>
                           <option value="">Select a category</option>
                           {categories.map((category) => (
@@ -144,24 +179,40 @@ const ViewAll = () => {
                           ))}
                         </select>
                     </div>
-                    <form className="Contactusinput-group d-flex gap-5" onSubmit={handleask}>
+                    <p className="viewallproductstitle">AI assistant</p>
+                    <form className="Contactusinput-group d-flex gap-5" onSubmit={handleask} data-aos="fade-left">
                         <input required type="text" className="inputCOntactus" onChange={(e) => setQuestion(e.target.value)}/>
                         <label className="Contactususer-label">Ask a question</label>
                         <button type="submit" className="codepen-button"><span>Submit</span></button>
                     </form>
-                    <div className="viewallproducts">
-                        {filteredProducts.map((product) => (
-                            <Link to={`/single/${product.id}`} className="viewallproductbuttonproduct">
-                            <button style={{border: 'none', outline: 'none', background: 'none'}} >
-                                <FeaturedCard
-                                    image={product.image}
-                                    price={product.price}
-                                    title={product.name}
-                                    description={product.description}
-                                />
-                            </button>
-                        </Link>
-                        ))}
+                    <div className="viewallproducts" data-aos="fade-right">
+                        {isSearchFocused  ? (
+                            filteredProduct.map((product) => (
+                                <Link to={`/single/${product.id}`} className="viewallproductbuttonproduct" key={product.id} ref={searchRef}>
+                                    <button style={{border: 'none', outline: 'none', background: 'none'}}>
+                                        <FeaturedCard
+                                            image={product.image}
+                                            price={product.price}
+                                            title={product.name}
+                                            description={product.description}
+                                        />
+                                    </button>
+                                </Link>
+                            ))
+                        ) : (
+                            filteredProducts.map((product) => (
+                                <Link to={`/single/${product.id}`} className="viewallproductbuttonproduct" key={product.id}>
+                                    <button style={{border: 'none', outline: 'none', background: 'none'}}>
+                                        <FeaturedCard
+                                            image={product.image}
+                                            price={product.price}
+                                            title={product.name}
+                                            description={product.description}
+                                        />
+                                    </button>
+                                </Link>
+                            ))
+                        )}
                     </div>
                 </div>
                 <Footer/>

@@ -14,6 +14,8 @@ import Carousel from "react-bootstrap/Carousel";
 import { useAuthContext } from '../../hooks/useAuthContext';
 import Swal from 'sweetalert2';
 import Loader from '../../components/loader/loader';
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const SingleProduct = () => {
     const navigate = useNavigate();
@@ -39,6 +41,10 @@ const SingleProduct = () => {
             navigate('/homepage')
         }
     }
+
+    useEffect(() => {
+        AOS.init({ duration: 1000 });
+    }, []);
     
     const handleAddToCart = async () => {
         try {
@@ -65,13 +71,14 @@ const SingleProduct = () => {
             <>
                 <Navbar/>
                 <div className="singleproductMain bg-black min-vh-100 w-100 d-flex flex-column align-items-center justify-content-center">
-                    <div className='singleproductInfo d-flex'>
+                    <div className='singleproductInfo d-flex' data-aos="fade-right">
                         <img src={`http://localhost:5000/uploads/${products.image}`} alt="" className="singleproduct__image"/>
-                        <div className="singleproduct__info">
-                            <p className="singleproduct__name">{products.name}</p>
-                            <p className="singleproduct__price">Price: {products.price}$</p>
-                            <p className="singleproduct__description">Description : {products.description}</p>
+                        <div className="singleproduct__info" data-aos="fade-left">
+                            <p className="singleproduct__name" data-aos="fade-left">{products.name}</p>
+                            <p className="singleproduct__price" data-aos="fade-right">Price: {products.price}$</p>
+                            <p className="singleproduct__description" data-aos="fade-left">Description : {products.description}</p>
                             <TextField
+                                data-aos="fade-left"
                                 type="number"
                                 label="Quantity :"
                                 defaultValue="1"

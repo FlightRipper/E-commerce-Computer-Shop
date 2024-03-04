@@ -10,6 +10,8 @@ import { useNavigate } from 'react-router-dom';
 import Footer from '../../components/footer/footer';
 import { Link } from 'react-router-dom';
 import Loader from '../../components/loader/loader';
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 
 const HomePage = () => {
@@ -17,6 +19,10 @@ const HomePage = () => {
     const [featuredProducts, setFeaturedProducts] = useState([]);
     const navigate = useNavigate();
     const [loading, setLoading] = useState(false);
+
+    useEffect(() => {
+        AOS.init({ duration: 1000 });
+    }, []);
 
     const getFeaturedProducts = async () => {
         setLoading(true);
@@ -40,14 +46,14 @@ const HomePage = () => {
                 <>
                 <Navbar />
                 <div className='HomePageMain'>
-                    <div className='RedPC'>
+                    <div className='RedPC' data-aos="fade-left">
                         <Carousel
                             controls={false}
                             indicators={false}
                             interval={2000}
                         >
                             {[redpc, secondpc].map((image, index) => (
-                                <Carousel.Item key={index} className='carousel-item'>
+                                <Carousel.Item key={index} className='carousel-item' >
                                     <img
                                         src={image}
                                         alt={`Slide ${index +  1}`}
@@ -58,7 +64,7 @@ const HomePage = () => {
                         </Carousel>
                     </div>
                     <p className='HomePageHeading'>Featured Products</p>
-                    <div className='HomePageFeauturedProducts'>
+                    <div className='HomePageFeauturedProducts' data-aos="fade-left">
                         {featuredProducts.map((product) => (
                         <Link to={`/single/${product.id}` } key={product.id}>
                             <button style={{border: 'none', outline: 'none', background: 'none'}}>

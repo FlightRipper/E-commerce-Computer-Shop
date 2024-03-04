@@ -129,4 +129,7 @@
     .Navbar-NavbarButtonactive{
         font-size: 18px;
     }
+    .Navbar-Search{
+        display: none;
+    }
 }

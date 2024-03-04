@@ -200,9 +200,9 @@ const ShoppingCart = () => {
                 </div>
             </div>
             <div className="float-right buttonsCart">
-                <button type="button" className="btn btn-lg btn-success md-btn-flat mt-2 mr-3" onClick={() => navigate('/homepage')}>Back to shopping</button>
-                <button type="button" className="btn btn-lg btn-success md-btn-flat mt-2 mr-3" onClick={handleask}>Check Compatiblity</button>
-                <button type="button" className="btn btn-lg btn-primary mt-2" onClick={updateStatus}>Checkout</button>
+                <button type="button" className="btn  btn-success cartbuttons" onClick={() => navigate('/homepage')}>Back to shopping</button>
+                <button type="button" className="btn  btn-success cartbuttons" onClick={handleask}>Check Compatiblity</button>
+                <button type="button" className="btn  btn-primary cartbuttons" onClick={updateStatus}>Checkout</button>
             </div>
             </div>
         </div>

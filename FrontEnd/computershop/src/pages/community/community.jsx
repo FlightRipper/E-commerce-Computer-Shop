@@ -11,6 +11,8 @@ import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
 import Dropdown from 'react-bootstrap/Dropdown';
 import Loader from "../../components/loader/loader";
+import AOS from "aos";
+import "aos/dist/aos.css";
 
 const Community = () => {
     const navigate = useNavigate();
@@ -20,6 +22,9 @@ const Community = () => {
     const [image, setImage] = useState(null);
     const [show, setShow] = useState(false);
     const [loading, setLoading] = useState(false);
+    useEffect(() => {
+        AOS.init({ duration: 1000 });
+    })
     const handleSubmit = async (event) => {
         console.log(image);
         event.preventDefault();
@@ -55,12 +60,14 @@ const Community = () => {
                 <div className="communitymain bg-black min-vh-100 w-100 d-flex flex-column align-items-center justify-content-center">
                     <div className="communitycontainer d-flex flex-column justify-content-around align-items-center">
                         <div className="community-fo2 d-flex align-items-center justify-content-center">
-                            <p className="communitytitle">Community</p>
-                            <button className="communitybuttonCreate">
+                            <p className="communitytitle" data-aos="fade-left">Community</p>
+                    {/* <button type="submit" className="codepen-button" ><span>Submit</span></button> */}
+                            
+                            <button className="codepen-button" style={{marginLeft: "10px"}} data-aos="fade-down">
                                 <span className="text" onClick={() => {setShow(!show); if (!user) navigate('/')}}>Create Post</span>
                             </button>
                         </div>
-                        <div className="communitycards">
+                        <div className="communitycards" data-aos="fade-right">
                             {posts.map((post) => (
                                 <PostCard key={post.id}
                                     image={post.image}

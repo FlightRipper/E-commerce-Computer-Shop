@@ -26,7 +26,7 @@ const Footer = () => {
                 </div>
 
                 <div className='d-flex flex-column align-items-center justify-content-center QuickLinks'> Quick links
-                    <div className='quicklinksFooter'>
+                    <div className='quicklinksFooter' style={{ marginBottom: "20px" }}>
                         <button className='footer-quicklinks' onClick={() => navigate('/homepage')}>Home</button>
                         <button className='footer-quicklinks' onClick={() => navigate('/about')}>About Us</button>
                         <button className='footer-quicklinks' onClick={() => navigate('/shop')}>Shop</button>
