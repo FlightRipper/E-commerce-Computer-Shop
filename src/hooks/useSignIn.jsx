@@ -32,7 +32,7 @@ export const useSignIn = () => {
         
         setError('Authentication successful');
         
-        navigate('/displayAll')
+        navigate('/homepage')
     }
   };
   return {signIn, error}
