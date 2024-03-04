@@ -14,7 +14,7 @@ const ContactUs = () => {
     const [email, setEmail] = useState("")
     const onSubmit = async (e) => {
         e.preventDefault();
-        const responce = await axios.post("http://localhost:5000/contactus/add", {message, name, email});
+        const responce = await axios.post("https://e-commerce-computer-shop-backend.onrender.com/contactus/add", {message, name, email});
         if (responce.status === 200) {
             Swal.fire({
                 title: "Success",

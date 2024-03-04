@@ -81,7 +81,7 @@ const ShoppingCart = () => {
     },  0);
     const fetchCartItems = async () => {
         setLoading(true);
-        const response = await axios.get(`http://localhost:5000/orders/getactive/${user.id}`);
+        const response = await axios.get(`https://e-commerce-computer-shop-backend.onrender.com/orders/getactive/${user.id}`);
         console.log(response)
         if (response.status === 200) {
           setLoading(false);
@@ -105,7 +105,7 @@ const ShoppingCart = () => {
             try {
                 console.log(cartItems);
                 setLoading(true);
-                const response = await axios.patch(`http://localhost:5000/orders/status/${cartItems[0].orderID}`, { status: 'pending' });
+                const response = await axios.patch(`https://e-commerce-computer-shop-backend.onrender.com/orders/status/${cartItems[0].orderID}`, { status: 'pending' });
                 if (response.status === 200) {
                 setLoading(false);
                 fetchCartItems();
@@ -133,7 +133,7 @@ const ShoppingCart = () => {
 
     const removeItem = async (id) => {
         console.log(id);
-        const response = await axios.delete(`http://localhost:5000/cartproducts/delete/${id}`);
+        const response = await axios.delete(`https://e-commerce-computer-shop-backend.onrender.com/cartproducts/delete/${id}`);
         if (response.status === 200) {
             fetchCartItems();
             setCartItems(cartItems.filter(item => item.cartID !== id));
@@ -169,7 +169,7 @@ const ShoppingCart = () => {
                     <tr key={item.cartID}>
                         <td className="p-4">
                         <div className="media align-items-center d-flex">
-                            <img src={`http://localhost:5000/uploads/${item.image}`} className=" imagecartclass d-block ui-w-20 ui-bordered mr-4" alt="" />
+                            <img src={`https://e-commerce-computer-shop-backend.onrender.com/uploads/${item.image}`} className=" imagecartclass d-block ui-w-20 ui-bordered mr-4" alt="" />
                             <div className="media-body">
                             <a href="#" className="d-block text-dark" onClick={() => navigate(`/single/${item.id}`)}>{item.name}</a>
                             <small>

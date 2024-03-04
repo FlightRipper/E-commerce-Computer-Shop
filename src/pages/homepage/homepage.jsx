@@ -27,7 +27,7 @@ const HomePage = () => {
     const getFeaturedProducts = async () => {
         setLoading(true);
 
-        const response = await axios.get('http://localhost:5000/products/featured');
+        const response = await axios.get('https://e-commerce-computer-shop-backend.onrender.com/products/featured');
 
         if (response.status ===  200) {
             setLoading(false);

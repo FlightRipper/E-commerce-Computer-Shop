@@ -12,7 +12,7 @@ export const useSignInAdmin = () => {
     setError(null);
 
     try {
-      const response = await axios.post('http://localhost:5000/users/Adminlogin', {
+      const response = await axios.post('https://e-commerce-computer-shop-backend.onrender.com/users/Adminlogin', {
         username,
         password,
       });

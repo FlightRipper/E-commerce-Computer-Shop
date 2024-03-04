@@ -33,7 +33,7 @@ const Community = () => {
         formData.append('description', description);
         formData.append('UserId', user.id);
         try {
-            await axios.post("http://localhost:5000/posts/add", formData);
+            await axios.post("https://e-commerce-computer-shop-backend.onrender.com/posts/add", formData);
             window.location.reload();
         } catch (error) {
             console.log(error);
@@ -42,7 +42,7 @@ const Community = () => {
     useEffect(() => {
         setLoading(true);
         axios
-            .get("http://localhost:5000/posts/")
+            .get("https://e-commerce-computer-shop-backend.onrender.com/posts/")
             .then((response) => {
                 setLoading(false);
                 setPosts(response.data);

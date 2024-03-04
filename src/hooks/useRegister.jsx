@@ -22,7 +22,7 @@ export const useRegister = () => {
     formData.append('password', password);
 
     try {
-      const response = await axios.post('http://localhost:5000/users/register', formData);
+      const response = await axios.post('https://e-commerce-computer-shop-backend.onrender.com/users/register', formData);
 
       if (response.status === 200) {
         // Save the user to the local storage
