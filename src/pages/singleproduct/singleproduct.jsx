@@ -48,6 +48,7 @@ const SingleProduct = () => {
     
     const handleAddToCart = async () => {
         try {
+            console.log(user.id);
             const response = await axios.post(`https://e-commerce-computer-shop-backend.onrender.com/cartproducts/add`, {ProductId: productid, quantity: quantity, UserId: user.id });
             if (response.status === 200) {
                 Swal.fire({
