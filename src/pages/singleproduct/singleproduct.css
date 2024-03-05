@@ -1,6 +1,6 @@
 .singleproduct__image{
   height: 60%;
-  max-width: 60%;
+  max-width: 40%;
   border-radius: 16px;
   animation: colorfulextraShadowPC 10s infinite;
 }
