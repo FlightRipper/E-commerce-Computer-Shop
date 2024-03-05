@@ -67,7 +67,7 @@ const Navbar = () => {
                     <p className='Navbar-heading'>TechTrove</p>
                 </div>
                 <div className='Navbar-UserNameandImage '>
-                    {username === "Sign In" ? (
+                    {username == "Sign In" ? (
                         <button className='d-flex align-items-center bg-black Navbar-UserNameandImageButton' onClick={() => navigate('/')}>
                             <p className='Navbar-UserName mt-3'>{username}</p>
                             <img src={image} alt="logo" className="Navbar-UserImage"></img>
