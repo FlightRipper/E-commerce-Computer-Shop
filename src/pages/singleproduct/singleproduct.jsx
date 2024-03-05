@@ -15,11 +15,14 @@ import { useAuthContext } from '../../hooks/useAuthContext';
 import Swal from 'sweetalert2';
 import Loader from '../../components/loader/loader';
 import AOS from "aos";
+import jwt_decode from 'jwt-decode';
 import "aos/dist/aos.css";
 
 const SingleProduct = () => {
     const navigate = useNavigate();
     const { user } = useAuthContext();
+    const token = user.token;
+    const decodedToken = jwt_decode(token);
     const [products, setProduct] = useState({});
     const {productid} = useParams();
     const [quantity, setQuantity] = useState(1);
@@ -49,7 +52,7 @@ const SingleProduct = () => {
     const handleAddToCart = async () => {
         try {
             console.log(user.id);
-            const response = await axios.post(`https://e-commerce-computer-shop-backend.onrender.com/cartproducts/add`, {ProductId: productid, quantity: quantity, UserId: user.id });
+            const response = await axios.post(`https://e-commerce-computer-shop-backend.onrender.com/cartproducts/add`, {ProductId: productid, quantity: quantity, UserId: decodedToken.id });
             if (response.status === 200) {
                 Swal.fire({
                     title: "Success",

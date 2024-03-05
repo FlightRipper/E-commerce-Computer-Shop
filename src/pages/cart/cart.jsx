@@ -7,6 +7,7 @@ import Footer from '../../components/footer/footer';
 import { useNavigate } from 'react-router-dom';
 import Swal from 'sweetalert2';
 import Loader from '../../components/loader/loader';
+import jwt_decode from 'jwt-decode';
 
 
 const ShoppingCart = () => {
@@ -14,6 +15,8 @@ const ShoppingCart = () => {
     const API_KEY = "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";
     const navigate = useNavigate();
     const { user } = useAuthContext();
+    const token = user.token;
+    const decodedToken = jwt_decode(token);
     const [cartItems, setCartItems] = useState([]);
     const [cartItemNames, setCartItemNames] = useState("");
     const [sentiment, setSentiment] = useState("");
@@ -81,7 +84,7 @@ const ShoppingCart = () => {
     },  0);
     const fetchCartItems = async () => {
         setLoading(true);
-        const response = await axios.get(`https://e-commerce-computer-shop-backend.onrender.com/orders/getactive/${user.id}`);
+        const response = await axios.get(`https://e-commerce-computer-shop-backend.onrender.com/orders/getactive/${decodedToken.id}`);
         console.log(response)
         if (response.status === 200) {
           setLoading(false);
