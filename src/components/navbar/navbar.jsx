@@ -67,10 +67,10 @@ const Navbar = () => {
                     <p className='Navbar-heading'>TechTrove</p>
                 </div>
                 <div className='Navbar-UserNameandImage '>
-                    <div className='d-flex align-items-center bg-black Navbar-UserNameandImageButton' onClick={() => (user!="Sign In")? navigate('/profile'):navigate('/')}>
+                    <button className='d-flex align-items-center bg-black Navbar-UserNameandImageButton' onClick={() => (user!="Sign In")? navigate('/profile'):navigate('/')}>
                         <p className='Navbar-UserName mt-3'>{username}</p>
                         <img src={image} alt="logo" className="Navbar-UserImage"></img>
-                    </div>
+                    </button>
                 </div>
             </div>
             <div className="Navbar-NavbarRed d-flex mt-3 justify-content-center">
