@@ -3,6 +3,7 @@
   max-width: 40%;
   border-radius: 16px;
   animation: colorfulextraShadowPC 10s infinite;
+  margin-left: 30px;
 }
 
 @keyframes colorfulextraShadowPC {
