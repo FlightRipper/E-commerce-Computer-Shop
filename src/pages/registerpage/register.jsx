@@ -39,9 +39,11 @@ const RegisterPage = () => {
   const fileTypes = ["JPG", "PNG", "GIF"];
   const [file, setFile] = useState(null);
   const [error, setError] = useState(null);
+  const [imageName, setImageName] = useState("Drag and drop to upload a file");
 
   const handleChange = (file) => {
     setFile(file);
+    setImageName(file.name);
   };
 
   const EyeOpenIcon = () => (
@@ -91,7 +93,7 @@ const RegisterPage = () => {
   
         setError('Registration successful');
   
-        navigate('/home');
+        navigate('/homepage');
       }
     } catch (error) {
       if (error.response) {
@@ -179,7 +181,7 @@ const RegisterPage = () => {
                     Upload Profile Picture
                   </label>
                   <FileUploader handleChange={handleChange} name="file" types={fileTypes} classes ="fileuploader"><Upload>
-            <FiUpload size={30} /> Drag and drop to upload a file
+            <FiUpload size={30} /> {imageName}
           </Upload></FileUploader>
                 </div>
                 <div className="d-flex justify-content-center align-items-center flex-column gap-2">
