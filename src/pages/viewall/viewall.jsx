@@ -84,7 +84,7 @@ const ViewAll = () => {
         const fetchProducts = async () => {
             try {
                 setLoading(true);
-                const response = await axios.get('https://e-commerce-computer-shop-backend.onrender.com/products');
+                const response = await axios.get('http://localhost:5000/products');
                 if (response.status === 200) {
                     setLoading(false);
                     setProducts(response.data);
@@ -96,7 +96,7 @@ const ViewAll = () => {
 
         const fetchCategories = async () => {
             try {
-                const response = await axios.get('https://e-commerce-computer-shop-backend.onrender.com/categories');
+                const response = await axios.get('http://localhost:5000/categories');
                 if (response.status === 200) {
                     setCategories(response.data);
                 }
@@ -107,7 +107,7 @@ const ViewAll = () => {
 
         const fetchSubCategories = async () => {
             try {
-                const response = await axios.get('https://e-commerce-computer-shop-backend.onrender.com/subcategories/');
+                const response = await axios.get('http://localhost:5000/subcategories/');
                 if (response.status === 200) {
                     setSubCategories(response.data);
                 }

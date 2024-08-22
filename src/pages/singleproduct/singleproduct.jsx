@@ -21,8 +21,6 @@ import "aos/dist/aos.css";
 const SingleProduct = () => {
     const navigate = useNavigate();
     const { user } = useAuthContext();
-    const token = user.token;
-    const decodedToken = jwt_decode(token);
     const [products, setProduct] = useState({});
     const {productid} = useParams();
     const [quantity, setQuantity] = useState(1);
@@ -30,7 +28,7 @@ const SingleProduct = () => {
     const fetchProduct = async () => {
         try {
             setLoading(true);
-            const response = await axios.get(`https://e-commerce-computer-shop-backend.onrender.com/products/single/${productid}`);
+            const response = await axios.get(`http://localhost:5000/products/single/${productid}`);
             console.log(response)
             if (response.status == 404) {
                 navigate('/homepage')
@@ -52,8 +50,9 @@ const SingleProduct = () => {
     const handleAddToCart = async () => {
         try {
             console.log(user.id);
-            const response = await axios.post(`https://e-commerce-computer-shop-backend.onrender.com/cartproducts/add`, {ProductId: productid, quantity: quantity, UserId: decodedToken.id });
+            const response = await axios.post(`http://localhost:5000/cartproducts/add`, {ProductId: productid, quantity: quantity, UserId: user.id });
             if (response.status === 200) {
+                console.log(response.data);
                 Swal.fire({
                     title: "Success",
                     text: "Product added to your cart successfully",
@@ -76,7 +75,7 @@ const SingleProduct = () => {
                 <Navbar/>
                 <div className="singleproductMain bg-black min-vh-100 w-100 d-flex flex-column align-items-center justify-content-center">
                     <div className='singleproductInfo d-flex' data-aos="fade-right">
-                        <img src={`https://e-commerce-computer-shop-backend.onrender.com/uploads/${products.image}`} alt="" className="singleproduct__image"/>
+                        <img src={`http://localhost:5000/uploads/${products.image}`} alt="" className="singleproduct__image"/>
                         <div className="singleproduct__info" data-aos="fade-left">
                             <p className="singleproduct__name" data-aos="fade-left">{products.name}</p>
                             <p className="singleproduct__price" data-aos="fade-right">Price: {products.price}$</p>

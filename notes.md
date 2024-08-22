@@ -1,0 +1,9 @@
+- orders page
+- products page
+- members page
+- community page
+- contact us page
+- admin main page
+- admin route to access admin page
+- logout button for members and admins
+- user dashboard for profile and orders

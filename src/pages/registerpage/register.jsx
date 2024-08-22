@@ -77,7 +77,7 @@ const RegisterPage = () => {
     formData.append('image', file);
   
     try {
-      const response = await axios.post('https://e-commerce-computer-shop-backend.onrender.com/users/register', formData, {
+      const response = await axios.post('http://localhost:5000/users/register', formData, {
         headers: {
           'Content-Type': 'multipart/form-data'
         }
@@ -110,7 +110,7 @@ const RegisterPage = () => {
           <div className="container d-flex flex-column align-items-center justify-content-center align-self-center">
             <label className="w-50 mt-5" />
             <form
-              className="p-5 bg-light rounded-5  needs-validation w-75 h-50 rounded mt-2 mb-3 Registration "
+              className="p-5 bg-light rounded-5  needs-validation w-75 h-50 rounded mt-2 mb-3 Registration"
               onSubmit={handleSubmit}
             >
               <div className="d-flex justify-content-center align-items-center">

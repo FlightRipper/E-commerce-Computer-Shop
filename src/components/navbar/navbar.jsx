@@ -17,10 +17,10 @@ const Navbar = () => {
     const [isSearchFocused, setIsSearchFocused] = useState(false);
     const [hamburgerMenuOpen, setHamburgerMenuOpen] = useState(false);
     const username = user ? user.username : "Sign In";
-    const image = user ? `https://e-commerce-computer-shop-backend.onrender.com/uploads/${user.image}` : logo;
+    const image = user ? `http://localhost:5000/uploads/${user.image}` : logo;
 
     const getProducts = async () => {
-        const response = await axios.get('https://e-commerce-computer-shop-backend.onrender.com/products');
+        const response = await axios.get('http://localhost:5000/products');
         if (response.status === 200) {
             setProducts(response.data);
         }
@@ -97,7 +97,7 @@ const Navbar = () => {
                                 onMouseEnter={(e) => { e.target.style.backgroundColor = 'black'; e.target.style.color = 'white'; }}
                                 onMouseLeave={(e) => { e.target.style.backgroundColor = 'transparent'; e.target.style.color = 'black'; }}
                             >
-                                <img className='productImageNavBar' src={`https://e-commerce-computer-shop-backend.onrender.com/uploads/${product.image}`} />
+                                <img className='productImageNavBar' src={`http://localhost:5000/uploads/${product.image}`} />
                                 {product.name}
                             </button>
                         ))}
