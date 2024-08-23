@@ -37,7 +37,7 @@ function App() {
           <Route path="/contact" element={<><ScrollToTop /><ContactUs /></>} />
           <Route path="/cart" element={user ? <><ScrollToTop /><CartPage /></> : <Navigate to={'/'} />} />
           <Route path="/shop" element={<><ScrollToTop /><ViewAll /></>} />
-          <Route path='/admin' element={<><ScrollToTop /><AdminPage /></>} />
+          {/* <Route path='/admin' element={<><ScrollToTop /><AdminPage /></>} /> */}
           {/* <Route
             path="/admin"
             element={isAdmin ? <AdminPage /> : <Navigate to={'/'} />}

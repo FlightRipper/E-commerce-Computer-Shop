@@ -10,7 +10,7 @@
     font-family: signika;
     font-weight: bold;
     color: white;
-    gap: 23vw;
+    gap: 18vw;
     margin-top: 10vh;
 }
 
@@ -28,13 +28,16 @@
     font-weight: bold;
     font-size: 30px;
     gap: 5vh;
-    /* width: 300px; */
 }
 
 .SocialLinksText{
     font-family: signika;
     font-weight: bold;
     font-size: 20px;
+}
+
+.map {
+    border-radius: 12px;
 }
 
 .fo2lmap{

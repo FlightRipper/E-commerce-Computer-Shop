@@ -59,10 +59,8 @@ const Community = () => {
                 <Navbar/>
                 <div className="communitymain bg-black min-vh-100 w-100 d-flex flex-column align-items-center justify-content-center">
                     <div className="communitycontainer d-flex flex-column justify-content-around align-items-center">
-                        <div className="community-fo2 d-flex align-items-center justify-content-center">
-                            <p className="communitytitle" data-aos="fade-left">Community</p>
-                    {/* <button type="submit" className="codepen-button" ><span>Submit</span></button> */}
-                            
+                        <div className="community-fo2 d-flex align-items-center justify-content-center flex-column">
+                            <p className="communitytitle" data-aos="fade-left">Community</p>                            
                             <button className="codepen-button" style={{marginLeft: "10px"}} data-aos="fade-down">
                                 <span className="text" onClick={() => {setShow(!show); if (!user) navigate('/')}}>Create Post</span>
                             </button>
