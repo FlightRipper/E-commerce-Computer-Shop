@@ -97,6 +97,7 @@ const RegisterPage = () => {
       }
     } catch (error) {
       if (error.response) {
+        console.log(error.response.data);
         setError('Registration failed: ' + error.response.data.message);
       } else {
         setError('Registration failed: ' + error.message);

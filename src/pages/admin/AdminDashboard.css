@@ -1,0 +1,153 @@
+.dashboard-background {
+  position: absolute !important;
+}
+
+.dashboard-container {
+  position: relative !important;
+  background-color: #1e1e1e !important;
+  width: 1400px !important;
+  height: 800px !important;
+  z-index: 1 !important;
+}
+.dashboard-nav {
+  height: 80px !important;
+  border-bottom: 1px solid #38bfc5 !important;
+}
+.dashboard-logo {
+  width: 183px !important;
+}
+.dashboard-menu-body {
+  height: 720px !important;
+}
+.dashboard-menu {
+  border-right: 1px solid #38bfc5 !important;
+ 
+}
+.admin-campaign-request{
+    border: 1px solid #38bfc5 !important;
+}
+
+.home-icon {
+  color: white !important;
+  font-size: 40px !important;
+  /* margin-right: 20px !important; */
+}
+
+.home-tab {
+  border-bottom: 1px solid #38bfc5 !important;
+  height: max-content !important;
+  margin-bottom: 0px !important;
+}
+.home-tab h4{
+    color: white;
+}
+.users-tab {
+  height: max-content !important;
+  margin-bottom: 0px !important;
+}
+.users-tab h4{
+    color: white;
+}
+.users-icon {
+  color: white !important;
+  font-size: 40px !important;
+  /* margin-right: 20px !important; */
+}
+
+.campaign-tab {
+  height: max-content !important;
+  margin-bottom: 0px !important;
+}
+.campaign-tab h4{
+  color: white;
+}
+.campaign-icon {
+  color: white !important;
+  font-size: 40px !important;
+  /* margin-right: 20px !important; */
+}
+.admins-tab {
+  height: max-content !important;
+  margin-bottom: 0px !important;
+}
+.admins-icon {
+  color: white !important;
+  font-size: 40px !important;
+  /* margin-right: 20px !important; */
+}
+.admins-tab h4{
+  color: white;
+}
+.body-header{
+    height: 90px;
+    background-color: #1E1E1E;
+}
+#dropdown-basic {
+    background-color: transparent !important; /* Replace with your custom color */
+    border-color: #38bfc5 !important; /* Replace with your custom color */
+   }
+
+   .admin-search{
+    background-color: transparent;
+    border-color: #38bfc5 !important;
+    box-shadow: none !important;
+   }
+.body-content{
+    height: 630px;
+}
+.campaign-request-card{
+    border: 1px solid #38bfc5 !important;
+    position:  relative !important;
+    height: 85% !important;
+    width: 30% !important;
+
+}
+
+.campaign-pic{
+    border-top-right-radius: 15px ;
+    border-top-left-radius: 15px;
+    height: 40%;
+    border-bottom: 1px solid #38bfc5;
+}
+.campaign-category{
+    background-color: #38bfc5;
+    width: max-content !important;
+    height: max-content !important;
+    z-index: 1;
+    position: absolute;
+    top: 35%;
+    left: 81.70%;
+}
+.campaign-title{
+    color: white !important;
+
+}
+
+.campaign-description{
+  font-size: smaller;
+  color: gray;
+}
+.campaign-target{
+  color: lightgray;
+}
+.campaign-owner{
+font-size: smaller;
+color: lightgray;
+}
+.approve-button{
+  
+background-color: green !important;
+
+}
+.edit-button{
+  background-color: #38bfc5 !important;
+}
+.reject-button, .delete-button{
+  background-color: red !important;
+}
+.dashboard-body{
+  overflow: scroll;
+}
+.dropdown-item:hover{
+  background-color: #38bfc5 !important;
+}

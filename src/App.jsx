@@ -20,6 +20,7 @@ import CartPage from './pages/cart/cart.jsx';
 import ViewAll from './pages/viewall/viewall.jsx';
 import Navbar from './components/navbar/navbar.jsx';
 import Community from './pages/community/community.jsx';
+import AdminHome from './pages/admin/Components/AdminHome';
 
 function App() {
   const { user } = useAuthContext();
@@ -37,6 +38,7 @@ function App() {
           <Route path="/contact" element={<><ScrollToTop /><ContactUs /></>} />
           <Route path="/cart" element={user ? <><ScrollToTop /><CartPage /></> : <Navigate to={'/'} />} />
           <Route path="/shop" element={<><ScrollToTop /><ViewAll /></>} />
+          <Route path="/admin" element={user ? <><ScrollToTop /><AdminHome /></> : <Navigate to={'/'} />} />
           {/* <Route path='/admin' element={<><ScrollToTop /><AdminPage /></>} /> */}
           {/* <Route
             path="/admin"
