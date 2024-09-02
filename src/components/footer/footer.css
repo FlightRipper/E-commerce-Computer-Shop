@@ -1,199 +1,234 @@
-.HomePageFooter{
-    background-color: #440808;
-    width: 99.2vw;
-    height: 48vh;
-    display: flex;
-    border-top-left-radius: 25px;
-    border-top-right-radius: 25px;
-    align-items: center;
-    justify-content: center;
-    font-family: signika;
-    font-weight: bold;
-    color: white;
-    gap: 18vw;
-    margin-top: 10vh;
+.HomePageFooter {
+  background-color: #440808;
+  width: 99.2vw;
+  height: 48vh;
+  display: flex;
+  border-top-left-radius: 25px;
+  border-top-right-radius: 25px;
+  align-items: center;
+  justify-content: center;
+  font-family: signika;
+  font-weight: bold;
+  color: white;
+  gap: 18vw;
+  margin-top: 10vh;
 }
 
-.quicklinksFooter{
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    align-items: center;
-    gap: 45px;
-
+.quicklinksFooter {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  gap: 45px;
 }
 
-.QuickLinks{
-    margin-right: 5vw;
-    font-family: signika;
-    font-weight: bold;
-    font-size: 30px;
-    gap: 5vh;
+.QuickLinks {
+  margin-right: 5vw;
+  font-family: signika;
+  font-weight: bold;
+  font-size: 30px;
+  gap: 5vh;
 }
 
-.SocialLinksText{
-    font-family: signika;
-    font-weight: bold;
-    font-size: 20px;
+.SocialLinksText {
+  font-family: signika;
+  font-weight: bold;
+  font-size: 20px;
 }
 
 .map {
-    border-radius: 12px;
+  border-radius: 12px;
 }
 
-.fo2lmap{
-    color: white;
-    font-family: signika;
-    font-weight: bold;
-    font-size: 24px;
-    margin-top: 12%;
+.fo2lmap {
+  color: white;
+  font-family: signika;
+  font-weight: bold;
+  font-size: 24px;
+  margin-top: 12%;
 }
 
-.footer-quicklinks{
-    outline: none;
-    border: none;
-    background: none;
-    font-family: signika;
-    color: white;
-    font-weight: bold;
-    margin-top: 4%;
-    font-size: 18px;
-    /* margin-right: 8vh; */
+.footer-quicklinks {
+    --color: #4a64f8;
+  font-family: signika;
+  display: inline-block;
+  width: 7em;
+  height: 3.6em;
+  line-height: 2.5em;
+  overflow: hidden;
+  cursor: pointer;
+  margin: 20px;
+  font-size: 17px;
+  z-index: 1;
+  color: var(--color);
+  border: 2px solid var(--color);
+  border-radius: 6px;
+  position: relative;
+  /* margin-right: 8vh; */
 }
 
+
+.footer-quicklinks::before {
+  position: absolute;
+  content: "";
+  background: var(--color);
+  width: 150px;
+  height: 200px;
+  z-index: -1;
+  border-radius: 50%;
+}
+
+.footer-quicklinks:hover {
+  color: white;
+}
+
+.footer-quicklinks:before {
+  top: 100%;
+  left: 100%;
+  transition: 0.3s all;
+}
+
+.footer-quicklinks:hover::before {
+  top: -30px;
+  left: -30px;
+}
 
 .main {
-    display: flex;
-    flex-direction: column;
-    gap: 0.5em;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5em;
 }
-  
+
 .up {
-    display: flex;
-    flex-direction: row;
-    gap: 0.5em;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5em;
 }
-  
+
 .down {
-    display: flex;
-    flex-direction: row;
-    gap: 0.5em;
+  display: flex;
+  flex-direction: row;
+  gap: 0.5em;
 }
-  
+
 .card1 {
-    width: 90px;
-    height: 90px;
-    outline: none;
-    border: none;
-    background: white;
-    border-radius: 90px 5px 5px 5px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-    transition: .2s ease-in-out;
-  }
-  
+  width: 90px;
+  height: 90px;
+  outline: none;
+  border: none;
+  background: white;
+  border-radius: 90px 5px 5px 5px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  transition: 0.2s ease-in-out;
+}
+
 .instagram {
-    margin-top: 1.5em;
-    margin-left: 1.2em;
-    fill: #cc39a4;
+  margin-top: 1.5em;
+  margin-left: 1.2em;
+  fill: #cc39a4;
 }
-  
+
 .card2 {
-    width: 90px;
-    height: 90px;
-    outline: none;
-    border: none;
-    background: white;
-    border-radius: 5px 90px 5px 5px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-    transition: .2s ease-in-out;
+  width: 90px;
+  height: 90px;
+  outline: none;
+  border: none;
+  background: white;
+  border-radius: 5px 90px 5px 5px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  transition: 0.2s ease-in-out;
 }
-  
+
 .twitter {
-    margin-top: 1.5em;
-    margin-left: -.9em;
-    fill: #03A9F4;
+  margin-top: 1.5em;
+  margin-left: -0.9em;
+  fill: #03a9f4;
 }
-  
+
 .card3 {
-    width: 90px;
-    height: 90px;
-    outline: none;
-    border: none;
-    background: white;
-    border-radius: 5px 5px 5px 90px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-    transition: .2s ease-in-out;
+  width: 90px;
+  height: 90px;
+  outline: none;
+  border: none;
+  background: white;
+  border-radius: 5px 5px 5px 90px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  transition: 0.2s ease-in-out;
 }
-  
+
 .github {
-    margin-top: -.6em;
-    margin-left: 1.2em;
+  margin-top: -0.6em;
+  margin-left: 1.2em;
 }
-  
+
 .card4 {
-    width: 90px;
-    height: 90px;
-    outline: none;
-    border: none;
-    background: white;
-    border-radius: 5px 5px 90px 5px;
-    box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px, rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
-    transition: .2s ease-in-out;
+  width: 90px;
+  height: 90px;
+  outline: none;
+  border: none;
+  background: white;
+  border-radius: 5px 5px 90px 5px;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 2px 5px -1px,
+    rgba(0, 0, 0, 0.3) 0px 1px 3px -1px;
+  transition: 0.2s ease-in-out;
 }
-  
+
 .discord {
-    margin-top: -.9em;
-    margin-left: -1.2em;
-    fill: #8c9eff;
+  margin-top: -0.9em;
+  margin-left: -1.2em;
+  fill: #8c9eff;
 }
-  
+
 .card1:hover {
-    cursor: pointer;
-    scale: 1.1;
-    background-color: #cc39a4;
+  cursor: pointer;
+  scale: 1.1;
+  background-color: #cc39a4;
 }
-  
+
 .card1:hover .instagram {
-    fill: white;
+  fill: white;
 }
-  
+
 .card2:hover {
-    cursor: pointer;
-    scale: 1.1;
-    background-color: #03A9F4;
+  cursor: pointer;
+  scale: 1.1;
+  background-color: #03a9f4;
 }
-  
+
 .card2:hover .twitter {
-    fill: white;
+  fill: white;
 }
-  
+
 .card3:hover {
-    cursor: pointer;
-    scale: 1.1;
-    background-color: black;
+  cursor: pointer;
+  scale: 1.1;
+  background-color: black;
 }
-  
+
 .card3:hover .github {
-    fill: white;
+  fill: white;
 }
-  
+
 .card4:hover {
-    cursor: pointer;
-    scale: 1.1;
-    background-color: #8c9eff;
+  cursor: pointer;
+  scale: 1.1;
+  background-color: #8c9eff;
 }
-  
+
 .card4:hover .discord {
-    fill: white;
+  fill: white;
 }
 
 @media screen and (max-width: 900px) {
-    .HomePageFooter {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        width: 100%;
-        height: auto;
-        gap: 0;
-      }
+  .HomePageFooter {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: auto;
+    gap: 0;
+  }
 }

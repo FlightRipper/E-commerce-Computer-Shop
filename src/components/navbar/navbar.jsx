@@ -88,7 +88,7 @@ const Navbar = () => {
                     onFocus={() => setIsSearchFocused(true)}
                 />
                 {isSearchFocused && (
-                    <div ref={searchRef} style={{ position: 'absolute', top: '100%', maxHeight: '25vh', overflow: 'scroll', left: 220, backgroundColor: '#fff', border: '1px solid #ccc', borderRadius: '4px', zIndex: 1 }}>
+                    <div ref={searchRef} style={{ position: 'absolute', top: '100%', maxHeight: '25vh', overflow: 'scroll', left: 220, backgroundColor: '#fff', border: '1px solid #ccc', borderRadius: '4px', zIndex: 1, marginLeft:70, overflowX: 'hidden' }}>
                         {filteredProducts.map(product => (
                             <button
                                 onClick={() => {window.location.href = `/single/${product.id}`}}

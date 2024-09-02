@@ -26,7 +26,7 @@ const HomePage = () => {
 
     const getFeaturedProducts = async () => {
         setLoading(true);
-
+        console.log("ayre")
         const response = await axios.get('http://localhost:5000/products/featured');
 
         if (response.status ===  200) {
