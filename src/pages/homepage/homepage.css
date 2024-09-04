@@ -29,15 +29,12 @@
 
 .RedPC{
   margin-top: 11.5%;
-  border-radius: 16px;
   height: 28vw;
   width: 55vw;
   animation: colorfulShadowPC 10s infinite;
 }
 
 .carousel-item{
-  border-radius: 16px;
-  /* background-color: invisible; */
   animation: colorfulShadowPC 10s infinite;
 }
 
@@ -45,7 +42,6 @@
   height: 28vw;
   width: 55vw;
   width: 100%;
-  border-radius: 20px;
   animation: colorfulShadowPC 10s infinite;
 }
 

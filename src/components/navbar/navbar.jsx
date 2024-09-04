@@ -88,20 +88,20 @@ const Navbar = () => {
                     onFocus={() => setIsSearchFocused(true)}
                 />
                 {isSearchFocused && (
-                    <div ref={searchRef} style={{ position: 'absolute', top: '100%', maxHeight: '25vh', overflow: 'scroll', left: 220, backgroundColor: '#fff', border: '1px solid #ccc', borderRadius: '4px', zIndex: 1, marginLeft:70, overflowX: 'hidden' }}>
-                        {filteredProducts.map(product => (
-                            <button
-                                onClick={() => {window.location.href = `/single/${product.id}`}}
-                                key={product.id}
-                                style={{ padding: '8px 16px', gap: '10px', display: 'flex', alignItems: 'center', borderRadius: '7px' }}
-                                onMouseEnter={(e) => { e.target.style.backgroundColor = 'black'; e.target.style.color = 'white'; }}
-                                onMouseLeave={(e) => { e.target.style.backgroundColor = 'transparent'; e.target.style.color = 'black'; }}
-                            >
-                                <img className='productImageNavBar' src={`http://localhost:5000/uploads/${product.image}`} />
-                                {product.name}
-                            </button>
-                        ))}
-                    </div>
+    <div ref={searchRef} className="search-results">
+    {filteredProducts.map((product) => (
+      <button
+        onClick={() => window.location.href = `/single/${product.id}`}
+        key={product.id}
+        className="search-result-item"
+        onMouseEnter={(e) => e.target.classList.add('hovered')}
+        onMouseLeave={(e) => e.target.classList.remove('hovered')}
+      >
+        <img className="product-image" src={`http://localhost:5000/uploads/${product.image}`} alt={product.name} />
+        <span className="product-name">{product.name}</span>
+      </button>
+    ))}
+  </div>
                 )}
 
                 <NavLink

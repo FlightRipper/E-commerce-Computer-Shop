@@ -46,11 +46,11 @@ const HomePage = () => {
                 <>
                 <Navbar />
                 <div className='HomePageMain'>
-                    <div className='RedPC' data-aos="fade-left">
+                    <div className='RedPC' data-aos="fade-left" >
                         <Carousel
                             controls={false}
                             indicators={false}
-                            interval={2000}
+                            interval={2000} 
                         >
                             {[redpc, secondpc].map((image, index) => (
                                 <Carousel.Item key={index} className='carousel-item' >
