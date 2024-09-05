@@ -13,7 +13,7 @@ const Adminsidebar =()=>{
     />
     <div className="ms-2">
       <h5 className="fs-6 mb-0">
-        <a className="text-decoration-none" href="#">Jone Doe</a>
+        <a className="text-decoration-none" href="#">Ahmad Mallah</a>
       </h5>
       <p className="mt-1 mb-0">Admin User</p>
     </div>
@@ -21,40 +21,22 @@ const Adminsidebar =()=>{
 
   <ul className="categories list-unstyled">
     {/* Dashboard */}
-    <li className="navigation-item"><a href="#" className="dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#dashboardDropdown" aria-expanded="false">Dashboard</a></li>
+    <li className="navigation-item"><a href="/admin">Dashboard</a></li>
 
     {/* Categories */}
-    <li className="navigation-item has-dropdown">
-      <i className="uil-folder"></i><a href="#" className="dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#categoryDropdown" aria-expanded="false">Categories</a>
-      <ul id="categoryDropdown" className="sidebar-dropdown collapse list-unstyled">
-        <li><a href="#">Electronics</a></li>
-        <li><a href="#">Clothing</a></li>
-        <li><a href="#">Home & Garden</a></li>
-        <li><a href="#">Books</a></li>
-        <li><a href="#">Sports</a></li>
-      </ul>
-    </li>
+    <li className="navigation-item"><a href="/admin/categories">Categories</a></li>
 
     {/* Subcategories */}
-    <li className="navigation-item has-dropdown">
-      <i className="uil-bag"></i><a href="#" className="dropdown-toggle" data-bs-toggle="collapse" data-bs-target="#subcategoryDropdown" aria-expanded="false">Subcategories</a>
-      <ul id="subcategoryDropdown" className="sidebar-dropdown collapse list-unstyled">
-        <li><a href="#">Smartphones</a></li>
-        <li><a href="#">Laptops</a></li>
-        <li><a href="#">Headphones</a></li>
-        <li><a href="#">Tablets</a></li>
-        <li><a href="#">Gaming Consoles</a></li>
-      </ul>
-    </li>
+    <li className="navigation-item"><a href="/admin/sub-categories">Sub-Categories</a></li>
 
     {/* Products */}
-    <li className="navigation-item"><a href="#">Products</a></li>
+    <li className="navigation-item"><a href="/admin/products">Products</a></li>
 
     {/* Orders */}
-    <li className="navigation-item"><a href="#">Orders</a></li>
+    <li className="navigation-item"><a href="/admin/orders">Orders</a></li>
 
     {/* Posts */}
-    <li className="navigation-item"><a href="#">Posts</a></li>
+    <li className="navigation-item"><a href="/admin/posts">Posts</a></li>
   </ul>
 </aside>
     )

@@ -1,9 +1,9 @@
 import React from 'react';
-
+import Adminsidebar from '../../../components/adminnavbar/adminnavbar';
 const PostsDashboard = () => {
   return (
     <div className="dashboard-content">
-      <h1>Posts Dashboard</h1>
+     <Adminsidebar/>
     </div>
   );
 };

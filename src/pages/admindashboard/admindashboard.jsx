@@ -51,7 +51,7 @@ const Admindashboard = () => {
           <div className="welcome">
             <div className="content rounded-3 p-3">
               <h1 className="fs-3">Welcome to your Dashboard</h1>
-              <p className="mb-0">Hello Ripper, welcome to your awesome dashboard!</p>
+              <p className="mb-0">Hello Admin, welcome to your awesome dashboard!</p>
             </div>
           </div>
           {/* Statistics Section */}
@@ -61,28 +61,28 @@ const Admindashboard = () => {
                 <div className="box bg-primary p-3">
                   <i className="uil-eye"></i>
                   <h3>5,154</h3>
-                  <p className="lead">Categories</p>
+                  <p className="lead stats-word">Categories</p>
                 </div>
               </div>
               <div className="col-md-6 col-lg-3 mb-4 mb-lg-0">
                 <div className="box bg-danger p-3">
                   <i className="uil-user"></i>
                   <h3>245</h3>
-                  <p className="lead">Sub Categories</p>
+                  <p className="lead stats-word">Sub Categories</p>
                 </div>
               </div>
               <div className="col-md-6 col-lg-3 mb-4 mb-md-0">
                 <div className="box bg-warning p-3">
                   <i className="uil-shopping-cart"></i>
                   <h3>5,154</h3>
-                  <p className="lead">Products</p>
+                  <p className="lead stats-word">Products</p>
                 </div>
               </div>
               <div className="col-md-6 col-lg-3">
                 <div className="box bg-success p-3">
                   <i className="uil-feedback"></i>
                   <h3>5,154</h3>
-                  <p className="lead">Orders</p>
+                  <p className="lead stats-word">Orders</p>
                 </div>
               </div>
             </div>

@@ -21,6 +21,12 @@ import ViewAll from './pages/viewall/viewall.jsx';
 import Navbar from './components/navbar/navbar.jsx';
 import Community from './pages/community/community.jsx';
 import Admindashboard from './pages/admindashboard/admindashboard.jsx'
+import CategoriesDashboard from './pages/admindashboard/admindashboardcategories/CategoriesDashboard.jsx';
+import SubcategoriesDashboard from './pages/admindashboard/admindashboardsubcategories/Subcategoriesdashboard.jsx';
+import ProductsDashboard from './pages/admindashboard/admindashboardproducts/ProductsDashboard.jsx';
+import OrdersDashboard from './pages/admindashboard/admindashboardorders/OrdersDashboard.jsx';
+import PostsDashboard from './pages/admindashboard/admindashboardposts/PostsDashboard.jsx';
+
 function App() {
   const { user } = useAuthContext();
   return (
@@ -38,7 +44,11 @@ function App() {
           <Route path="/cart" element={user ? <><ScrollToTop /><CartPage /></> : <Navigate to={'/'} />} />
           <Route path="/shop" element={<><ScrollToTop /><ViewAll /></>} />
           <Route path="/admin" element={<><ScrollToTop /><Admindashboard /></>} />
-          
+          <Route path="/admin/categories" element={<><ScrollToTop /><CategoriesDashboard /></>} />
+          <Route path="/admin/sub-categories" element={<><ScrollToTop /><SubcategoriesDashboard /></>} />
+          <Route path="/admin/products" element={<><ScrollToTop /><ProductsDashboard /></>} />
+          <Route path="/admin/orders" element={<><ScrollToTop /><OrdersDashboard /></>} />
+          <Route path="/admin/posts" element={<><ScrollToTop /><PostsDashboard /></>} />
         </Routes>
       </BrowserRouter>
 
@@ -47,3 +57,6 @@ function App() {
 }
 
 export default App
+
+
+
