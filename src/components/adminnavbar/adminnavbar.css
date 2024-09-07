@@ -75,7 +75,6 @@
 }
 
 .categories a:hover {
-    text-decoration: underline;
     color: #0066cc;
 }
 
@@ -88,6 +87,9 @@
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
+
+
+
 .navigation-item.active {
     background-color: #f0f0f0;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
@@ -96,6 +98,7 @@
 .navigation-item:hover {
     background-color: #e0e0e0;
     transform: translateY(-2px);
+    text-decoration: underline;
 }
 
 .navigation-item i {
