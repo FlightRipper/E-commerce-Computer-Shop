@@ -1,0 +1,151 @@
+.dashboard-categories-main{
+    margin-left: 28vh;
+}
+
+.categories-table-container{
+    padding: 0 2em;
+    font-family: Arial, sans-serif;
+    color: #024457;
+    background: #f2f2f2;
+    width: 100%;
+}
+
+
+
+.dashboard-content {
+    display: flex;
+  }
+  
+  .dashboard-categories-main {
+    flex-grow: 1;
+    padding: 20px;
+  }
+  
+  .categories-table-container {
+    overflow-x: auto;
+  }
+  
+ .categories-table-container .responstable {
+    border-collapse: collapse;
+    width: 100%;
+    min-width: 500px; 
+  }
+  
+
+  .categories-table-container .responstable th,
+  .responstable td {
+    text-align: left;
+    margin: 0.5em 1em;
+    padding: 0.5em;
+    text-align: center;
+  }
+  
+ .categories-table-container  .responstable th {
+    font-weight: bold;
+  }
+  
+ .categories-table-container  .options-cell {
+display: grid;
+grid-template-columns: 25% 15% 25% 15% 20%;
+  }
+  
+
+
+
+
+
+.categories-table-container   button {
+    position: sticky;
+    overflow: hidden;
+    height: 3rem;
+    padding: 0 2rem;
+    border-radius: 1.5rem;
+    background: #918da3;
+    background-size: 400%;
+    color: #fff;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+  }
+  
+.categories-table-container   .button:hover::before {
+    transform: scaleX(1);
+  }
+  
+ .categories-table-container  .button-content {
+    position: relative;
+    z-index: 1;
+  }
+  
+.categories-table-container   .button::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    transform: scaleX(0);
+    transform-origin: 0 50%;
+    width: 100%;
+    height: inherit;
+    border-radius: inherit;
+    background:rgb(18, 39, 224) 94.3% !important;
+    transition: all 0.475s;
+  }
+  
+
+ .categories-table-container  .delete-button::before{
+    background:rgb(233, 21, 21) 94.3% !important;
+  }
+
+
+.categories-table-container   .delete-button{
+    background: #9b6266 !important;
+  }
+
+
+
+
+
+
+  .dashboard-categories-main .dropdown {
+    position: relative;
+    width: 100%;
+  }
+  
+  .dashboard-categories-main .dropdown-select {
+    position: relative;
+    width: 100%;
+    padding: 0.5em;
+    border: none;
+    background-color: #f2f2f2;
+    cursor: pointer;
+    border-radius: 0.25rem;
+  }
+  
+  .dashboard-categories-main .dropdown-select:focus {
+    outline: none;
+    border: 2px solid #918da3;
+  }
+  
+  .dashboard-categories-main .dropdown::after {
+    content: '\25BC';
+    position: absolute;
+    right: 0.5em;
+    top: 50%;
+    transform: translateY(-50%);
+    pointer-events: none;
+  }
+  
+  .dashboard-categories-main .dropdown-select:hover {
+    background-color: #e8e8e8;
+  }
+  
+  .update-status-button {
+    background: #918da3 !important;
+    color: white !important;
+  }
+  
+  .update-status-button:hover {
+    background: #918da3 !important;
+    color: white !important;
+  }
+  
