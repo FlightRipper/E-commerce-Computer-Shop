@@ -87,15 +87,14 @@
     transition: background-color 0.3s ease, transform 0.3s ease;
 }
 
-
-
-
+/* Active navigation item style */
 .navigation-item.active {
-    background-color: #f0f0f0;
+    background-color: #007bff; /* Blue background */
+    color: white;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
 
-.navigation-item:hover {
+.navigation-item:hover:not(.active) {
     background-color: #e0e0e0;
     transform: translateY(-2px);
     text-decoration: underline;
@@ -107,9 +106,17 @@
     color: #333;
 }
 
+.navigation-item.active i {
+    color: white;
+}
+
 .navigation-item span {
     flex-grow: 1;
     color: #333;
+}
+
+.navigation-item.active span {
+    color: white;
 }
 
 .sidebar-dropdown {

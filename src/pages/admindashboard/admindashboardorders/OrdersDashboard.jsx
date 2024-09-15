@@ -28,6 +28,7 @@ const OrdersDashboard = () => {
     <div className="dashboard-content">
       <Adminsidebar />
       <div className="dashboard-categories-main">
+        <h2 className="page-title">Manage Orders</h2>
         <div className="categories-table-container">
           <table class="responstable">
             <tr>

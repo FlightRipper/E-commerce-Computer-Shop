@@ -29,6 +29,7 @@ const ProductsDashboard = () => {
       <Adminsidebar />
 
       <div className="dashboard-products-main">
+      <h2 className="page-title">Manage Products</h2>
         <button className="dashboard-products-create-button">Create</button>
         <div className="dashboard-products-cards-container">
           {Products.map((product) => (

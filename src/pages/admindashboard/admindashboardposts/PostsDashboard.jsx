@@ -30,6 +30,7 @@ const PostsDashboard = () => {
       <Adminsidebar />
 
       <div className="dashboard-products-main">
+      <h2 className="page-title">Manage Posts</h2>
         <div className="dashboard-products-cards-container">
           {posts.map((post) => (
             <div key={post.id} className="dashboard-products-single-card">

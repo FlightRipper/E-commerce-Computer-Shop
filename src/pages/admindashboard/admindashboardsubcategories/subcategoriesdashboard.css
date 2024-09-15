@@ -100,3 +100,13 @@ grid-template-columns: 20% 20% 20% 20% 20%;
 .categories-table-container   .delete-button{
     background: #9b6266 !important;
   }
+
+
+
+
+  .page-title {
+    font-size: 28px;
+    margin-bottom: 50px;
+    color: #333;
+  margin-left: 34vw;
+}

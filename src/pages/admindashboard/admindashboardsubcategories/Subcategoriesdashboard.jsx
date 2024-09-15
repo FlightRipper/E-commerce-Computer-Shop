@@ -30,6 +30,7 @@ const SubcategoriesDashboard = () => {
     <div className="dashboard-content">
       <Adminsidebar />
       <div className="dashboard-categories-main">
+        <h2 className="page-title">Manage Subcategories</h2>
         <div className="categories-table-container">
           <table class="responstable">
             <tr>

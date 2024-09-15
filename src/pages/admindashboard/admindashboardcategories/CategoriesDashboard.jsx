@@ -28,6 +28,7 @@ const CategoriesDashboard = () => {
     <div className="dashboard-content">
       <Adminsidebar />
       <div className="dashboard-categories-main">
+        <h2 className="page-title">Manage Categories</h2>
         <div className="categories-table-container">
           <table class="responstable">
             <tr>
