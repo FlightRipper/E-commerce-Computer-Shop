@@ -149,3 +149,41 @@ grid-template-columns: 25% 15% 25% 15% 20%;
     color: white !important;
   }
   
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/* ordersdashboard.css */
+
+.item-list {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+}
+
+.item {
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.item-cell {
+  vertical-align: middle;
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.categories-table-container .responstable td {
+  vertical-align: middle;
+}

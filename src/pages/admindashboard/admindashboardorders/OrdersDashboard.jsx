@@ -1,3 +1,4 @@
+// OrdersDashboard.js
 import React, { useState, useEffect } from "react";
 import Adminsidebar from "../../../components/adminnavbar/adminnavbar";
 import "./ordersdashboard.css";
@@ -24,6 +25,16 @@ const OrdersDashboard = () => {
     fetchOrders();
   }, []);
 
+  const renderItems = (items) => (
+    <div className="item-list">
+      {items.map((item, index) => (
+        <div key={index} className="item">
+          {item.productName} x{item.quantity}
+        </div>
+      ))}
+    </div>
+  );
+
   return (
     <div className="dashboard-content">
       <Adminsidebar />
@@ -43,9 +54,8 @@ const OrdersDashboard = () => {
                 <td>{order.User.username}</td>
                 <td>{order.User.email}</td>
                 <td>{order.status}</td>
-                <td>
-                  {/* <Dropdown options={order.items} /> */}
-                  items here
+                <td className="item-cell">
+                  {renderItems(order.items)}
                 </td>
                 <td className="options-cell">
                   <button class="button">
