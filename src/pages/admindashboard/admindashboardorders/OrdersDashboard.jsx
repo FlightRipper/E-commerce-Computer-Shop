@@ -3,6 +3,7 @@ import React, { useState, useEffect } from "react";
 import Adminsidebar from "../../../components/adminnavbar/adminnavbar";
 import "./ordersdashboard.css";
 import axios from "axios";
+import Swal from "sweetalert2";
 
 const OrdersDashboard = () => {
   const [orders, setOrders] = useState([]);
@@ -25,15 +26,41 @@ const OrdersDashboard = () => {
     fetchOrders();
   }, []);
 
-  const renderItems = (items) => (
-    <div className="item-list">
-      {items.map((item, index) => (
-        <div key={index} className="item">
-          {item.productName} x{item.quantity}
-        </div>
-      ))}
-    </div>
-  );
+  const renderItems = (items) => {
+    return items.map((item, index) => (
+      <div key={index} className="item">
+        {item.productName} x{item.quantity}
+      </div>
+    ));
+  };
+
+  const showItemsModal = (order) => {
+    const formattedItems = order.items
+      .map(
+        (item) =>
+          `<tr><td>${item.productName}</td><td>x${item.quantity}</td></tr>`
+      )
+      .join("");
+
+    Swal.fire({
+      title: `<strong>Order Items for ${order.User.username}</strong>`,
+      html: `
+        <table class="swal-table" style="width:100%;">
+          <thead>
+            <tr>
+              <th>Product</th>
+              <th>Quantity</th>
+            </tr>
+          </thead>
+          <tbody>
+            ${formattedItems}
+          </tbody>
+        </table>
+      `,
+      showCloseButton: true,
+      focusConfirm: false,
+    });
+  };
 
   return (
     <div className="dashboard-content">
@@ -55,7 +82,12 @@ const OrdersDashboard = () => {
                 <td>{order.User.email}</td>
                 <td>{order.status}</td>
                 <td className="item-cell">
-                  {renderItems(order.items)}
+                  <button
+                    onClick={() => showItemsModal(order)}
+                    className="show-items-button"
+                  >
+                    Show Items
+                  </button>
                 </td>
                 <td className="options-cell">
                   <button class="button">
@@ -69,7 +101,6 @@ const OrdersDashboard = () => {
                   <button class="update-status-button">
                     <span class="button-content">Update Status</span>
                   </button>
-                  <div />
                 </td>
               </tr>
             ))}

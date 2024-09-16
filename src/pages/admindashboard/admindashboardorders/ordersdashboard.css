@@ -153,37 +153,58 @@ grid-template-columns: 25% 15% 25% 15% 20%;
 
 
 
-
-
-
-
-
-
-
-
-
-
-/* ordersdashboard.css */
-
-.item-list {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-}
-
-.item {
-  margin-bottom: 10px;
+.show-items-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 5px 10px;
   text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
 }
 
-.item-cell {
-  vertical-align: middle;
-  padding-top: 10px;
-  padding-bottom: 10px;
+.show-items-button:hover {
+  background-color: #0056b3;
 }
 
-.categories-table-container .responstable td {
-  vertical-align: middle;
+
+
+
+
+
+
+
+
+.swal-table {
+  border-collapse: collapse;
+  width: 100%;
 }
+
+.swal-table th, .swal-table td {
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+.swal-table tr:nth-child(even) {
+  background-color: #f9f9f9;
+}
+
+.swal-table tr:hover {
+  background-color: #f1f1f1;
+}
+
+
+
+
+
+
+
+
+
+
+
