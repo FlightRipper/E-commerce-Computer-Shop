@@ -100,3 +100,45 @@ grid-template-columns: 20% 20% 20% 20% 20%;
 .categories-table-container   .delete-button{
     background: #9b6266 !important;
   }
+
+
+
+
+  .modal-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+  
+  .categories-modal-content {
+    background-color: white;
+    padding: 20px;
+    border-radius: 8px;
+    max-width: 300px;
+    width: 100%;
+  }
+  
+  .categories-modal-content .button {
+    margin: 5px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+  }
+  
+  .categories-modal-content .delete-button {
+    background-color: #dc3545;
+    color: white;
+  }
+  
+  .categories-modal-content .options-cell {
+    display: flex;
+    justify-content: space-around;
+  }
+  

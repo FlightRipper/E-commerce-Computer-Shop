@@ -6,8 +6,9 @@ import axios from "axios";
 
 const ProductsDashboard = () => {
   const [Products, setProducts] = useState([]);
+  const [refetchTrigger, setRefetchTrigger] = useState(0);
 
-  const getProducts = async () => {
+  const fetchProducts = async () => {
     try {
       const response = await axios.get("http://localhost:5000/products");
       if (response.status === 200) {
@@ -20,22 +21,28 @@ const ProductsDashboard = () => {
     }
   };
 
+  const handleProductUpdate = () => {
+    setRefetchTrigger(refetchTrigger + 1);
+  };
+
   useEffect(() => {
-    getProducts();
-  }, []);
+    fetchProducts();
+  }, [refetchTrigger]);
 
   return (
     <div className="dashboard-content-products">
       <Adminsidebar />
 
       <div className="dashboard-products-main">
-      <h2 className="page-title">Manage Products</h2>
+        <h2 className="page-title">Manage Products</h2>
         <button className="dashboard-products-create-button">Create</button>
         <div className="dashboard-products-cards-container">
           {Products.map((product) => (
-            <div className="dashboard-products-single-card" key={product.id}>
-              <Adminproductcard product={product} />
-            </div>
+            <Adminproductcard
+              key={product.id}
+              product={product}
+              onProductUpdate={handleProductUpdate}
+            />
           ))}
         </div>
       </div>

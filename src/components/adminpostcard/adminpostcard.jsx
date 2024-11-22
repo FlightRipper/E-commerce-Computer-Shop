@@ -1,6 +1,13 @@
 import "./adminpostcard.css";
 
-const Adminpostcard = ({ title, description, imageUrl, dateCreated }) => {
+const Adminpostcard = ({
+  id,
+  description,
+  imageUrl,
+  dateCreated,
+  handleEdit,
+  handleDelete,
+}) => {
   return (
     <div className="product-admin-card">
       <div className="product-admin-card-content">
@@ -19,8 +26,12 @@ const Adminpostcard = ({ title, description, imageUrl, dateCreated }) => {
       </div>
 
       <div className="product-admin-card-button-container">
-        <button className="product-admin-button">Edit</button>
-        <button className="product-admin-button">Delete</button>
+        <button className="product-admin-button" onClick={handleEdit}>
+          Edit
+        </button>
+        <button className="product-admin-button" onClick={handleDelete}>
+          Delete
+        </button>
       </div>
     </div>
   );

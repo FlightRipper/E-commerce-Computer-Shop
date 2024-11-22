@@ -7,6 +7,8 @@ import Swal from "sweetalert2";
 
 const OrdersDashboard = () => {
   const [orders, setOrders] = useState([]);
+  const [editingOrder, setEditingOrder] = useState(null);
+  const [showEditModal, setShowEditModal] = useState(false);
 
   const fetchOrders = async () => {
     try {
@@ -25,6 +27,63 @@ const OrdersDashboard = () => {
   useEffect(() => {
     fetchOrders();
   }, []);
+
+  const handleEditOrder = (order) => {
+    setEditingOrder(order);
+    setShowEditModal(true);
+  };
+
+  const handleDeleteConfirm = (orderId) => {
+    Swal.fire({
+      title: "Are you sure?",
+      text: `Do you really want to delete this order?`,
+      icon: "warning",
+      showCancelButton: true,
+      confirmButtonColor: "#3085d6",
+      cancelButtonColor: "#d33",
+      confirmButtonText: "Yes, delete it!",
+    }).then((result) => {
+      if (result.isConfirmed) {
+        handleDeleteOrder(orderId);
+      }
+    });
+  };
+
+  const handleDeleteOrder = async (orderId) => {
+    try {
+      await axios.delete(`http://localhost:5000/orders/${orderId}`);
+      Swal.fire("Deleted!", "Order has been deleted.", "success");
+      fetchOrders(); // Refetch orders after deletion
+    } catch (error) {
+      console.error("Error deleting order:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Something went wrong! Order deletion failed.",
+      });
+    }
+  };
+
+  const handleEditSubmit = async (event) => {
+    event.preventDefault();
+    try {
+      const response = await axios.patch(
+        `http://localhost:5000/orders/${editingOrder.id}`,
+        editingOrder
+      );
+      console.log("Order updated:", response.data);
+      setShowEditModal(false);
+      setEditingOrder(null);
+      fetchOrders(); // Refetch orders after update
+    } catch (error) {
+      console.error("Error editing order:", error);
+    }
+  };
+
+  const handleChange = (event) => {
+    const { name, value } = event.target;
+    setEditingOrder({ ...editingOrder, [name]: value });
+  };
 
   const renderItems = (items) => {
     return items.map((item, index) => (
@@ -62,6 +121,16 @@ const OrdersDashboard = () => {
     });
   };
 
+  const renderStatusOptions = () => {
+    return ["pending", "approved", "done", "canceled", "active"].map(
+      (status) => (
+        <option key={status} value={status}>
+          {status.charAt(0).toUpperCase() + status.slice(1)}
+        </option>
+      )
+    );
+  };
+
   return (
     <div className="dashboard-content">
       <Adminsidebar />
@@ -90,22 +159,54 @@ const OrdersDashboard = () => {
                   </button>
                 </td>
                 <td className="options-cell">
-                  <button class="button">
+                  <div />
+                  <button
+                    class="button edit-button"
+                    onClick={() => handleEditOrder(order)}
+                  >
                     <span class="button-content">Edit </span>
                   </button>
                   <div />
-                  <button class="button delete-button">
+                  <button
+                    class="button delete-button"
+                    onClick={() => handleDeleteConfirm(order.id)}
+                  >
                     <span class="button-content">Delete </span>
                   </button>
                   <div />
-                  <button class="update-status-button">
-                    <span class="button-content">Update Status</span>
-                  </button>
                 </td>
               </tr>
             ))}
           </table>
         </div>
+
+        {showEditModal && (
+          <div
+            className="modal-overlay"
+            onClick={() => setShowEditModal(false)}
+          >
+            <div
+              className="orders-modal-content"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <h3>Edit Order</h3>
+              <form onSubmit={handleEditSubmit}>
+                <div className="form-group">
+                  <label htmlFor="status">Status:</label>
+                  <select
+                    id="status"
+                    name="status"
+                    value={editingOrder?.status || ""}
+                    onChange={handleChange}
+                  >
+                    {renderStatusOptions()}
+                  </select>
+                </div>
+                <button type="submit">Save Changes</button>
+              </form>
+            </div>
+          </div>
+        )}
       </div>
     </div>
   );

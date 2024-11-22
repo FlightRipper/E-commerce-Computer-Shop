@@ -110,3 +110,102 @@ grid-template-columns: 20% 20% 20% 20% 20%;
     color: #333;
   margin-left: 34vw;
 }
+
+
+
+
+
+
+
+
+
+
+
+
+/* Edit Modal Styles */
+.subcategories-modal-content {
+  background-color: #ffffff;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  width: 400px;
+  max-width: 90%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.subcategories-modal-content h3 {
+  margin-top: 0;
+  color: #333;
+  font-size: 18px;
+  text-align: center;
+}
+
+.subcategories-modal-content form {
+  width: 100%;
+  margin-top: 20px;
+}
+
+.subcategories-modal-content .form-group {
+  margin-bottom: 15px;
+}
+
+.subcategories-modal-content .form-group label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+  color: #333;
+}
+
+.subcategories-modal-content .form-group input[type="text"],
+.subcategories-modal-content .form-group select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  font-family: inherit;
+  font-size: 16px;
+}
+
+.subcategories-modal-content .form-group input[type="text"]:focus,
+.subcategories-modal-content .form-group select:focus {
+  outline: none;
+  border-color: #aaa;
+  box-shadow: 0 0 0 2px rgba(66, 133, 244, 0.2);
+}
+
+.subcategories-modal-content button[type="submit"] {
+  background-color: #007bff;
+  color: white;
+  padding: 10px 15px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+  width: 100%;
+  text-align: center;
+  margin-top: 20px;
+}
+
+.subcategories-modal-content button[type="submit"]:hover {
+  background-color: #0056b3;
+}
+
+.subcategories-modal-content button[type="submit"]:active {
+  transform: translateY(1px);
+}
+
+.modal-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
