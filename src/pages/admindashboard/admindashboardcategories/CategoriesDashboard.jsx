@@ -8,6 +8,8 @@ const CategoriesDashboard = () => {
   const [Categories, setCategories] = useState([]);
   const [editingCategory, setEditingCategory] = useState(null);
   const [showEditModal, setShowEditModal] = useState(false);
+  const [creatingCategory, setCreatingCategory] = useState("");
+  const [showCreateModal, setShowCreateModal] = useState(false);
 
   const getCategories = async () => {
     try {
@@ -48,7 +50,7 @@ const CategoriesDashboard = () => {
     try {
       await axios.delete(`http://localhost:5000/categories/${categoryId}`);
       Swal.fire("Deleted!", "Category has been deleted.", "success");
-      getCategories(); // Refetch categories after deletion
+      getCategories();
     } catch (error) {
       console.error("Error deleting category:", error);
       Swal.fire({
@@ -69,7 +71,7 @@ const CategoriesDashboard = () => {
       console.log("Category updated:", response.data);
       setShowEditModal(false);
       setEditingCategory(null);
-      getCategories(); // Refetch categories after update
+      getCategories();
     } catch (error) {
       console.error("Error editing category:", error);
     }
@@ -77,6 +79,30 @@ const CategoriesDashboard = () => {
 
   const handleNameChange = (event) => {
     setEditingCategory({ ...editingCategory, name: event.target.value });
+  };
+
+  const handleCreateCategory = async () => {
+    try {
+      const response = await axios.post("http://localhost:5000/categories/add", {
+        name: creatingCategory,
+      });
+      console.log("New category created:", response.data);
+      setCreatingCategory("");
+      setShowCreateModal(false);
+      getCategories();
+      Swal.fire("Created!", "New category has been added.", "success");
+    } catch (error) {
+      console.error("Error creating category:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Something went wrong! Category creation failed.",
+      });
+    }
+  };
+
+  const handleCreateInputChange = (event) => {
+    setCreatingCategory(event.target.value);
   };
 
   useEffect(() => {
@@ -88,6 +114,14 @@ const CategoriesDashboard = () => {
       <Adminsidebar />
       <div className="dashboard-categories-main">
         <h2 className="page-title">Manage Categories</h2>
+
+        <button
+          className="dashboard-products-create-button"
+          onClick={() => setShowCreateModal(true)}
+        >
+          Create New Category
+        </button>
+
         <div className="categories-table-container">
           <table class="responstable">
             <tr>
@@ -141,6 +175,38 @@ const CategoriesDashboard = () => {
                   placeholder="Category Name"
                 />
                 <button type="submit">Save Changes</button>
+              </form>
+            </div>
+          </div>
+        )}
+        {showCreateModal && (
+          <div
+            className="modal-overlay"
+            onClick={() => setShowCreateModal(false)}
+          >
+            <div
+              className="categories-modal-content"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <h3>Create New Category</h3>
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  handleCreateCategory();
+                }}
+              >
+                <div className="form-group">
+                  <label htmlFor="name">Category Name:</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={creatingCategory}
+                    onChange={handleCreateInputChange}
+                    placeholder="Enter category name"
+                  />
+                </div>
+                <button type="submit">Create Category</button>
               </form>
             </div>
           </div>

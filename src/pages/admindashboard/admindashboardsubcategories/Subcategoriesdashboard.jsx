@@ -9,6 +9,9 @@ const SubcategoriesDashboard = () => {
   const [editingSubcategory, setEditingSubcategory] = useState(null);
   const [showEditModal, setShowEditModal] = useState(false);
   const [categories, setCategories] = useState([]);
+  const [creatingSubcategory, setCreatingSubcategory] = useState({});
+  const [showCreateModal, setShowCreateModal] = useState(false);
+  const [selectedCategoryId, setSelectedCategoryId] = useState("");
 
   const fetchSubcategories = async () => {
     try {
@@ -110,6 +113,37 @@ const SubcategoriesDashboard = () => {
     });
   };
 
+  const handleCreateSubcategory = async () => {
+    try {
+      const response = await axios.post(
+        `http://localhost:5000/subcategories/add/${selectedCategoryId}`,
+        creatingSubcategory
+      );
+      console.log("New subcategory created:", response.data);
+      setCreatingSubcategory({});
+      setShowCreateModal(false);
+      fetchSubcategories();
+      Swal.fire("Created!", "New subcategory has been added.", "success");
+    } catch (error) {
+      console.error("Error creating subcategory:", error);
+      Swal.fire({
+        icon: "error",
+        title: "Oops...",
+        text: "Something went wrong! Subcategory creation failed.",
+      });
+    }
+  };
+
+  const handleCreateInputChange = (event) => {
+    const { name, value } = event.target;
+    setCreatingSubcategory({ ...creatingSubcategory, [name]: value });
+  };
+
+  const handleCreateCategoryChange = (event) => {
+    const selectedCategoryId = parseInt(event.target.value);
+    setSelectedCategoryId(selectedCategoryId);
+  };
+
   useEffect(() => {
     fetchSubcategories();
     fetchCategories();
@@ -120,6 +154,13 @@ const SubcategoriesDashboard = () => {
       <Adminsidebar />
       <div className="dashboard-categories-main">
         <h2 className="page-title">Manage Subcategories</h2>
+        <button
+          className="dashboard-products-create-button"
+          onClick={() => setShowCreateModal(true)}
+        >
+          Create New Subcategory
+        </button>
+
         <div className="categories-table-container">
           <table class="responstable">
             <tr>
@@ -198,6 +239,55 @@ const SubcategoriesDashboard = () => {
                   </select>
                 </div>
                 <button type="submit">Save Changes</button>
+              </form>
+            </div>
+          </div>
+        )}
+
+        {showCreateModal && (
+          <div
+            className="modal-overlay"
+            onClick={() => setShowCreateModal(false)}
+          >
+            <div
+              className="subcategories-modal-content"
+              onClick={(e) => e.stopPropagation()}
+            >
+              <h3>Create New Subcategory</h3>
+              <form
+                onSubmit={(e) => {
+                  e.preventDefault();
+                  handleCreateSubcategory();
+                }}
+              >
+                <div className="form-group">
+                  <label htmlFor="name">Subcategory Name:</label>
+                  <input
+                    type="text"
+                    id="name"
+                    name="name"
+                    value={creatingSubcategory.name || ""}
+                    onChange={handleCreateInputChange}
+                    placeholder="Enter subcategory name"
+                  />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="CategoryId">Parent Category:</label>
+                  <select
+                    id="CategoryId"
+                    name="CategoryId"
+                    value={creatingSubcategory.CategoryId || ""}
+                    onChange={handleCreateCategoryChange}
+                  >
+                    <option value="">Select a Category</option>
+                    {categories.map((category) => (
+                      <option key={category.id} value={category.id}>
+                        {category.name}
+                      </option>
+                    ))}
+                  </select>
+                </div>
+                <button type="submit">Create Subcategory</button>
               </form>
             </div>
           </div>

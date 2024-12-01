@@ -44,14 +44,10 @@
     font-weight: bold;
   }
   
- .categories-table-container  .options-cell {
-display: grid;
-grid-template-columns: 25% 15% 25% 15% 20%;
-  }
   
-
-
-
+.order-delete{
+  text-align: center;
+}
 
 
 .categories-table-container   button {

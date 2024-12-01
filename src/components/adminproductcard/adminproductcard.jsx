@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 const Adminproductcard = ({ product, onProductUpdate }) => {
   const [showModal, setShowModal] = useState(false);
   const [editingProduct, setEditingProduct] = useState(null);
-
+  // console.log(product)
   const handleEditClick = () => {
     setEditingProduct({ ...product });
     setShowModal(true);
@@ -75,7 +75,10 @@ const Adminproductcard = ({ product, onProductUpdate }) => {
     <div className="product-admin-card">
       <div className="product-admin-card-content">
         <div className="product-admin-card-image">
-          <img src={product.image} alt={product.name} />
+          <img
+            src={`http://localhost:5000/uploads/${product.image}`}
+            alt={product.name}
+          />
         </div>
         <div className="product-admin-card-title">{product.name}</div>
         <div className="product-admin-card-price">
@@ -97,9 +100,13 @@ const Adminproductcard = ({ product, onProductUpdate }) => {
 
       {showModal && (
         <div className="modal-overlay" onClick={handleCloseModal}>
-          <div className="products-modal-content" onClick={(e) => e.stopPropagation()}>
+          <div
+            className="products-modal-content"
+            onClick={(e) => e.stopPropagation()}
+          >
             <h3>Edit Product</h3>
             <form onSubmit={handleEditSubmit}>
+              <label htmlFor="Product Name">Product Name</label>
               <input
                 type="text"
                 name="name"
@@ -107,6 +114,7 @@ const Adminproductcard = ({ product, onProductUpdate }) => {
                 onChange={handleChange}
                 placeholder="Product Name"
               />
+              <label htmlFor="price">price</label>
               <input
                 type="number"
                 name="price"
@@ -114,19 +122,13 @@ const Adminproductcard = ({ product, onProductUpdate }) => {
                 onChange={handleChange}
                 placeholder="Price"
               />
+              <label htmlFor="description">description</label>
               <textarea
                 name="description"
                 value={editingProduct?.description || ""}
                 onChange={handleChange}
                 placeholder="Description"
               ></textarea>
-              <input
-                type="text"
-                name="image"
-                value={editingProduct?.image || ""}
-                onChange={handleChange}
-                placeholder="Image URL"
-              />
               <button type="submit">Save Changes</button>
             </form>
           </div>

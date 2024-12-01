@@ -168,10 +168,10 @@ const OrdersDashboard = () => {
                   </button>
                   <div />
                   <button
-                    class="button delete-button"
+                    class="button delete-button order-delete-button"
                     onClick={() => handleDeleteConfirm(order.id)}
                   >
-                    <span class="button-content">Delete </span>
+                    <span class="button-content order-delete">Delete </span>
                   </button>
                   <div />
                 </td>

@@ -80,7 +80,7 @@ const PostsDashboard = () => {
 
   const handleChange = (event) => {
     const { name, value } = event.target;
-    setEditingPost({ ...editingPost, [name]: value });
+    setEditingPost((prevPost) => ({ ...prevPost, [name]: value }));
   };
 
   return (
@@ -97,7 +97,7 @@ const PostsDashboard = () => {
                 description={post.description}
                 imageUrl={post.imageUrl}
                 dateCreated={post.createdAt}
-                handleEdit={() => handleEditPost(post.id)}
+                handleEdit={() => handleEditPost(post)}
                 handleDelete={() => handleDeleteConfirm(post.id)}
               />
             </div>
@@ -108,7 +108,7 @@ const PostsDashboard = () => {
       {showEditModal && (
         <div className="modal-overlay" onClick={() => setShowEditModal(false)}>
           <div
-            className="edit-post-modal-content"
+            className="products-modal-content"
             onClick={(e) => e.stopPropagation()}
           >
             <h3>Edit Post</h3>

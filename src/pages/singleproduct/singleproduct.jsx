@@ -25,6 +25,7 @@ const SingleProduct = () => {
     const {productid} = useParams();
     const [quantity, setQuantity] = useState(1);
     const [loading, setLoading] = useState(false);
+    console.log(user.id)
     const fetchProduct = async () => {
         try {
             setLoading(true);
