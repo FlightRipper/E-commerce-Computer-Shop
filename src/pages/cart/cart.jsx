@@ -81,13 +81,14 @@ const ShoppingCart = () => {
     },  0);
     const fetchCartItems = async () => {
         setLoading(true);
-        console.log(user.id);
         const response = await axios.get(`http://localhost:5000/orders/getactive/${user.id}`);
         console.log(response)
         if (response.status === 200) {
           setLoading(false);
           setCartItems(response.data);
           console.log(response.data);
+        } else if (response.status === 500) {
+            navigate('/shop');
         }
     }
 

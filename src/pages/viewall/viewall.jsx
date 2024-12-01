@@ -23,7 +23,6 @@ const ViewAll = () => {
     const [isSearchFocused, setIsSearchFocused] = useState(false);
     const searchRef = useRef(null);
 
-
     const handleCategoryChange = (categoryId) => {
         setSelectedCategory(categoryId);
     };
@@ -46,7 +45,7 @@ const ViewAll = () => {
             headers: {
                 accept: 'application/json',
                 'content-type': 'application/json',
-                authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNTBlOGQ5YWUtMmExNC00YTA1LTgzZWMtMWY0ZThhMDczMDIwIiwidHlwZSI6ImFwaV90b2tlbiJ9.DoMaXPi7Sd7I-LpzwNQ4bd7Sd7r_4rtT1aGziC03uSs'
+                authorization: 'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMzRlZGNkMDktZTlmMC00YTU4LTgxMTMtMTAwNTRiMzI0NzBlIiwidHlwZSI6ImFwaV90b2tlbiJ9.NdENh6YugGNm2IS7PyPgn0AyOMB5PHX1i8KriKUMyn0'
             },
             body: JSON.stringify({
                 response_as_dict: true,

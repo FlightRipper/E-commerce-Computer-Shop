@@ -42,15 +42,20 @@ const Community = () => {
     useEffect(() => {
         setLoading(true);
         axios
-            .get("http://localhost:5000/posts/")
-            .then((response) => {
-                setLoading(false);
-                setPosts(response.data);
-                console.log(response.data);
-            })
-            .catch((error) => {
-                console.log(error);
-            });
+        .get("http://localhost:5000/posts/")
+        .then((response) => {
+          setLoading(false);
+          setPosts(response.data);
+          console.log(response.data);
+        })
+        .catch((error) => {
+            if (error.response && error.response.status === 404) {
+            setLoading(false);
+            console.log("No available posts");
+          } else {
+            console.log(error);  // Log other types of errors
+          }
+        });
     }, []);
     return (
         <>

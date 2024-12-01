@@ -29,6 +29,10 @@ import PostsDashboard from './pages/admindashboard/admindashboardposts/PostsDash
 
 function App() {
   const { user } = useAuthContext();
+  function isAdmin() {
+    console.log("user", user)
+    return user && user.userType === "admin"
+  }
   return (
     <>
       <BrowserRouter>
@@ -43,7 +47,7 @@ function App() {
           <Route path="/contact" element={<><ScrollToTop /><ContactUs /></>} />
           <Route path="/cart" element={user ? <><ScrollToTop /><CartPage /></> : <Navigate to={'/'} />} />
           <Route path="/shop" element={<><ScrollToTop /><ViewAll /></>} />
-          <Route path="/admin" element={<><ScrollToTop /><Admindashboard /></>} />
+          <Route path="/admin" element={isAdmin() ? <><ScrollToTop /><Admindashboard /></> : <Navigate to={'/'} />} />
           <Route path="/admin/categories" element={<><ScrollToTop /><CategoriesDashboard /></>} />
           <Route path="/admin/sub-categories" element={<><ScrollToTop /><SubcategoriesDashboard /></>} />
           <Route path="/admin/products" element={<><ScrollToTop /><ProductsDashboard /></>} />
@@ -57,6 +61,3 @@ function App() {
 }
 
 export default App
-
-
-
