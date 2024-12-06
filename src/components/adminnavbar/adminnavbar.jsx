@@ -13,12 +13,12 @@ const Adminsidebar = () => {
         <img
           className="rounded-pill img-fluid"
           width="65"
-          src="https://uniim1.shutterfly.com/ng/services/mediarender/THISLIFE/021036514417/media/23148907008/medium/1501685726/enhance"
+          src="https://th.bing.com/th/id/OIP.S3cM8ki8_erjYCaeT3CTYAHaHa?rs=1&pid=ImgDetMain"
           alt=""
         />
         <div className="ms-2">
           <h5 className="fs-6 mb-0">
-            <a className="text-decoration-none" href="#">Ahmad Mallah</a>
+            <a className="text-decoration-none" href="#">Admin</a>
           </h5>
           <p className="mt-1 mb-0">Admin User</p>
         </div>

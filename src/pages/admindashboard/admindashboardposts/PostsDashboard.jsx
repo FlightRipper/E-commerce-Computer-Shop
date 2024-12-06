@@ -95,7 +95,7 @@ const PostsDashboard = () => {
               <Adminpostcard
                 id={post.id}
                 description={post.description}
-                imageUrl={post.imageUrl}
+                imageUrl={post.image}
                 dateCreated={post.createdAt}
                 handleEdit={() => handleEditPost(post)}
                 handleDelete={() => handleDeleteConfirm(post.id)}

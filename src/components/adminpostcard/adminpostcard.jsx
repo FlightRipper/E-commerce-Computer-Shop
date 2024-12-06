@@ -13,7 +13,7 @@ const Adminpostcard = ({
       <div className="product-admin-card-content">
         <div className="product-admin-card-image">
           <img
-            src={imageUrl}
+            src={`http://localhost:5000/uploads/${imageUrl}`}
             alt={`Post Image`}
             className="product-admin-card-image-img"
           />
@@ -22,7 +22,7 @@ const Adminpostcard = ({
           Created on: {dateCreated}
         </div>
 
-        <div className="product-admin-card-date-created">{description}</div>
+        <div className="product-admin-card-description">{description}</div>
       </div>
 
       <div className="product-admin-card-button-container">

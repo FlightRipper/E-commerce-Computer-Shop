@@ -108,10 +108,11 @@ const RegisterPage = () => {
           },
         }
       );
-      console.log(response.data);
       if (response.status === 201) {
         // Save the user and token to the local storage
         localStorage.setItem("user", JSON.stringify(response.data.newUser));
+        console.log("zaber")
+        console.log(response.data.newUser)
         localStorage.setItem("token", response.data.token);
 
         // Update the context

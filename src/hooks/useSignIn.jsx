@@ -17,12 +17,12 @@ export const useSignIn = () => {
     });
   
     const json = await response.json();
+    console.log("hon", json)
 
     if(!response.ok){
         setError('Incorrect credentials (Check your username and password)');
     }
     if(response.ok){
-
         //save the user to the local storage
         localStorage.setItem('user', JSON.stringify(json))
 

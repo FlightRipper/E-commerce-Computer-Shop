@@ -102,7 +102,7 @@ const ShoppingCart = () => {
   }, 0);
   const fetchCartItems = async () => {
     setLoading(true);
-    console.log(userId);
+    console.log("useId",userId);
     const response = await axios.get(
       `http://localhost:5000/orders/getactive/${userId}`
     );
