@@ -18,8 +18,10 @@ const Adminpostcard = ({
             className="product-admin-card-image-img"
           />
         </div>
+                                {/* {new Date(subcategory.createdAt).toLocaleDateString() */}
+
         <div className="product-admin-card-description">
-          Created on: {dateCreated}
+          Created on: {new Date(dateCreated).toLocaleDateString()}
         </div>
 
         <div className="product-admin-card-description">{description}</div>

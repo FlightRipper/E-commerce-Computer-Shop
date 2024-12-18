@@ -178,11 +178,12 @@ const Admindashboard = () => {
                     </tr>
                   </thead>
                   <tbody>
+                  {/* {new Date(subcategory.createdAt).toLocaleDateString() */}
                     {fillEmptyRows(categories, 4).map((category, index) => (
                       <tr key={index}>
                         <td>{category.id || "-"}</td>
                         <td>{category.name || "-"}</td>
-                        <td>{(category.createdAt) || "-"}</td>
+                        <td>{new Date(category.createdAt).toLocaleDateString() || "-"}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -195,7 +196,6 @@ const Admindashboard = () => {
                       <th>ID</th>
                       <th>Name</th>
                       <th>Price</th>
-                      <th>Category</th>
                       <th>Created At</th>
                     </tr>
                   </thead>
@@ -204,9 +204,9 @@ const Admindashboard = () => {
                       <tr key={index}>
                         <td>{product.id || "-"}</td>
                         <td>{product.name || "-"}</td>
-                        <td>${(product.price || 0).toFixed(2)}</td>
-                        <td>{product.category?.name || "-"}</td>
-                        <td>{(product.createdAt) || "-"}</td>
+                        <td>${(product.price || 0)}</td>
+                        {/* {new Date(subcategory.createdAt).toLocaleDateString() */}
+                        <td>{new Date(product.createdAt).toLocaleDateString() || "-"}</td>
                       </tr>
                     ))}
                   </tbody>

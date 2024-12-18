@@ -178,6 +178,7 @@
 .swal-table {
   border-collapse: collapse;
   width: 100%;
+  height: auto;
 }
 
 .swal-table th, .swal-table td {

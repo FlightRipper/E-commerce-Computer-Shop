@@ -2,10 +2,11 @@ import React, { useState } from "react";
 import axios from "axios";
 import "./adminproductcard.css";
 import Swal from "sweetalert2";
+
 const Adminproductcard = ({ product, onProductUpdate }) => {
   const [showModal, setShowModal] = useState(false);
   const [editingProduct, setEditingProduct] = useState(null);
-  // console.log(product)
+
   const handleEditClick = () => {
     setEditingProduct({ ...product });
     setShowModal(true);
@@ -19,6 +20,13 @@ const Adminproductcard = ({ product, onProductUpdate }) => {
   const handleChange = (event) => {
     const { name, value } = event.target;
     setEditingProduct({ ...editingProduct, [name]: value });
+  };
+
+  const handleToggleFeatured = () => {
+    setEditingProduct((prev) => ({
+      ...prev,
+      featured: !prev.featured,
+    }));
   };
 
   const handleEditSubmit = async (event) => {
@@ -81,9 +89,7 @@ const Adminproductcard = ({ product, onProductUpdate }) => {
           />
         </div>
         <div className="product-admin-card-title">{product.name}</div>
-        <div className="product-admin-card-price">
-          ${product.price.toFixed(2)}
-        </div>
+        <div className="product-admin-card-price">${product.price}</div>
         <div className="product-admin-card-description">
           {product.description}
         </div>
@@ -129,6 +135,21 @@ const Adminproductcard = ({ product, onProductUpdate }) => {
                 onChange={handleChange}
                 placeholder="Description"
               ></textarea>
+              <button
+                type="button"
+                onClick={handleToggleFeatured}
+                style={{
+                  backgroundColor: editingProduct?.featured ? "green" : "red",
+                  color: "white",
+                  padding: "10px",
+                  border: "none",
+                  borderRadius: "4px",
+                  cursor: "pointer",
+                  margin: "10px 0",
+                }}
+              >
+                {editingProduct?.featured ? "Featured" : "Not Featured"}
+              </button>
               <button type="submit">Save Changes</button>
             </form>
           </div>
