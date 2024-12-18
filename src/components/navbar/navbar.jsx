@@ -19,6 +19,9 @@ const Navbar = () => {
     const username = user ? user.username : "Sign In";
     const image = user ? `http://localhost:5000/uploads/${user.image}` : logo;
 
+  const handleViewProduct = (productId) => {
+    navigate(`/single/${productId}`);
+  };
     const getProducts = async () => {
         const response = await axios.get('http://localhost:5000/products');
         if (response.status === 200) {
@@ -91,7 +94,7 @@ const Navbar = () => {
     <div ref={searchRef} className="search-results">
     {filteredProducts.map((product) => (
       <button
-        onClick={() => window.location.href = `/single/${product.id}`}
+        onClick={() => handleViewProduct(product.id)}
         key={product.id}
         className="search-result-item"
         onMouseEnter={(e) => e.target.classList.add('hovered')}
