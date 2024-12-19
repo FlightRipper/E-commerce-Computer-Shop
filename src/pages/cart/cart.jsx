@@ -102,17 +102,25 @@ const ShoppingCart = () => {
   }, 0);
   const fetchCartItems = async () => {
     setLoading(true);
-    console.log("useId", user.id);
-    const response = await axios.get(
-      `http://localhost:5000/orders/getactive/${user.id}`
-    );
-    console.log(response);
-    if (response.status === 200) {
+    try {
+      console.log("User ID:", user.id);
+      const response = await axios.get(
+        `http://localhost:5000/orders/getactive/${user.id}`
+      );
+      if (response.status === 200) {
+        setCartItems(response.data);
+      } else {
+        console.error("Unexpected response status:", response.status);
+        navigate('/shop');
+      }
+    } catch (error) {
+      console.error("Error fetching cart items:", error);
+      navigate('/shop');
+    } finally {
       setLoading(false);
-      setCartItems(response.data);
-      console.log(response.data);
     }
   };
+  
 
   const updateStatus = async () => {
     const result = await Swal.fire({
