@@ -54,6 +54,12 @@ const Adminsidebar = () => {
         <li className={`navigation-item ${isActive('/admin/posts')}`}>
           <a href="/admin/posts">Posts</a>
         </li>
+
+        <li className={`navigation-item ${isActive('/admin/contact-us')}`}>
+          <a href="/admin/contact-us">Contact-Us</a>
+        </li>
+
+
       </ul>
     </aside>
   );

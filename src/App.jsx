@@ -26,7 +26,7 @@ import SubcategoriesDashboard from './pages/admindashboard/admindashboardsubcate
 import ProductsDashboard from './pages/admindashboard/admindashboardproducts/ProductsDashboard.jsx';
 import OrdersDashboard from './pages/admindashboard/admindashboardorders/OrdersDashboard.jsx';
 import PostsDashboard from './pages/admindashboard/admindashboardposts/PostsDashboard.jsx';
-
+import ContactusDashboard from './pages/admindashboard/admindashboardcontactus/Contactusdashboard.jsx';
 function App() {
   const { user } = useAuthContext();
   function isAdmin() {
@@ -53,6 +53,7 @@ function App() {
           <Route path="/admin/products" element={<><ScrollToTop /><ProductsDashboard /></>} />
           <Route path="/admin/orders" element={<><ScrollToTop /><OrdersDashboard /></>} />
           <Route path="/admin/posts" element={<><ScrollToTop /><PostsDashboard /></>} />
+          <Route path="/admin/contact-us" element={<><ScrollToTop /><ContactusDashboard /></>} />
         </Routes>
       </BrowserRouter>
 

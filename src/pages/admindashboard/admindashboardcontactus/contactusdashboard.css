@@ -1,0 +1,56 @@
+.admin-contact-card {
+    position: relative;
+    background-color: #30344c;
+    padding: 1em;
+    z-index: 5;
+    box-shadow: 4px 4px 20px rgba(0, 0, 0, 0.3);
+    border-radius: 10px;
+    width: 1400px;
+    margin-left: auto;
+    margin-right: auto;
+    transition: 200ms ease-in-out;
+  }
+  
+  .admin-contact-info {
+    color: #C6E1ED;
+    font-size: 0.85em;
+    font-weight: 600;
+  }
+  
+  .admin-contact-body {
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .admin-contact-text{
+    margin: 0 10px 0 0;
+    white-space: pre-line;
+    color: #ffffff;
+    font-weight: 400;
+    line-height: 1.5;
+    margin-bottom: 4px;
+  }
+
+
+  .contactus-cards-container{
+    display: flex;
+    flex-direction: column;
+    gap: 50px;
+  }
+
+
+
+
+
+  .contacts-delete-button{
+
+    background-color: #0062CC;
+    border-radius: 20px;
+    border-width: initial;
+    border-style: none;
+    padding: 5px;
+    width:150px ;
+    height: 40px;
+    margin-left: 575px;
+
+  }

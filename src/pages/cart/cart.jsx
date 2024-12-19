@@ -45,7 +45,7 @@ const ShoppingCart = () => {
         accept: "application/json",
         "content-type": "application/json",
         authorization:
-          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiNTBlOGQ5YWUtMmExNC00YTA1LTgzZWMtMWY0ZThhMDczMDIwIiwidHlwZSI6ImFwaV90b2tlbiJ9.DoMaXPi7Sd7I-LpzwNQ4bd7Sd7r_4rtT1aGziC03uSs",
+          "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiZjZiMmYwNDctZjliZS00ODJkLThmM2UtZjYzZDAzM2M0N2RhIiwidHlwZSI6ImZyb250X2FwaV90b2tlbiJ9.rKlBPh1bns6qq2FrtHvrET3SjhvxuM1QGKMD_gGiH_Y",
       },
       body: JSON.stringify({
         response_as_dict: true,
@@ -102,7 +102,7 @@ const ShoppingCart = () => {
   }, 0);
   const fetchCartItems = async () => {
     setLoading(true);
-    console.log("useId",user.id);
+    console.log("useId", user.id);
     const response = await axios.get(
       `http://localhost:5000/orders/getactive/${user.id}`
     );
